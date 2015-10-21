@@ -1,0 +1,14 @@
+<h1>Players</h1>
+
+ <ul>
+    <% players.forEach(function(player){ %>
+        <li>
+        	<ul>
+        		<li><%= player.id %></li>
+            	<li><%= player.username %></li>
+            	<li><%= player.email %></li>
+            </ul>
+            <br/>
+        </li>
+    <% }); %>
+</ul>
