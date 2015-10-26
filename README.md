@@ -1,5 +1,1 @@
-# hiboss
-
-a [Sails](http://sailsjs.org) application
-# hiboss
-# hiboss 
+# Todo Application in Angular.js + Sails.js

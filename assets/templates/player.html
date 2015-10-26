@@ -1,0 +1,22 @@
+<div class="container" ng-controller="PlayerCtrl">
+
+    <h1 align="center">Player Application</h1>
+    <form>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="pseudo" ng-model="formData.value" />
+        <label class="mdl-textfield__label" for="pseudo">Pseudo</label>
+      </div>
+      <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="addPlayer()">Add Player</button>
+    </form>
+
+
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
+      <tbody>
+        <tr ng-repeat="player in players">
+            <th class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)">{{ player.value }}</th>
+        </tr>       
+      </tbody>
+    </table>
+
+</div>
+
