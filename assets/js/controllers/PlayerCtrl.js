@@ -21,7 +21,6 @@ playerApp.controller('PlayerCtrl', ['$scope', '$rootScope', 'PlayerService', fun
   })
 
   $scope.addPlayer = function() {
-    console.log('le scope data');
     console.log($scope.formData);
     PlayerService.addPlayer($scope.formData).then(function(response) {
       $scope.players.push(response)

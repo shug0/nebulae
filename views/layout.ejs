@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html ng-app="playerApp">
 <head>
-  <title>Angular Player Application</title>
+	<title>Angular Player Application</title>
 
-  <!-- Viewport mobile tag for sensible mobile support -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<!-- Viewport mobile tag for sensible mobile support -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
-  <!--STYLES-->
-  <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
-  <link rel="stylesheet" href="/styles/importer.css">
-  <!--STYLES END-->
+	<!--STYLES-->
+	<link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
+	<link rel="stylesheet" href="/styles/importer.css">
+	<!--STYLES END-->
 </head>
 <body>
- <div ng-view></div>
- <script type="text/javascript" src="/jst.js"></script>
 
- <!--SCRIPTS-->
- <script src="/js/dependencies/sails.io.js"></script>
- <script src="/bower_components/jquery/dist/jquery.js"></script>
- <script src="/bower_components/angular/angular.js"></script>
- <script src="/bower_components/angular-route/angular-route.js"></script>
- <script src="/bower_components/material-design-lite/material.min.js"></script>
- <script src="/js/app.js"></script>
- <script src="/js/controllers/PlayerCtrl.js"></script>
- <script src="/js/services/PlayerService.js"></script>
- <!--SCRIPTS END-->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+	<%- partial ('partial/header.ejs') %>
+
+
+	<main class="mdl-layout__content">
+		<div class="page-content">
+			<div ng-view></div>
+		</div>
+	</main>
+
+
+</div>
+
+	<script type="text/javascript" src="/jst.js"></script>
+
+	<!--SCRIPTS-->
+	<script src="/js/dependencies/sails.io.js"></script>
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/bower_components/material-design-lite/material.min.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/controllers/PlayerCtrl.js"></script>
+	<script src="/js/services/PlayerService.js"></script>
+	<!--SCRIPTS END-->
 </body>
 </html>

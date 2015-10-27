@@ -1,10 +1,8 @@
-<div class="container" ng-controller="PlayerCtrl">
+<section ng-controller="PlayerCtrl">
 
     <h1 align="center">Player Application</h1>
 
-
     <form class="mdl-grid">
-
 
       <div class="mdl-cell mdl-cell--5-col">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -31,15 +29,11 @@
       <tbody>
         <tr ng-repeat="player in players">
             <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.id }}</td>
-            <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.value.pseudo }}</td>
-            <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.value.birthDate }}</td>
+            <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.pseudo }}</td>
+            <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.birthDate }}</td>
         </tr>       
       </tbody>
     </table>
 
-    
-    
-
-<!--  -->
-</div>
+</section>
 
