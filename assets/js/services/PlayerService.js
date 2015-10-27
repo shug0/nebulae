@@ -10,7 +10,6 @@ playerApp.service('PlayerService', function($http, $q) {
       return defer.promise;
     },
     'addPlayer': function(player) {
-      console.log(player);
       var defer = $q.defer();
       $http.post('/player/addPlayer', player).success(function(resp){
         defer.resolve(resp);
@@ -20,7 +19,6 @@ playerApp.service('PlayerService', function($http, $q) {
       return defer.promise;
     },
     'removePlayer': function(player) {
-      console.log(player);
       var defer = $q.defer();
       $http.post('/player/removePlayer', player).success(function(resp){
         defer.resolve(resp);

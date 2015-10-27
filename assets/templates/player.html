@@ -3,9 +3,26 @@
     <h1 align="center">Player Application</h1>
     <form>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="pseudo" ng-model="formData.value" />
+        <input class="mdl-textfield__input" type="text" id="pseudo" ng-model="formData.pseudo" />
         <label class="mdl-textfield__label" for="pseudo">Pseudo</label>
       </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="birthDate" ng-model="formData.birthDate" />
+        <label class="mdl-textfield__label" for="birthDate">Age</label>
+        <span class="mdl-textfield__error">Veuillez saisir un nombre.</span>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows="2" id="shortDescription" ng-model="formData.shortDescription"></textarea>
+        <label class="mdl-textfield__label" for="shortDescription">Courte description</label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows="10" id="description" ng-model="formData.description"></textarea>
+        <label class="mdl-textfield__label" for="description">Description de votre personnage</label>
+      </div>
+
       <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="addPlayer()">Add Player</button>
     </form>
 
@@ -13,10 +30,16 @@
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
       <tbody>
         <tr ng-repeat="player in players">
-            <th class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)">{{ player.value }}</th>
+            <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.id }}</td>
+            <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.value.pseudo }}</td>
+            <td class="mdl-data-table__cell--non-numeric" ng-click="removePlayer(player)" >{{ player.value.birthDate }}</td>
         </tr>       
       </tbody>
     </table>
 
+    
+    
+
+<!--  -->
 </div>
 
