@@ -51,8 +51,7 @@ var AuthController = {
       providers : providers
     , errors    : req.flash('error')
     });
-  }, 
-
+  },
 
   /**
    * Log out a user and return them to the homepage

@@ -11,7 +11,12 @@ hibossApp.config(['$routeProvider',
     .when('/login/', {
       templateUrl: '/templates/login.html',
       controller: 'UserCtrl'
-    }).otherwise({
+    })
+    .when('/user/', {
+      templateUrl: '/templates/user.html',
+      controller: 'UserCtrl'
+    })
+    .otherwise({
       redirectTo: '/login',
       caseInsensitiveMatch: true
     })
