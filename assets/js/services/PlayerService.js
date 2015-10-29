@@ -1,4 +1,4 @@
-playerApp.service('PlayerService', function($http, $q) {
+hibossApp.service('PlayerService', function($http, $q) {
   return {
     'getPlayers': function() {
       var defer = $q.defer();

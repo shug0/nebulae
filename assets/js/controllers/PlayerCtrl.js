@@ -1,18 +1,6 @@
 'use strict';
 
-var playerApp = angular.module('playerApp', ['ngRoute'])
-playerApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.when('/', {
-      templateUrl: '/templates/player.html',
-      controller: 'PlayerCtrl'
-    }).otherwise({
-      redirectTo: '/',
-      caseInsensitiveMatch: true
-    })
-  }])
-
-playerApp.controller('PlayerCtrl', ['$scope', '$rootScope', 'PlayerService', function($scope, $rootScope, PlayerService) {
+hibossApp.controller('PlayerCtrl', ['$scope', '$rootScope', 'PlayerService', function($scope, $rootScope, PlayerService) {
   $scope.formData = {};
   $scope.players = [];
 
