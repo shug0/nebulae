@@ -8,5 +8,23 @@
     "angular-mocks": "~1.2.21",
     "jquery": "~2.1.3",
     "material-design-lite": "~1.0.5"
-  }
+  },
+  "homepage": "https://github.com/shug0/hiboss",
+  "authors": [
+    "Thomas Alberola <thomas@needacoffee.fr>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/bower_components",
+    "test",
+    "tests"
+  ]
 }

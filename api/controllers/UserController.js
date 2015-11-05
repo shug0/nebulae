@@ -1,3 +1,4 @@
+
 module.exports = {
     getUsers: function(req, res) {
         UserService.getUsers(function(users) {

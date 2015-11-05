@@ -1,7 +1,7 @@
 {
   "name": "hiboss",
-  "author": "Scotch",
-  "description": "Sails/Angular TODO Applcation",
+  "author": "Thomas Alberola",
+  "description": "Sails/Wakfu Players Library",
   "main": "app.js",
   "dependencies": {
     "bcryptjs": "^2.3.0",
@@ -18,24 +18,14 @@
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-sails-linker": "~0.9.5",
+    "grunt-sass": "^1.1.0",
     "grunt-sync": "~0.0.4",
     "include-all": "~0.1.3",
-    "passport": "^0.3.0",
-    "passport-cas": "^0.1.0",
-    "passport-facebook": "^2.0.0",
-    "passport-github": "^1.0.0",
-    "passport-google-oauth": "^0.2.0",
-    "passport-http-bearer": "^1.0.1",
-    "passport-local": "^1.0.0",
-    "passport-twitter": "^1.0.3",
     "q": "^1.4.1",
     "rc": "~0.5.0",
     "sails": "~0.11.0",
     "sails-disk": "~0.10.0",
     "validator": "^4.2.1"
-  },
-  "devDependencies": {
-    "grunt-sass": "^1.1.0"
   },
   "version": "1.0.0",
   "scripts": {

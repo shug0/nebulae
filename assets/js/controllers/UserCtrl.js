@@ -11,6 +11,7 @@ hibossApp.controller('UserCtrl', ['$scope', '$rootScope', 'UserService', functio
   $scope.addUser = function() {
     UserService.addUser($scope.user).then(function(response) {
       $scope.users.push(response)
+      console.log(response);
       $scope.user = {};
     })
   }
