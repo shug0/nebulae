@@ -2,7 +2,7 @@ hibossApp.service('UserService', function($http, $q) {
   return {
     'getUsers': function() {
       var defer = $q.defer();
-      $http.get('/user/getUsers').success(function(resp){
+      $http.get('/user/').success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);
@@ -11,7 +11,7 @@ hibossApp.service('UserService', function($http, $q) {
     },
     'addUser': function(user) {
       var defer = $q.defer();
-      $http.post('/user/addUser', user).success(function(resp){
+      $http.post('/user/create', user).success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);
@@ -20,7 +20,7 @@ hibossApp.service('UserService', function($http, $q) {
     },
     'removeUser': function(user) {
       var defer = $q.defer();
-      $http.post('/user/removeUser', user).success(function(resp){
+      $http.post('/user/destroy', user).success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);

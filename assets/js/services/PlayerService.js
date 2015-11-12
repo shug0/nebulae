@@ -2,7 +2,7 @@ hibossApp.service('PlayerService', function($http, $q) {
   return {
     'getPlayers': function() {
       var defer = $q.defer();
-      $http.get('/player/getPlayers').success(function(resp){
+      $http.get('/player/').success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);
@@ -11,7 +11,7 @@ hibossApp.service('PlayerService', function($http, $q) {
     },
     'addPlayer': function(player) {
       var defer = $q.defer();
-      $http.post('/player/addPlayer', player).success(function(resp){
+      $http.post('/player/create', player).success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);
@@ -20,7 +20,7 @@ hibossApp.service('PlayerService', function($http, $q) {
     },
     'removePlayer': function(player) {
       var defer = $q.defer();
-      $http.post('/player/removePlayer', player).success(function(resp){
+      $http.post('/player/destroy', player).success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);
