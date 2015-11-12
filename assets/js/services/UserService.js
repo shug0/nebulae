@@ -11,7 +11,7 @@ hibossApp.service('UserService', function($http, $q) {
     },
     'addUser': function(user) {
       var defer = $q.defer();
-      $http.post('/user/create', user).success(function(resp){
+      $http.post('user/addUser', user).success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);

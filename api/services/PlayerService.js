@@ -1,13 +1,8 @@
 module.exports = {
-  getPlayers: function(next) {
-    Player.find().exec(function(err, players) {
-      if(err) throw err;
-      next(players);
-    })
-  },
   addPlayer: function(player, next) {
     Player.create(player).exec(function(err, player) {
       if(err) throw err;
+      sails.log("Added !");
       next(player);
     })
   },

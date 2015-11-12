@@ -11,7 +11,7 @@ hibossApp.service('PlayerService', function($http, $q) {
     },
     'addPlayer': function(player) {
       var defer = $q.defer();
-      $http.post('/player/create', player).success(function(resp){
+      $http.post('/player/addPlayer', player).success(function(resp){
         defer.resolve(resp);
       }).error( function(err) {
         defer.reject(err);
