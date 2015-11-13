@@ -1,6 +1,6 @@
 'use strict';
 
-hibossApp.controller('UserCtrl', ['$scope', '$rootScope', 'UserService', function($scope, $rootScope, UserService) {
+NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', 'UserService', function($scope, $rootScope, UserService) {
   $scope.user = {};
   $scope.users = [];
 

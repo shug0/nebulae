@@ -1,4 +1,4 @@
-hibossApp.service('UserService', function($http, $q) {
+NebulaeApp.service('UserService', function($http, $q) {
   return {
     'getUsers': function() {
       var defer = $q.defer();

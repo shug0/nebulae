@@ -1,7 +1,7 @@
 {
-  "name": "hiboss",
+  "name": "Nebulae",
   "author": "Thomas Alberola",
-  "description": "Sails/Wakfu Players Library",
+  "description": "",
   "main": "app.js",
   "dependencies": {
     "bcryptjs": "^2.3.0",
