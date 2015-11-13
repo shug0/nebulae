@@ -2,21 +2,20 @@
 
 Get Started :
 -------------
-Sails Installs :
 
-  install Sails & Bower in global
+  Install Sails & Bower globally :
   ```
   sudo npm -g install sails
   npm install -g bower
   ```
   
-  install Dependencies for Sails & Bower
+  Install Dependencies for Sails & Bower :
   ```
   npm install
   bower install
   ```
-  Launch Sails server
-  `sails lift`
+  Launch Sails server : `sails lift` or with the debug mode : `sails debug`
+
 
 
 
