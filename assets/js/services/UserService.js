@@ -26,5 +26,14 @@ NebulaeApp.service('UserService', function($http, $q) {
         defer.reject(err);
       });
       return defer.promise;
+    },
+    'login': function(user) {
+      var defer = $q.defer();
+      $http.post('/login', user).success(function(resp){
+        defer.resolve(resp);
+      }).error( function(err) {
+        defer.reject(err);
+      });
+      return defer.promise;
     }
-  }})
+  }});
