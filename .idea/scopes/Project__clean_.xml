@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Project (clean)" pattern="!file:*/.gitkeep&amp;&amp;!file[nebulae]:tasks/*&amp;&amp;!file:.bowerrc&amp;&amp;!file:.editorconfig&amp;&amp;!file:.gitignore&amp;&amp;!file:.sailsrc&amp;&amp;!file[nebulae]:.idea/*&amp;&amp;!file[nebulae]:.idea//*&amp;&amp;!file[nebulae]:.tmp//*&amp;&amp;!file[nebulae]:node_modules//*&amp;&amp;!file[nebulae]:assets/bower_components//*&amp;&amp;!file[nebulae]:assets/js/dependencies/*" />
+</component>
