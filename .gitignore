@@ -5,6 +5,7 @@
 logs
 *.log
 .tmp
+.idea
 assets/bower_components
 # Runtime data
 pids
