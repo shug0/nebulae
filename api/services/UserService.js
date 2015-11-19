@@ -14,31 +14,6 @@ module.exports = {
                     next(user);
                 });
         });
-
-    },
-
-    login: function (userInput, next) {
-
-
-        User.findOne({username: userInput.username}, function(err, user) {
-
-            if (err) { next(err) }
-
-            if (!user) {
-                next(false);
-            }
-            else {
-                hash.compare(userInput.password, user.password, next, function(res) {
-                    if (res) {
-                        next(true);
-                    }
-                    else {
-                        next(false);
-                    }
-                });
-            }
-
-        });
-
     }
 };
+

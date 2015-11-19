@@ -6,7 +6,7 @@ NebulaeApp.config(['$routeProvider',
     $routeProvider
     .when('/login/', {
       templateUrl: '/templates/login.html',
-      controller: 'UserCtrl'
+      controller: 'AuthCtrl'
     })
     .when('/user/', {
       templateUrl: '/templates/user.html',

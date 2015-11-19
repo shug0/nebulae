@@ -1,4 +1,4 @@
-NebulaeApp.service('UserService', function($http, $q) {
+NebulaeApp.service('UserSrv', function($http, $q) {
   return {
     'getUsers': function() {
       var defer = $q.defer();
