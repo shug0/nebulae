@@ -3,7 +3,17 @@ NebulaeApp.service('AuthSrv', function($http, $q) {
 
         'login': function(user) {
             var defer = $q.defer();
-            $http.post('/Auth/login', user).success(function(resp){
+            $http.post('/auth/login', user).success(function(resp){
+                defer.resolve(resp);
+            }).error( function(err) {
+                defer.reject(err);
+            });
+            return defer.promise;
+        },
+
+        'logout': function(user) {
+            var defer = $q.defer();
+            $http.post('/auth/logout', user).success(function(resp){
                 defer.resolve(resp);
             }).error( function(err) {
                 defer.reject(err);

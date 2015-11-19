@@ -23,13 +23,14 @@ module.exports.policies = {
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *
   * access)                                                                  *
-  *                                                                          *
   ***************************************************************************/
 
-  'admin': ['sessionAuth'],
+    '*': true,
 
-    UserController: {
-        create: ['sessionAuth']
+    UserController:{
+        '*' : 'sessionAuth',
+        restricted:'sessionAuth',
+        open:true
     }
 
   /***************************************************************************

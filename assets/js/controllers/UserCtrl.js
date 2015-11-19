@@ -6,6 +6,7 @@ NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', 'UserSrv', function($
 
   UserSrv.getUsers().then(function(response) {
     $scope.users = response;
+      console.log(response);
   });
 
   $scope.addUser = function() {
