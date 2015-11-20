@@ -1,19 +1,21 @@
 var cssFilesToInject = [
-'bower_components/material-design-lite/material.min.css',
-'https://fonts.googleapis.com/icon?family=Material+Icons',
-'styles/**/*.css'
+    'styles/**/*.css',
+    '/bower_components/angular-material/angular-material.css',
+    '/bower_components/angular-material-icons/angular-material-icons.min.js'
 ];
 
 var jsFilesToInject = [
-  'js/dependencies/sails.io.js',
-  '/bower_components/jquery/dist/jquery.js',
-  '/bower_components/angular/angular.js',
-  '/bower_components/angular-route/angular-route.js',
-  '/bower_components/material-design-lite/material.min.js',
-  'js/dependencies/**/*.js',
-
-  'js/**/*.js'
-  ];
+    'js/dependencies/sails.io.js',
+    'js/dependencies/**/*.js',
+    '/bower_components/angular/angular.min.js',
+    '/bower_components/jquery/dist/jquery.js',
+    '/bower_components/angular-route/angular-route.js',
+    '/bower_components/angular-aria/angular-aria.js',
+    '/bower_components/angular-animate/angular-animate.js',
+    '/bower_components/angular-material/angular-material.js',
+    '/bower_components/angular-material-icons/angular-material-icons.min.js',
+    'js/**/*.js'
+];
 
 var templateFilesToInject = [
 'templates/*.html'

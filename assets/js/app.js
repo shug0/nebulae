@@ -1,6 +1,6 @@
 'use strict';
 
-var NebulaeApp = angular.module('NebulaeApp', ['ngRoute'])
+var NebulaeApp = angular.module('NebulaeApp', ['ngRoute', 'ngMaterial', 'ngMdIcons'])
 NebulaeApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
@@ -16,25 +16,4 @@ NebulaeApp.config(['$routeProvider',
       redirectTo: '/login',
       caseInsensitiveMatch: true
     })
-  }]).run(function () {
-  var mdlUpgradeDom = false;
-  setInterval(function() {
-    if (mdlUpgradeDom) {
-      componentHandler.upgradeDom();
-      mdlUpgradeDom = false;
-    }
-  }, 200);
-
-  var observer = new MutationObserver(function () {
-    mdlUpgradeDom = true;
-  });
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-  /* support <= IE 10
-   angular.element(document).bind('DOMNodeInserted', function(e) {
-   mdlUpgradeDom = true;
-   });
-   */
-});
+  }]);

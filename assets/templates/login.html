@@ -4,23 +4,23 @@
 
     <form class="mdl-grid">
 
-        <div class="mdl-cell mdl-cell--12-col">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="email" ng-model="user.email" />
-                <label class="mdl-textfield__label" for="email">Email</label>
-            </div>
-        </div>
 
-        <div class="mdl-cell mdl-cell--12-col">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="password" id="password" ng-model="user.password" />
-                <label class="mdl-textfield__label" for="password">Password</label>
-            </div>
-        </div>
+        <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Email</label>
+            <ng-md-icon icon="mail" class="name"></ng-md-icon>
+            <input ng-model="user.email" type="text">
+        </md-input-container>
 
-        <div class="mdl-cell mdl-cell--5-col">
-            <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="login()">Login</button>
-        </div>
+        <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Email</label>
+            <ng-md-icon icon="vpn_key" class="password"></ng-md-icon>
+            <input ng-model="user.password" type="password">
+        </md-input-container>
+
+        <md-button type="submit" class="md-raised md-primary" ng-click="login()">Login</md-button>
+
 
     </form>
 
