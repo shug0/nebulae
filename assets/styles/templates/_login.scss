@@ -1,0 +1,47 @@
+// TEMPLATES : LOGIN.HTML
+
+main#login {
+  background: url('http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg');
+  background-size: cover;
+  padding-top: 5em;
+}
+
+#loginBox.circleContainer {
+  width: 100px;
+  height: 100px;
+  padding: 1px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 7em;
+}
+
+#loginBox {
+  transition: all ease 0.5s;
+  margin: 0 auto 0;
+  position: relative;
+  @extend .md-whiteframe-5dp;
+  width: 400px;
+  height: 350px;
+  padding: 0;
+  // LOGO
+
+  md-form {
+    padding: 2em;
+    position: absolute;
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 2em;
+    }
+    // BUTTON
+    button {
+      margin: auto 0;
+      width: 100%;
+    }
+  }
+  // LOADING
+  md-progress-circular {
+    position: absolute;
+    display: none;
+  }
+}
