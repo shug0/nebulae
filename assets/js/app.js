@@ -1,6 +1,6 @@
 'use strict';
 
-var NebulaeApp = angular.module('NebulaeApp', ['ngRoute', 'ngMaterial', 'ngMdIcons'])
+var NebulaeApp = angular.module('NebulaeApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngMdIcons'])
 NebulaeApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider

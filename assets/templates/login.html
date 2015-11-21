@@ -1,28 +1,49 @@
-<section ng-controller="AuthCtrl">
+<section id="login" ng-controller="AuthCtrl">
 
-    <h1 align="center">Login</h1>
+    <md-card id="loginBox" flex layout-padding>
 
-    <form class="mdl-grid">
+        <md-form name="loginForm">
+
+            <img src="/images/logo.png" alt="Nebulae">
+
+            <md-input-container class="md-icon-float md-block">
+                <label>Email</label>
+                <md-icon><ng-md-icon icon="mail"></ng-md-icon></md-icon>
+
+                <input required type="email" name="email" ng-pattern="/^.+@.+\..+$/"
+                       ng-model="user.email" type="text">
+
+                <div ng-messages="loginForm.email.$error" role="alert">
+                    <div ng-message-exp="['required', 'pattern']">
+                        Your email must look like an e-mail address.
+                    </div>
+                </div>
+
+            </md-input-container>
+
+            <md-input-container class="md-icon-float md-block">
+                <label>Password</label>
+                <md-icon><ng-md-icon icon="vpn_key"></ng-md-icon></md-icon>
+                <input ng-model="user.password" type="password">
+            </md-input-container>
+
+            <md-button type="submit" class="md-raised md-primary" ng-click="login()">Login</md-button>
+
+            <div ng-messages="loginForm.rate.$error" multiple>
+                <div ng-message="required">
+                    You've got to charge something! You can't just <b>give away</b> a Missile Defense
+                    System.
+                </div>
+            </div>
 
 
-        <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <label>Email</label>
-            <ng-md-icon icon="mail" class="name"></ng-md-icon>
-            <input ng-model="user.email" type="text">
-        </md-input-container>
 
-        <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <label>Email</label>
-            <ng-md-icon icon="vpn_key" class="password"></ng-md-icon>
-            <input ng-model="user.password" type="password">
-        </md-input-container>
+        </md-form>
 
-        <md-button type="submit" class="md-raised md-primary" ng-click="login()">Login</md-button>
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 
 
-    </form>
+    </md-card>
 
 </section>
 
