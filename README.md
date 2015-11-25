@@ -14,6 +14,12 @@ Get Started
   npm install
   bower install
   ```
+  
+  Install Sails Adapter for use MongoDB Database :
+  ```
+  npm install sails-mongo
+  ```
+  
   Launch Sails server : `sails lift` or with the debug mode : `sails debug`
 
 Troubleshooting
