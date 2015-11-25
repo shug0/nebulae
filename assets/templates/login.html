@@ -10,14 +10,13 @@
                 <label>Email</label>
                 <md-icon><ng-md-icon icon="mail"></ng-md-icon></md-icon>
 
-                <input required type="email" name="email" ng-pattern="/^.+@.+\..+$/"
+                <input type="email" name="email" ng-pattern="/^.+@.+\..+$/"
                        ng-model="user.email" type="text">
 
-                <div ng-messages="loginForm.email.$error" role="alert">
-                    <div ng-message-exp="['required', 'pattern']">
-                        Your email must look like an e-mail address.
-                    </div>
+                <div ng-messages="loginForm.email.$error">
+                    <div ng-message="ng-pattern">Email format required</div>
                 </div>
+
 
             </md-input-container>
 

@@ -15,4 +15,8 @@ main {
 }
 
 
+.md-toolbar-tools, md-toolbar {
+  height: $md-toolbar-tools_height !important ;
+  min-height: $md-toolbar-tools_height !important ;
+}
 
