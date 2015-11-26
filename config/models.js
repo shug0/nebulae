@@ -10,6 +10,6 @@
  */
 
 module.exports.models = {
-  "connection" : 'mongoNebulae',
+  "connection" : 'localDiskDb',
   migrate: 'safe'
 };

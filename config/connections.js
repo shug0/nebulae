@@ -30,7 +30,7 @@ module.exports.connections = {
   ***************************************************************************/
   localDiskDb: {
     adapter: 'sails-disk'
-  },
+  }//,
 
   /***************************************************************************
   *                                                                          *
@@ -56,14 +56,14 @@ module.exports.connections = {
   // * Run: npm install sails-mongo                                             *
   // *                                                                          *
   // ***************************************************************************/
-  mongoNebulae: {
-    adapter: 'sails-mongo',
-    host: 'ds049624.mongolab.com',
-    port: 49624,
-    user: 'cyril',
-    password: 'newmongo123',
-    database: 'nebulae'
-  }
+  //mongoNebulae: {
+  //  adapter: 'sails-mongo',
+  //  host: 'ds049624.mongolab.com',
+  //  port: 49624,
+  //  user: 'cyril',
+  //  password: 'newmongo123',
+  //  database: 'nebulae'
+  //}
 
   // /***************************************************************************
   // *                                                                          *
