@@ -39,5 +39,8 @@ Troubleshooting
   ```
   then run `bower install` successfully
 
-
+  In case of 'Grunt :: Error: listen EADDRINUSE :::5858'
+  ```
+  You can apply it yourself by replacing your Sails' /lib/hooks/grunt/index.js file with the contents of     https://raw.githubusercontent.com/balderdashy/sails/88ffc0ed9949f8c74ea390efb5610b0e378fa02c/lib/hooks/grunt/index.js; this is the file that will be in the next release, so it's safe to use now.
+  ```
 
