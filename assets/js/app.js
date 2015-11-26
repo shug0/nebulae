@@ -5,11 +5,11 @@ NebulaeApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
     .when('/login/', {
-      templateUrl: '/templates/login.html',
+      templateUrl: '/templates/auth/login.html',
       controller: 'AuthCtrl'
     })
     .when('/user/', {
-      templateUrl: '/templates/user.html',
+      templateUrl: '/templates/user/addUser.html',
       controller: 'UserCtrl'
     })
     .otherwise({
