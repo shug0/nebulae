@@ -4,44 +4,43 @@ main#login {
   background: url('http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg');
   background-size: cover;
   padding-top: 5em;
-}
 
-#loginBox.circleContainer {
-  width: 100px;
-  height: 100px;
-  padding: 1px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-top: 7em;
-}
-
-#loginBox {
-  transition: all ease 0.5s;
-  margin: 0 auto 0;
-  position: relative;
-  @extend .md-whiteframe-5dp;
-  width: 400px;
-  height: 350px;
-  padding: 0;
-  // LOGO
-
-  md-form {
-    padding: 2em;
-    position: absolute;
-    img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 2em;
-    }
-    // BUTTON
-    button {
-      margin: auto 0;
-      width: 100%;
-    }
+  #loginBox.circleContainer {
+    width: 100px;
+    height: 100px;
+    padding: 1px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 7em;
   }
-  // LOADING
-  md-progress-circular {
-    position: absolute;
-    display: none;
+
+  #loginBox {
+    transition: all ease 0.5s;
+    margin: 0 auto 0;
+    position: relative;
+    @extend .md-whiteframe-10dp;
+    width: 400px;
+    height: 360px;
+    padding: 0;
+    form {
+      padding: 2em;
+      position: absolute;
+      img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1em;
+      }
+      button {
+        margin: 30px auto 0;
+        width: 100%;
+      }
+      md-input-container {
+        padding-bottom: 1em;
+      }
+    }
+    md-progress-circular {
+      position: absolute;
+      display: none;
+    }
   }
 }

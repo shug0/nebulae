@@ -27,11 +27,11 @@ module.exports.policies = {
 
     '*': true,
 
-    UserController:{
+    /*UserController:{
         '*' : 'sessionAuth',
         restricted:'sessionAuth',
         open:true
-    }
+    }*/
 
   /***************************************************************************
   *                                                                          *
