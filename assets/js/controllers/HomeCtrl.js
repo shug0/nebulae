@@ -3,8 +3,7 @@
 NebulaeApp.controller('HomeCtrl', ['$scope', '$rootScope', 'UserSrv', function($scope, $rootScope, HomeSrv) {
 
     $scope.initGridster = function(){
-        console.log("init");
-
+       // console.log("init");
             $scope.gridster = $(".gridster > ul").gridster({
                 widget_margins: [10, 10],
                 widget_base_dimensions: [400, 150],
@@ -21,19 +20,17 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$rootScope', 'UserSrv', function($
         $.each(widgets, function(i, widget){
             $scope.gridster.add_widget.apply($scope.gridster, widget)
         });
-
     };
 
     $scope.AddWindow = function() {
-       // console.log("add");
-        var fenetre = ['<li><div class=test>Nouveau Widget</div></li>', 1, 2];
+       //console.log($scope.gridster);
+        var fenetre = ["<li><button ng-click='DeleteWindow(1)'> Supprimer</button><div>Nouveau Widget</div></li>", 1, 2];
         $scope.gridster.add_widget.apply( $scope.gridster,fenetre);
     };
 
     $scope.DeleteWindow = function($id){
-        var fenetre = document.getElementById($id);
-        console.log(fenetre);
-        this.remove_widget.apply(fenetre);
+        console.log("delete");
+        $scope.gridster.remove_widget( $('.gridster li').eq($id) );
     };
 
     $scope.initGridster();
