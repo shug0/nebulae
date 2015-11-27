@@ -2,13 +2,11 @@
 
 Get Started
 -------------
-  Compatibility
-  ==
+  #Compatibility
 
   This project is configured with `node 4.2.2` and `npm 3.5.0`.
 
-  Installation
-  ==
+  #Installation
 
   Install Sails & Bower globally :
   ```
