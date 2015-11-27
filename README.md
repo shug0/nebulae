@@ -2,10 +2,15 @@
 
 Get Started
 -------------
+  # Compatibility
+
+  This project is configured with `node 4.2.2` and `npm 3.5.0`.
+
+  # Installation
 
   Install Sails & Bower globally :
   ```
-  sudo npm -g install sails
+  npm -g install sails
   npm install -g bower
   ```
   
@@ -24,9 +29,7 @@ Get Started
 
 Troubleshooting
 -------------
-
-  This project is configured with npm 3.4.0.
-  
+ 
   If you have `package deprecated` with `npm install`, check your npm with `npm -v` and if you have npm < 3.4.0, 
   install the latest version :
   ```
@@ -39,8 +42,7 @@ Troubleshooting
   ```
   then run `bower install` successfully
 
-  In case of 'Grunt :: Error: listen EADDRINUSE :::5858'
-  
-  You can apply it yourself by replacing your Sails' /lib/hooks/grunt/index.js file with the contents of     https://raw.githubusercontent.com/balderdashy/sails/88ffc0ed9949f8c74ea390efb5610b0e378fa02c/lib/hooks/grunt/index.js; this is the file that will be in the next release, so it's safe to use now.
+  In case of `Grunt :: Error: listen EADDRINUSE :::5858`, you can apply it yourself by replacing your Sails `/lib/hooks/grunt/index.js` file with the contents of [this file](https://raw.githubusercontent.com/balderdashy/sails/88ffc0ed9949f8c74ea390efb5610b0e378fa02c/lib/hooks/grunt/index.js).
+  This is the file that will be in the next release, so it's safe to use now.
   
 
