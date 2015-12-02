@@ -4,8 +4,6 @@
   "description": "![alt tag](http://i.imgur.com/1VdeiBO.png)",
   "main": "app.js",
   "dependencies": {
-    "bcrypt": "^0.8.5",
-    "bcryptjs": "^2.3.0",
     "bower": "^1.6.x",
     "ejs": "~0.8.4",
     "forever": "^0.11.1",
@@ -29,7 +27,7 @@
     "sails-disk": "^0.10.x",
     "validator": "^4.2.1",
     "waterlock": "0.1.2-rc1",
-    "waterlock-local-auth": "v0.1.2-rc1"
+    "waterlock-local-auth": "git://github.com/jmcartlamy/waterlock-local-auth.git"
   },
   "version": "0.1.0",
   "scripts": {
