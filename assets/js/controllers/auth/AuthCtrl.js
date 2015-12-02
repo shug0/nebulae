@@ -39,7 +39,7 @@ NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv'
 
                 $('[type="submit"]')
                     .addClass('md-warn')
-                    .text('Connecté');
+                    .text('Erreur de connexion');
 
             }
             if (response.auth) {
@@ -47,7 +47,7 @@ NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv'
 
                 $mdToast.show(
                     $mdToast.simple()
-                        .content('Erreur de connexion.')
+                        .content('Vous êtes connecté')
                         .position($scope.getToastPosition())
                         .hideDelay(2000)
                 );
