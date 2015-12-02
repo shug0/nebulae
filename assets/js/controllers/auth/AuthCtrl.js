@@ -5,8 +5,8 @@ NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv'
 
     // Scope Model
     $scope.user = {};
-    $scope.user.email = 'thomas@alberola.me';
-    $scope.user.password= 'yolo';
+    $scope.user.email = 'test@test.me';
+    $scope.user.password= 'testtest';
 
     // Init Toast Position
     $scope.toastPosition = angular.extend({},{
@@ -39,7 +39,7 @@ NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv'
 
                 $('[type="submit"]')
                     .addClass('md-warn')
-                    .text('Erreur de connexion');
+                    .text('Connecté');
 
             }
             if (response.auth) {
