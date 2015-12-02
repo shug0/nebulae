@@ -1,11 +1,14 @@
-'use strict';
+NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv', function($scope, $rootScope, $mdToast, AuthSrv) {
 
-NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv',
-    function($scope, $rootScope, $mdToast, AuthSrv) {
+    // Title
     $rootScope.templateName = "login";
 
+    // Scope Model
     $scope.user = {};
+    $scope.user.email = 'thomas@alberola.me';
+    $scope.user.password= 'yolo';
 
+    // Init Toast Position
     $scope.toastPosition = angular.extend({},{
         bottom: false,
         top: true,
@@ -18,20 +21,29 @@ NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv'
             .join(' ');
     };
 
-    $scope.login = function () {
+    // Error message
+    $scope.resetError = function () {
+        $('[type="submit"]')
+            .removeClass('md-warn')
+            .text('Envoyer');
+    };
 
-        /*
-        $('form').fadeOut();
-        setTimeout(function () {
-            $('md-progress-circular').fadeIn();
-            $('#loginBox').addClass('circleContainer');
-        }, 500);
-        */
+
+        // Scope Function
+    $scope.login = function () {
 
         AuthSrv.login($scope.user).then(function (response) {
             console.log(response);
             if (response.error) {
                 console.log("nope");
+
+                $('[type="submit"]')
+                    .addClass('md-warn')
+                    .text('Erreur de connexion');
+
+            }
+            if (response.auth) {
+                console.log("Yolo");
 
                 $mdToast.show(
                     $mdToast.simple()
@@ -40,11 +52,11 @@ NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv'
                         .hideDelay(2000)
                 );
 
-            }
-            if (response.auth) {
-                console.log("Yolo");
+
             }
         })
     };
 
 }]);
+
+'use strict';

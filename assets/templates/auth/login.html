@@ -1,6 +1,6 @@
-<section id="login" ng-controller="AuthCtrl">
+<section layout="row" id="login" ng-controller="AuthCtrl" flex>
 
-    <md-card id="loginBox" flex layout-padding>
+    <md-card id="loginBox" layout-padding>
 
         <form name="loginForm" ng-submit="login()">
 
@@ -9,21 +9,18 @@
             <md-input-container class="md-block">
                 <label>Email</label>
                 <input required type="email" name="mail" ng-model="user.email"
-                       ng-pattern="/^.+@.+\..+$/" />
+                       ng-pattern="/^.+@.+\..+$/" ng-focus="resetError()"/>
             </md-input-container>
 
             <md-input-container class="md-block">
                 <label>Password</label>
                 <input required type="password" name="password" ng-model="user.password"
-                       minlength="3" maxlength="100" />
+                       minlength="3" maxlength="100" ng-focus="resetError()"/>
             </md-input-container>
 
             <md-button type="submit" class="md-raised md-primary">Login</md-button>
 
-
         </form>
-
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 
 
     </md-card>

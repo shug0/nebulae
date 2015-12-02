@@ -12,6 +12,10 @@ NebulaeApp.config(['$routeProvider',
       templateUrl: '/templates/user/addUser.html',
       controller: 'UserCtrl'
     })
+    .when('/admin/', {
+        templateUrl: '/templates/admin/panel.html',
+        controller: 'PanelCtrl'
+    })
     .otherwise({
       redirectTo: '/login',
       caseInsensitiveMatch: true
