@@ -1,14 +1,13 @@
 // TEMPLATES : LOGIN.HTML
 
-main#auth {
-  background: url('http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg');
-  background-size: cover;
-  padding-top: 5em;
+main.page-login, main.page-signup {
+
+  padding-top: 15em;
 
   #authBox {
     transition: all ease 0.5s;
     margin: 0 auto 0;
-    @extend .md-whiteframe-10dp;
+    @extend .md-whiteframe-5dp;
     width: 400px;
     height: auto;
     padding: 0;

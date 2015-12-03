@@ -1,7 +1,7 @@
-NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv', function($scope, $rootScope, $mdToast, AuthSrv) {
+NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv', function($scope, $rootScope, $mdToast, AuthSrv) {
 
     // Title
-    $rootScope.templateName = "auth";
+    $rootScope.templateName = "login";
 
     // Scope Model
     $scope.user = {};
@@ -54,49 +54,6 @@ NebulaeApp.controller('AuthCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv'
             }
         })
     };
-
-    $scope.signup = function () {
-
-        if ($scope.user.passwordConfirmed == $scope.user.password) {
-
-            AuthSrv.register($scope.user).then(function (response) {
-                console.log(response);
-                if (response.error) {
-
-                    $('[type="submit"]')
-                        .addClass('md-warn')
-                        .text('Erreur de connexion');
-
-                    console.log(response);
-
-                }
-                if (response.auth) {
-
-                    console.log(response);
-
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .content('Utilisateur créer')
-                            .position($scope.getToastPosition())
-                            .hideDelay(2000)
-                    );
-
-
-                }
-            })
-
-
-        }
-        else {
-            $('[type="submit"]')
-                .addClass('md-warn')
-                .text('Password not identical');
-
-        }
-
-    };
-
-
 
 }]);
 

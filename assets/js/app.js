@@ -1,16 +1,16 @@
 'use strict';
 
-var NebulaeApp = angular.module('NebulaeApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
+var NebulaeApp = angular.module('NebulaeApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'ngAnimate']);
 NebulaeApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
     .when('/login/', {
       templateUrl: '/templates/auth/login.html',
-      controller: 'AuthCtrl'
+      controller: 'LoginCtrl'
     })
     .when('/signup/', {
         templateUrl: '/templates/auth/signup.html',
-        controller: 'AuthCtrl'
+        controller: 'SignupCtrl'
     })
     .when('/user/', {
       templateUrl: '/templates/user/addUser.html',
