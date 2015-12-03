@@ -17,6 +17,11 @@ main {
 
 .md-toolbar-tools, md-toolbar {
   height: $md-toolbar-tools_height !important ;
+  line-height: $md-toolbar-tools_height;
   min-height: $md-toolbar-tools_height !important ;
+  a{
+    font-size:0.8em;
+    padding: 0 15px;
+  }
 }
 

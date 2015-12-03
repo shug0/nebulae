@@ -1,30 +1,19 @@
 // TEMPLATES : LOGIN.HTML
 
-main#login {
+main#auth {
   background: url('http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg');
   background-size: cover;
   padding-top: 5em;
 
-  #loginBox.circleContainer {
-    width: 100px;
-    height: 100px;
-    padding: 1px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: 7em;
-  }
-
-  #loginBox {
+  #authBox {
     transition: all ease 0.5s;
     margin: 0 auto 0;
-    position: relative;
     @extend .md-whiteframe-10dp;
     width: 400px;
-    height: 360px;
+    height: auto;
     padding: 0;
     form {
       padding: 2em;
-      position: absolute;
       img {
         width: 100%;
         height: auto;
@@ -36,6 +25,14 @@ main#login {
       }
       md-input-container {
         padding-bottom: 1em;
+        transition: all ease 0.5s;
+        &.ng-hide {
+          opacity: 0;
+          margin-left: -20px;
+        }
+        &.ng-show {
+          margin-left: 0;
+        }
       }
     }
     md-progress-circular {
@@ -44,3 +41,4 @@ main#login {
     }
   }
 }
+
