@@ -31,11 +31,11 @@ module.exports.waterlock = {
           options:{
             service: 'Gmail',
             auth: {
-              user: 'gmail.user@gmail.com',
-              pass: 'userpass'
+              user: 'nebulaetest@gmail.com',
+              pass: 'jcez3h7d8w'
             }
           },
-          from: 'no-reply@domain.com',
+          from: 'contact@cartlamy.com',
           subject: 'Your password reset!',
           forwardUrl: 'http://localhost:1337'
         },

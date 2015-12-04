@@ -11,6 +11,10 @@
 module.exports = require('waterlock').waterlocked({
 
     register: function(req, res) {
+
+        // On peut pas aller plus loin mdr -_-
+        sails.log(sails.config.waterlock.authMethod);
+
         var params = req.params.all(),
             def = waterlock.Auth.definition,
             criteria = { },
@@ -22,6 +26,8 @@ module.exports = require('waterlock').waterlocked({
         attr[scopeKey] = params[scopeKey];
         criteria[scopeKey] = attr[scopeKey];
 
+        //var mail = sails.config.waterlock.authMethod;
+
         waterlock.engine.findAuth(criteria, function(err, user) {
             if (user)
                 return res.badRequest("User already exists");
@@ -32,6 +38,19 @@ module.exports = require('waterlock').waterlocked({
                     delete user.password;
                     return res.ok(user);
                 });
+
+
+
+               /* var transporter = nodemailer.createTransport(mail.protocol, mail.options);
+
+                transporter.sendMail(mail, function(error, info){
+                    if(error){
+                        return console.log(error);
+                    }
+                    console.log('Message sent: ' + info.response);
+                    console.log('Ok');
+                });*/
+
         });
 
     }
