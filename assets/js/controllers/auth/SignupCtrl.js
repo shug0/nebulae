@@ -2,6 +2,7 @@ NebulaeApp.controller('SignupCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSr
 
     // Title
     $rootScope.templateName = "signup";
+    $rootScope.bodyClass = "auth";
 
     // Scope Model
     $scope.user = {};

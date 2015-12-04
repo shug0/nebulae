@@ -18,7 +18,7 @@ NebulaeApp.config(['$routeProvider',
     })
     .when('/admin/', {
         templateUrl: '/templates/admin/panel.html',
-        controller: 'PanelCtrl'
+        controller: 'AdminDashboardCtrl'
     })
     .otherwise({
       redirectTo: '/login',
@@ -27,8 +27,11 @@ NebulaeApp.config(['$routeProvider',
   }
 ]);
 
-NebulaeApp.config(function($mdThemingProvider) {
+NebulaeApp.config(
+
+    function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('pink')
         .accentPalette('indigo');
+
 });
