@@ -2,8 +2,6 @@ NebulaeApp.controller('AdminDashboardCtrl', ['$scope', '$rootScope', '$mdToast',
 
     // Title
     $rootScope.templateName = "adminDashboard";
-    $rootScope.bodyClass = "admin";
-
 
 
 

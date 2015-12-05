@@ -11,6 +11,17 @@ body, html {
   background: $light-grey !important;
 }
 
+
+body:before {
+  content: " ";
+  position: absolute;
+  background: url('http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg') !important;
+  background-size: cover !important;
+  height: 400px;
+  width: 100%;
+  display: block;
+}
+
 main {
   min-height: calc(100% - #{$md-toolbar-tools_height});
 }

@@ -1,15 +1,5 @@
 // TEMPLATES : LOGIN.HTML
 
-body.auth:before {
-  content: " ";
-  position: absolute;
-  background: url('http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg') !important;
-  background-size: cover !important;
-  height: 40%;
-  width: 100%;
-  display: block;
-}
-
 main.page-login, main.page-signup {
 
   padding-top: 15em;
@@ -17,7 +7,6 @@ main.page-login, main.page-signup {
   #authBox {
     transition: all ease 0.5s;
     margin: 0 auto 0;
-    @extend .md-whiteframe-5dp;
     width: 400px;
     height: auto;
     padding: 0;

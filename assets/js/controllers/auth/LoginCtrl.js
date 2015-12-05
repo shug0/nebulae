@@ -2,7 +2,6 @@ NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv
 
     // Title
     $rootScope.templateName = "login";
-    $rootScope.bodyClass = "auth";
 
     // Scope Model
     $scope.user = {};
