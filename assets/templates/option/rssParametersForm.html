@@ -4,4 +4,10 @@
 </md-input-container>
 <br>
 
+<div ng-repeat="page in rssPages track by page.pageNumber">
+    <md-input-container class="md-block">
+        <label>Page {{page.pageNumber}}</label>
+        <input type="text" ng-model="page.url">
+    </md-input-container>
+</div>
 <md-button class="md-raised md-primary" ng-click="addPage()">Ajouter une page</md-button>
