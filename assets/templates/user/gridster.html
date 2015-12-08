@@ -1,7 +1,16 @@
 <md-content flex layout-padding>
-    <div class="gridster"  >
-         <ul></ul>
+    <md-button class="md-primary md-raised" ng-click="addWidget()">Add Widget </md-button>
+    <md-button class="md-primary md-raised" ng-click="clear()">Clear</span></md-button>
+    <div gridster="gridsterOptions">
+        <ul>
+            <li gridster-item="widget" ng-repeat="widget in dashboard.widgets">
+                <div  ng-controller="CustomWidgetCtrl">
+                    <h3>{{ widget.name }}</h3>
+                    <md-button class="md-primary md-raised" ng-click="openSettings($event)">Edit </md-button>
+                    <md-button class="md-primary md-raised" ng-click="remove($event)">Delete</md-button>
+                </div>
+            </li>
+        </ul>
     </div>
-    <button ng-click="AddWindow()"> Ajouter</button>
-    <button ng-click="DeleteWindow(1)"> Supprimer</button>
+
 </md-content>
