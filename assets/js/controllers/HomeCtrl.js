@@ -67,7 +67,7 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
         $scope.selectedDashboardId = '1';
 }])
 
-NebulaeApp.controller('CustomWidgetCtrl', ['$scope',
+NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
         function($scope, $mdDialog,$mdMedia) {
 
             $scope.remove = function(widget) {
@@ -75,60 +75,40 @@ NebulaeApp.controller('CustomWidgetCtrl', ['$scope',
             };
 
             $scope.openSettings = function(ev) {
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .title('This is an alert title')
-                        .textContent('You can specify some description text in here.')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('Got it!')
-                        .targetEvent(ev)
-                );
+                $mdDialog.show({
+                    controller: 'WidgetSettingsCtrl',
+                    templateUrl:'../templates/user/widget_settings.html',
+                    parent:angular.element(document.body),
+                    targetEvent:ev,
+                    clickOutsideToClose:true,
+                });
             };
 
         }
     ])
 
-NebulaeApp.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope', '$modalInstance', 'widget',
-        function($scope, $timeout, $rootScope, $modalInstance, widget) {
-            $scope.widget = widget;
+NebulaeApp.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope','$mdDialog',
+        function($scope, $timeout, $rootScope,$mdDialog) {
+            //$scope.widget = widget;
 
-            $scope.form = {
+            console.log(dashboards);
+           /* $scope.form = {
                 name: widget.name,
                 sizeX: widget.sizeX,
                 sizeY: widget.sizeY,
                 col: widget.col,
                 row: widget.row
-            };
+            };*/
 
-            $scope.sizeOptions = [{
-                id: '1',
-                name: '1'
-            }, {
-                id: '2',
-                name: '2'
-            }, {
-                id: '3',
-                name: '3'
-            }, {
-                id: '4',
-                name: '4'
-            }];
 
             $scope.dismiss = function() {
-                $modalInstance.dismiss();
-            };
-
-            $scope.remove = function() {
-                $scope.dashboard.widgets.splice($scope.dashboard.widgets.indexOf(widget), 1);
-                $modalInstance.close();
+                $mdDialog.hide();
             };
 
             $scope.submit = function() {
-                angular.extend(widget, $scope.form);
+                //angular.extend(widget, $scope.form);
+                $mdDialog.hide();
 
-                $modalInstance.close(widget);
             };
 
         }

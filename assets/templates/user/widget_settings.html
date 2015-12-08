@@ -6,38 +6,34 @@
                 <md-button class="md-icon-button" ng-click="dismiss()"></md-button>
             </div>
         </md-toolbar>
-        <md-dialog-content style="max-width:800px;max-height:810px; ">
-            <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="one">
-                    <md-content class="md-padding">
-                        <md-input-container flex>
-                            <label>Name</label>
-                            <input name="name" ng-model="form.name">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Width</label>
-                            <input name="sizeX" ng-model="form.sizeX">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Height</label>
-                            <input name="sizeY" ng-model="form.sizeY">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Column</label>
-                            <input name="col" ng-model="form.col">
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Row</label>
-                            <input name="row" ng-model="form.row">
-                        </md-input-container>
-                    </md-content>
-                </md-tab>
-            </md-tabs>
+        <md-dialog-content style=" ">
+            <md-content class="md-padding">
+                <md-input-container flex>
+                    <label>Name</label>
+                    <input type ="string" name="name" ng-model="form.name">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Width</label>
+                    <input  type="number" min="1" name="sizeX" ng-model="form.sizeX">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Height</label>
+                    <input  type="number" min="1" name="sizeY" ng-model="form.sizeY">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Column</label>
+                    <input type="number" min="1" name="col" ng-model="form.col">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Row</label>
+                    <input type="number" mim="1" name="row" ng-model="form.row">
+                </md-input-container>
+
+            </md-content>
+            <md-dialog-actions layout="row">
+                <md-button ng-click="dismiss()" >Cancel</md-button>
+                <md-button ng-click="submit()" >Save</md-button>
+            </md-dialog-actions>
         </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <md-button ng-click="remove()" >Delete</md-button>
-            <md-button ng-click="dismiss()" >Cancel</md-button>
-            <md-button ng-click="dismiss()" >Save</md-button>
-        </md-dialog-actions>
     </form>
 </md-dialog>
