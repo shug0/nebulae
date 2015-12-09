@@ -1,9 +1,9 @@
-<md-dialog aria-label="Edition">
-    <form>
+<md-dialog aria-label="Edition" ng>
+    <form >
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>Edition du widget</h2>
-                <md-button class="md-icon-button" ng-click="dismiss()"></md-button>
+                <md-button ng-click="dismiss()"></md-button>
             </div>
         </md-toolbar>
         <md-dialog-content style=" ">
@@ -30,7 +30,7 @@
                 </md-input-container>
 
             </md-content>
-            <md-dialog-actions layout="row">
+            <md-dialog-actions ng-controller="CustomWidgetCtrl"layout="row">
                 <md-button ng-click="dismiss()" >Cancel</md-button>
                 <md-button ng-click="submit()" >Save</md-button>
             </md-dialog-actions>

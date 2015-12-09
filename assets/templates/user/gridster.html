@@ -3,11 +3,11 @@
     <md-button class="md-primary md-raised" ng-click="clear()">Clear</span></md-button>
     <div gridster="gridsterOptions">
         <ul>
-            <li gridster-item="widget" ng-repeat="widget in dashboard.widgets">
+            <li  gridster-item="widget" ng-repeat="widget in dashboard.widgets">
                 <div  ng-controller="CustomWidgetCtrl">
                     <h3>{{ widget.name }}</h3>
                     <md-button class="md-primary md-raised" ng-click="openSettings($event)">Edit </md-button>
-                    <md-button class="md-primary md-raised" ng-click="remove($event)">Delete</md-button>
+                    <md-button class="md-primary md-raised" ng-click="remove($index)">Delete</md-button>
                 </div>
             </li>
         </ul>

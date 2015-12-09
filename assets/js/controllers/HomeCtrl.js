@@ -23,23 +23,6 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
                         sizeX: 1,
                         name: "Widget 2"
                     }]
-                },
-                '2': {
-                    id: '2',
-                    name: 'Other',
-                    widgets: [{
-                        col: 1,
-                        row: 1,
-                        sizeY: 1,
-                        sizeX: 2,
-                        name: "Other Widget 1"
-                    }, {
-                        col: 1,
-                        row: 3,
-                        sizeY: 1,
-                        sizeX: 1,
-                        name: "Other Widget 2"
-                    }]
                 }
             };
 
@@ -53,7 +36,7 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
                     sizeX: 2,
                     sizeY: 1
                 });
-            };
+        };
 
         $scope.$watch('selectedDashboardId', function(newVal, oldVal) {
                 if (newVal !== oldVal) {
@@ -70,36 +53,36 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
 NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
         function($scope, $mdDialog,$mdMedia) {
 
-            $scope.remove = function(widget) {
-                $scope.dashboard.widgets.splice($scope.dashboard.widgets.indexOf(widget), 1);
+            $scope.remove = function(index) {
+                $scope.dashboard.widgets.splice(index,1);
             };
 
-            $scope.openSettings = function(ev) {
+            $scope.form = {};
+
+            $scope.openSettings = function($event) {
+               // console.log($scope.widget);
                 $mdDialog.show({
-                    controller: 'WidgetSettingsCtrl',
                     templateUrl:'../templates/user/widget_settings.html',
+                    locals: {
+                        widget: $scope.widget
+                    },
                     parent:angular.element(document.body),
-                    targetEvent:ev,
+                    targetEvent:$event,
                     clickOutsideToClose:true,
+                    controller: WidgetSettingsCtrl
                 });
+                function WidgetSettingsCtrl(widget){
+                    console.log(widget.name);
+                   $scope.form = { // probléme de mettre les données dans le formulaire
+                        name: widget.name,
+                        sizeX: widget.sizeX,
+                        sizeY: widget.sizeY,
+                        col: widget.col,
+                        row: widget.row
+                    };
+                }
+
             };
-
-        }
-    ])
-
-NebulaeApp.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope','$mdDialog',
-        function($scope, $timeout, $rootScope,$mdDialog) {
-            //$scope.widget = widget;
-
-            console.log(dashboards);
-           /* $scope.form = {
-                name: widget.name,
-                sizeX: widget.sizeX,
-                sizeY: widget.sizeY,
-                col: widget.col,
-                row: widget.row
-            };*/
-
 
             $scope.dismiss = function() {
                 $mdDialog.hide();
@@ -107,11 +90,10 @@ NebulaeApp.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope',
 
             $scope.submit = function() {
                 //angular.extend(widget, $scope.form);
+                // todo sauvegarder du widget
                 $mdDialog.hide();
 
             };
-
         }
     ])
-
 
