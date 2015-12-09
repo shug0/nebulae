@@ -2,29 +2,32 @@
 
 NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv', function($scope, $rootScope, HomeSrv,$timeout) {
 
-        $scope.gridsterOptions = {
-                margins: [20, 20],
-        };
+
+        // option de css pour la grille
+        $(".gridster ul").gridster({
+            widget_margins: [10, 10]
+            //widget_base_dimensions: [400,800]
+        });
 
         $scope.dashboards = {
-                '1': {
-                    id: '1',
-                    name: 'Home',
-                    widgets: [{
-                        col: 0,
-                        row: 0,
-                        sizeY: 1,
-                        sizeX: 1,
-                        name: "Widget 1"
-                    }, {
-                        col: 2,
-                        row: 1,
-                        sizeY: 1,
-                        sizeX: 1,
-                        name: "Widget 2"
-                    }]
-                }
-            };
+            '1': {
+                id: '1',
+                name: 'Home',
+                widgets: [{
+                    col: 0,
+                    row: 0,
+                    sizeY: 1,
+                    sizeX: 1,
+                    name: "Widget 1"
+                }, {
+                    col: 2,
+                    row: 1,
+                    sizeY: 1,
+                    sizeX: 1,
+                    name: "Widget 2"
+                }]
+            }
+        };
 
         $scope.clear = function() {
                 $scope.dashboard.widgets = [];
@@ -51,49 +54,38 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
 }])
 
 NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
-        function($scope, $mdDialog,$mdMedia) {
+    function($scope, $mdDialog,$mdMedia) {
+        $scope.remove = function(index) {
+            $scope.dashboard.widgets.splice(index,1);
+        };
 
-            $scope.remove = function(index) {
-                $scope.dashboard.widgets.splice(index,1);
-            };
-
-            $scope.form = {};
-
-            $scope.openSettings = function($event) {
-               // console.log($scope.widget);
-                $mdDialog.show({
+        $scope.openSettings = function(widget) {
+            var formData = angular.copy(widget);
+            //console.log($scope.form);
+            $mdDialog.show({
                     templateUrl:'../templates/user/widget_settings.html',
                     locals: {
-                        widget: $scope.widget
+                        form: formData,
+                        widget:widget
                     },
                     parent:angular.element(document.body),
-                    targetEvent:$event,
                     clickOutsideToClose:true,
                     controller: WidgetSettingsCtrl
-                });
-                function WidgetSettingsCtrl(widget){
-                    console.log(widget.name);
-                   $scope.form = { // probléme de mettre les données dans le formulaire
-                        name: widget.name,
-                        sizeX: widget.sizeX,
-                        sizeY: widget.sizeY,
-                        col: widget.col,
-                        row: widget.row
-                    };
-                }
-
-            };
-
-            $scope.dismiss = function() {
-                $mdDialog.hide();
-            };
-
-            $scope.submit = function() {
-                //angular.extend(widget, $scope.form);
-                // todo sauvegarder du widget
-                $mdDialog.hide();
-
-            };
-        }
-    ])
+            });
+            function WidgetSettingsCtrl($scope, form){
+                $scope.form = form;
+                //console.log($scope.form);
+                $scope.dismiss = function() {
+                    $mdDialog.hide();
+                };
+                $scope.submit = function() {
+                    angular.extend(widget, $scope.form);
+                    //console.log($scope.form);
+                    // sauvegarder les modifications du widgets en base
+                    $mdDialog.hide();
+                };
+            }
+        };
+    }
+])
 
