@@ -18,10 +18,10 @@ NebulaeApp.config(['$routeProvider',
       templateUrl: '/templates/user/addUser.html',
       controller: 'UserCtrl'
     })
-        .when('/request/', {
-          templateUrl: '/templates/source/api.html',
-          controller: 'ReqCtrl'
-        })
+    .when('/request/', {
+      templateUrl: '/templates/source/api.html',
+      controller: 'ReqCtrl'
+    })
     .when('/admin/', {
         templateUrl: '/templates/admin/panel.html'
     })

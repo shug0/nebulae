@@ -1,16 +1,18 @@
-<md-input-container class="md-block">
-    <label>URL</label>
-    <input type="text" ng-model="option.parameters.url">
-</md-input-container>
-<br>
+<md-content md-theme="docs-dark" layout-padding layout-gt-sm="row">
+    <md-input-container class="md-block">
+        <label>URL</label>
+        <input type="text" ng-model="option.parameters.url">
+    </md-input-container>
 
-<!--<md-input-container class="md-block">-->
-    <!--<label>Méthode</label>-->
-    <!--<md-select>-->
-        <!--<md-option ng-model="option.parameters.method" ng-value="optionMethod.value" ng-repeat="optionMethod in optionMethods">{{optionMethod.name}}</md-option>-->
-    <!--</md-select>-->
-<!--</md-input-container>-->
-<!--<br>-->
+    <md-input-container class="md-block">
+        <label>Méthode</label>
+        <md-select>
+            <md-option ng-model="option.parameters.method" ng-value="optionMethod.value" ng-repeat="optionMethod in optionMethods">{{optionMethod.name}}</md-option>
+        </md-select>
+    </md-input-container>
+</md-content>
+
+<br>
 
 <!--<button ng-click="addApiParameter()">Ajouter un paramètre</button>-->
 <md-button class="md-raised md-primary" ng-click="addApiParameter()">Ajouter un paramètre</md-button>

@@ -6,8 +6,6 @@
 */
 
 module.exports = {
-  //connection: 'mongoNebulae',
-  connection: 'localDiskDb',
 
   attributes: {
     name:{

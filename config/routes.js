@@ -37,7 +37,7 @@ module.exports.routes = {
     view: 'homepage'
   },
   */
-  'auth/register': 'SignupController.register'
+  //'auth/register': 'SignupController.register'
 
 
     /***************************************************************************

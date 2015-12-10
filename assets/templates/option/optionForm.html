@@ -4,6 +4,15 @@
 
     <form>
         <md-input-container class="md-block">
+            <label>Source</label>
+            <md-select ng-model="option.source_id">
+                <md-option ng-repeat="src in allSources" value="{{src.id}}">
+                    {{src.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block">
             <label>Nom</label>
             <input type="text" ng-model="option.name">
         </md-input-container>

@@ -6,8 +6,6 @@
 */
 
 module.exports = {
-  //connection: 'mongoNebulae',
-  connection: 'localDiskDb',
 
   attributes: {
 
@@ -21,13 +19,14 @@ module.exports = {
       required: true
     },
 
+    // Comment temporarly
     source_id: {
       type : "integer",
       required: true
     },
 
     type: {
-      type : "integer",
+      type : "string",
       required: true
     },
 
