@@ -21,8 +21,8 @@ module.exports.waterlock = {
   // chosen auth method(s) you will need to see the individual module's README
   // file for more information on the attributes necessary. This is an example
   // of the local authentication method with password reset tokens disabled.
-  authMethod: [
-    {
+  authMethod:
+  {
       name:'waterlock-local-auth',
       passwordReset:{
         tokens: false,
@@ -31,12 +31,12 @@ module.exports.waterlock = {
           options:{
             service: 'Gmail',
             auth: {
-              user: 'gmail.user@gmail.com',
-              pass: 'userpass'
+              user: 'nebulaetest@gmail.com',
+              pass: 'jcez3h7d8w'
             }
           },
-          from: 'no-reply@domain.com',
-          subject: 'Your password reset!',
+          from: 'nebulaetest@gmail.com',
+          subject: 'Test mail Nebulae',
           forwardUrl: 'http://localhost:1337'
         },
         template:{
@@ -45,8 +45,7 @@ module.exports.waterlock = {
         }
       },
       createOnNotFound: false
-    }
-  ],
+    },
 
   // JSON Web Tokens
   //
