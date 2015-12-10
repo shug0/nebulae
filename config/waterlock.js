@@ -35,8 +35,8 @@ module.exports.waterlock = {
               pass: 'jcez3h7d8w'
             }
           },
-          from: 'contact@cartlamy.com',
-          subject: 'Your password reset!',
+          from: 'nebulaetest@gmail.com',
+          subject: 'Test mail Nebulae',
           forwardUrl: 'http://localhost:1337'
         },
         template:{
