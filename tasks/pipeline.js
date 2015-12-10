@@ -15,7 +15,10 @@ var jsFilesToInject = [
     '/bower_components/angular-animate/angular-animate.js',
     '/bower_components/angular-material/angular-material.js',
     '/bower_components/angular-material-icons/angular-material-icons.min.js',
-    'js/**/*.js'
+    '/bower_components/angular-animate/angular-animate.min.js',
+    'js/**/*.js',
+    'js/**/*/*.js'
+
 ];
 
 var templateFilesToInject = [

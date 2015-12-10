@@ -8,15 +8,32 @@
 
 body, html {
   min-height: 100%;
+  background: $light-grey !important;
+}
+
+body:before {
+  content: " ";
+  background: url('http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg') !important;
+  background-size: cover !important;
+  height: 40%;
+  display: block;
 }
 
 main {
   min-height: calc(100% - #{$md-toolbar-tools_height});
 }
 
-
 .md-toolbar-tools, md-toolbar {
+  position: absolute !important;
+  z-index: 999999;
+  top: 0;
+  left: 0;
   height: $md-toolbar-tools_height !important ;
+  line-height: $md-toolbar-tools_height;
   min-height: $md-toolbar-tools_height !important ;
+  a{
+    font-size:0.8em;
+    padding: 0 15px;
+  }
 }
 
