@@ -2,7 +2,7 @@
 @import '_global';
 @import '_animations';
 
-
-// PAGES
-
-@import 'templates/_auth';
+// Templates
+@import 'templates/auth/_auth';
+@import 'templates/admin/_panel';
+@import 'templates/user/_user';

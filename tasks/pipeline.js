@@ -16,6 +16,8 @@ var jsFilesToInject = [
     '/bower_components/angular-material/angular-material.js',
     '/bower_components/angular-material-icons/angular-material-icons.min.js',
     '/bower_components/angular-animate/angular-animate.min.js',
+    '/bower_components/lodash/lodash.min.js',
+    '/bower_components/restangular/dist/restangular.min.js',
     'js/**/*.js',
     'js/**/*/*.js'
 

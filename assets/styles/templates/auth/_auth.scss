@@ -7,7 +7,6 @@ main.page-login, main.page-signup {
   #authBox {
     transition: all ease 0.5s;
     margin: 0 auto 0;
-    @extend .md-whiteframe-5dp;
     width: 400px;
     height: auto;
     padding: 0;

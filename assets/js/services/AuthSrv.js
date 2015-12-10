@@ -1,34 +1,22 @@
-NebulaeApp.service('AuthSrv', function($http, $q) {
+NebulaeApp.service('AuthSrv', function(Restangular) {
+    var
+        register    =   Restangular.all('auth/register'),
+        login       =   Restangular.all('auth/login'),
+        logout      =   Restangular.all('auth/logout');
+
     return {
 
         'login': function(user) {
-            var defer = $q.defer();
-            $http.post('/auth/login', user).success(function(resp){
-                defer.resolve(resp);
-            }).error( function(err) {
-                defer.resolve(err);
-            });
-            return defer.promise;
+            return login.post(user);
         },
 
         'register': function(user) {
-            var defer = $q.defer();
-            $http.post('/auth/register', user).success(function(resp){
-                defer.resolve(resp);
-            }).error( function(err) {
-                defer.resolve(err);
-            });
-            return defer.promise;
+            return register.post(user);
         },
 
         'logout': function(user) {
-            var defer = $q.defer();
-            $http.post('/auth/logout', user).success(function(resp){
-                defer.resolve(resp);
-            }).error( function(err) {
-                defer.resolve(err);
-            });
-            return defer.promise;
+            return logout.post(user);
         }
 
-    }});
+    }
+});
