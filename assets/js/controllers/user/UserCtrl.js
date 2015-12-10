@@ -1,6 +1,9 @@
 'use strict';
 
 NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', 'UserSrv', function($scope, $rootScope, UserSrv) {
+
+  $rootScope.templateName = "adminDashboard";
+
   $scope.user = {};
   $scope.users = [];
 

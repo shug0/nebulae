@@ -3,39 +3,43 @@
 
 /* leaving animations ----------------------------------------- */
 
-/* slide in from the bottom */
-@keyframes slideOutLeft {
-  to      { transform: translateX(-100%); }
+@keyframes slideOutFadeLeft {
+  from      {  opacity: 1; transform: translateX(0%); }
+  to    {  opacity: 0; transform:translateX(-10%); }
 }
 
-@keyframes scaleUp {
-  from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+@keyframes fadeFrontOut {
+  from  {  opacity: 1; transform: translateY(0) scale(1) ; }
+  to    {  opacity: 0; transform: translateY(50px) scale(0.9)  }
 }
 
 /* entering animations --------------------------------------- */
-/* scale up */
-@keyframes scaleUp {
-  from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+
+@keyframes slideInFadeRight {
+  from    {  opacity: 0; transform:translateX(10%); }
+  to      {  opacity: 1; transform: translateX(0%); }
 }
 
-/* slide in from the right */
-@keyframes slideInRight {
-  from    { transform:translateX(100%); }
-  to      { transform: translateX(0); }
+@keyframes fadeFrontIn {
+  from  {  opacity: 0; transform: translateY(-50px) scale(1.1) ; }
+  to    {  opacity: 1; transform: translateY(0) scale(1)  }
 }
 
-/* slide in from the bottom */
-@keyframes slideInUp {
-  from    { transform:translateY(100%); }
-  to      { transform: translateY(0); }
+body {
+  overflow: hidden;
 }
 
-.ng-enter    { animation: slideInRight 0.5s both ease-in; z-index: 8888; }
-.ng-leave    { animation: slideOutLeft 0.5s both ease-in; z-index: 9999; }
+.ng-enter    { animation: fadeFrontIn 0.6s both ease-out; z-index: 8888; }
+.ng-leave    { animation: fadeFrontOut 0.3s both ease-in; z-index: 9999; }
 
-.page        {
+.page {
   position:absolute;
   bottom:0;
   top: $md-toolbar-tools_height;
   width:100%;
+}
+
+section[ng-controller="AdminDashboardCtrl"] {
+  .ng-enter    { animation: slideInFadeRight 0.2s both ease-in; z-index: 50; }
+  .ng-leave    { animation: slideOutFadeLeft 0.2s both ease-out; z-index: 50; }
 }

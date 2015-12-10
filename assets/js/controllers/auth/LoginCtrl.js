@@ -32,27 +32,31 @@ NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv
     // Scope Function
     $scope.login = function () {
 
-        AuthSrv.login($scope.user).then(function (response) {
-            console.log(response);
-            if (response.error) {
-
+        AuthSrv.login($scope.user).then(
+            function(user) {
+                console.log(user);
+            },
+            function errorCallback(data) {
                 $('[type="submit"]')
                     .addClass('md-warn')
-                    .text('Erreur de connexion');
-
+                    .text(data.data.error);
             }
-            if (response.auth) {
+        );
 
-                $mdToast.show(
-                    $mdToast.simple()
-                        .content('Vous êtes connecté')
-                        .position($scope.getToastPosition())
-                        .hideDelay(2000)
-                );
+    };
+    $scope.register = function () {
 
-
+        AuthSrv.register($scope.user).then(
+            function(user) {
+                console.log(user);
+            },
+            function errorCallback(data) {
+                console.log(data);
+                $('[type="submit"]')
+                    .addClass('md-warn')
+                    .text(data.data.error);
             }
-        })
+        );
     };
 
 }]);
