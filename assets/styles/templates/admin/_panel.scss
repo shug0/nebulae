@@ -1,10 +1,40 @@
 main.page-adminDashboard {
 
-  md-content {
-    height:1600px;
-    margin: 60px;
+ section {  
+   margin: 60px;
+   height: 500px;
+   background: white;
+   display: block;
+   overflow: hidden;
+   position: relative;
   }
 
+  $asideWitdh: 72px;
 
+  aside {
+    z-index: 500;
+    width: $asideWitdh;
+    height: 100%;
+    position: absolute;
+    background: $grey200;
+    a {
+      padding: 10px 20px;
+      width: 100%;
+      display: block;
+      svg { fill: $grey500; }
+      }
+    }
+  a.active svg { fill: $grey800; }
+
+  md-content {
+    z-index: 600;
+    overflow: hidden;
+    position: absolute;
+    padding: 30px;
+    left: $asideWitdh;
+    width: calc(100% - #{$asideWitdh});
+    float: left;
+    background: transparent;
+  }
 
 }

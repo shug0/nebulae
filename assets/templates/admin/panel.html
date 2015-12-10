@@ -1,9 +1,44 @@
+<section class="md-whiteframe-5dp">
 
-<md-content flex layout-padding ng-controller="adminDashboardCtrl" class="md-whiteframe-5dp">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h1 align="center">Panel Control</h1>
+        </div>
+    </md-toolbar>
 
-    <h1 align="center">Panel Control</h1>
+
+    <aside ng-init="selectedTab = 'users'" class="md-whiteframe-3dp">
+        <a href=""
+           ng-class="{'active':selectedTab === 'users'}"
+           ng-click="selectedTab = 'users'">
+            <ng-md-icon icon="people_outline" size="34"></ng-md-icon>
+        </a>
+
+        <a href=""
+           ng-class="{'active':selectedTab === 'extension'}"
+           ng-click="selectedTab = 'extension'">
+            <ng-md-icon icon="extension" size="34"></ng-md-icon>
+        </a>
+
+    </aside>
 
 
-</md-content>
+    <md-content ng-if="selectedTab == 'users'">
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit eget urna non venenatis. Maecenas placerat, nisl vitae pellentesque volutpat, nisl ipsum malesuada lectus, sed viverra lorem nulla nec ex. Morbi cursus nisl nisl, ac tincidunt sapien finibus sed. Nulla tristique orci ut metus iaculis, vitae auctor lectus varius. Nullam ultricies, lorem ut interdum feugiat, erat dolor feugiat purus, vitae tincidunt lacus ipsum ac purus. Vivamus non facilisis quam. Mauris est purus, consectetur a ipsum et, luctus efficitur purus. Curabitur eleifend lorem sapien, vulputate euismod nunc pharetra varius. Suspendisse scelerisque rutrum lorem, ac tristique ipsum dictum ut. Vivamus placerat suscipit sodales. Vestibulum at leo mi. Morbi nunc dolor, euismod eget aliquet vitae, fringilla non lacus. Sed posuere dolor in pretium aliquam. Praesent metus urna, tincidunt nec eros at, volutpat aliquet massa.
+
+    </md-content>
+
+
+    <md-content ng-controller="SourcesCtrl" ng-if="selectedTab == 'extension'">
+
+        In vel dignissim leo. Nullam id cursus lorem. Praesent euismod tellus a mauris tincidunt, ut volutpat erat interdum. Cras ex est, aliquet eu nunc ac, tempus tincidunt justo. Phasellus vel molestie nisi. Aenean nec odio est. Nulla lobortis quam et tincidunt ultrices. Integer lacinia justo at mauris feugiat, ut hendrerit libero rutrum. Vestibulum metus massa, ultrices ac odio et, suscipit pellentesque diam. Nam in lacus ac orci facilisis mattis. Curabitur sit amet enim tristique, pharetra magna non, cursus arcu. Aliquam ac nisi risus. Donec lacus dolor, varius et sem id, cursus ultrices risus. Nullam urna lorem, luctus et mi sed, feugiat sodales ex. In id facilisis tortor.
+
+
+
+    </md-content>
+
+
+</section>
 
 
