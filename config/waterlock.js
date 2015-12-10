@@ -35,8 +35,7 @@ module.exports.waterlock = {
               pass: 'jcez3h7d8w'
             }
           },
-          from: 'nebulaetest@gmail.com',
-          subject: 'Test mail Nebulae',
+          from: 'Nebulae App ✔ <nebulaetest@gmail.com>',
           forwardUrl: 'http://localhost:1337'
         },
         template:{
