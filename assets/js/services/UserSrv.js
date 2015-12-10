@@ -1,19 +1,19 @@
 NebulaeApp.service('UserSrv', function(Restangular) {
-    var user    =   Restangular.all('user');
+    var user = Restangular.all('user');
 
     return {
 
-        'getUsers': function(user) {
-            return user.getList(user);
+        'getUsers': function(userParam) {
+            return user.getList(userParam);
         },
-        'addUser': function(user) {
-            return user.post(user);
+        'addUser': function(userParam) {
+            return user.post(userParam);
         },
-        'updateUser': function(user) {
-            return user.put(user);
+        'updateUser': function(userParam) {
+            return user.put(userParam);
         },
-        'deleteUser': function(user) {
-            return user.delete(user);
+        'deleteUser': function(userParam) {
+            return user.delete(userParam);
         }
 
     }

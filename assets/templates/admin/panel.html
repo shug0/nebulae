@@ -23,9 +23,15 @@
     </aside>
 
 
-    <md-content ng-if="selectedTab == 'users'">
+    <md-content ng-controller="UserCtrl" ng-if="selectedTab == 'users'">
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit eget urna non venenatis. Maecenas placerat, nisl vitae pellentesque volutpat, nisl ipsum malesuada lectus, sed viverra lorem nulla nec ex. Morbi cursus nisl nisl, ac tincidunt sapien finibus sed. Nulla tristique orci ut metus iaculis, vitae auctor lectus varius. Nullam ultricies, lorem ut interdum feugiat, erat dolor feugiat purus, vitae tincidunt lacus ipsum ac purus. Vivamus non facilisis quam. Mauris est purus, consectetur a ipsum et, luctus efficitur purus. Curabitur eleifend lorem sapien, vulputate euismod nunc pharetra varius. Suspendisse scelerisque rutrum lorem, ac tristique ipsum dictum ut. Vivamus placerat suscipit sodales. Vestibulum at leo mi. Morbi nunc dolor, euismod eget aliquet vitae, fringilla non lacus. Sed posuere dolor in pretium aliquam. Praesent metus urna, tincidunt nec eros at, volutpat aliquet massa.
+        <md-list>
+            <md-subheader class="md-no-sticky">Users</md-subheader>
+            <md-list-item ng-repeat="user in users">
+                <p>{{ user.mail }}</p>
+                <md-icon md-svg-icon="communication:messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': person.newMessage}"></md-icon>
+            </md-list-item>
+        </md-list>
 
     </md-content>
 
