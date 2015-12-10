@@ -25,10 +25,6 @@
   to    {  opacity: 1; transform: translateY(0) scale(1)  }
 }
 
-body {
-  overflow: hidden;
-}
-
 .ng-enter    { animation: fadeFrontIn 0.6s both ease-out; z-index: 8888; }
 .ng-leave    { animation: fadeFrontOut 0.3s both ease-in; z-index: 9999; }
 

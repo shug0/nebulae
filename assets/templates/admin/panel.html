@@ -7,7 +7,7 @@
     </md-toolbar>
 
 
-    <aside ng-init="selectedTab = 'users'" class="md-whiteframe-3dp">
+    <aside ng-init="selectedTab = 'users'">
         <a href=""
            ng-class="{'active':selectedTab === 'users'}"
            ng-click="selectedTab = 'users'">
@@ -28,8 +28,7 @@
         <md-list>
             <md-subheader class="md-no-sticky">Users</md-subheader>
             <md-list-item ng-repeat="user in users">
-                <p>{{ user.mail }}</p>
-                <md-icon md-svg-icon="communication:messenger" ng-click="doSecondaryAction($event)" aria-label="Open Chat" class="md-secondary md-hue-3" ng-class="{'md-primary': person.newMessage}"></md-icon>
+                <li>{{ user.id }} - {{ user.email }}</li>
             </md-list-item>
         </md-list>
 
