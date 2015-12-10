@@ -1,6 +1,8 @@
 'use strict';
 
-var NebulaeApp = angular.module('NebulaeApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'ngAnimate']);
+var NebulaeApp = angular.module('NebulaeApp',
+    ['ngRoute', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'ngAnimate', 'restangular']);
+
 NebulaeApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
@@ -31,8 +33,16 @@ NebulaeApp.config(['$routeProvider',
   }
 ]);
 
-NebulaeApp.config(function($mdThemingProvider) {
+NebulaeApp.config(
+    function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-        .primaryPalette('pink')
-        .accentPalette('indigo');
-});
+        .primaryPalette('indigo')
+        .accentPalette('pink');
+    }
+);
+
+NebulaeApp.config(
+    function(RestangularProvider) {
+        RestangularProvider.setBaseUrl('/');
+    }
+);
