@@ -39,12 +39,19 @@ module.exports = require('waterlock').waterlocked({
                 var transporter = nodemailer.createTransport(mail.protocol, mail.options);
                 transporter.sendMail({
                     to: params.email,
-                    subject: 'Confirmation sur Nebulae'
+                    subject: 'Confirmation sur Nebulae',
+                    /*template:{
+                        file: '../../assets/templates/mail/email.jade',
+                        vars:{}
+                    }*/
+                    html: '<h1>Confirmation sur Nebulae</h1>' +
+                    '<p>Votre email est '+params.email+'</p>' +
+                    '<p>Cliquez sur le lien qui n\'existe pas encore ! Excellent.</p>'
                 }, function (error, info) {
                     if (error) {
                         return console.log(error);
                     }
-                    console.log('Message sent: ' + info.response);
+                    console.log('Message sent: ' + info);
                     console.log('Ok');
                 });
             }

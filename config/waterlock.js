@@ -35,7 +35,7 @@ module.exports.waterlock = {
               pass: 'jcez3h7d8w'
             }
           },
-          from: 'Nebulae App ✔ <nebulaetest@gmail.com>',
+          from: 'Nebulae App <nebulaetest@gmail.com>',
           forwardUrl: 'http://localhost:1337'
         },
         template:{
