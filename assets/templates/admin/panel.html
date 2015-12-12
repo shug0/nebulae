@@ -23,14 +23,31 @@
     </aside>
 
 
-    <md-content ng-controller="UserCtrl" ng-if="selectedTab == 'users'">
+    <md-content ng-controller="UserCtrl" layout="row" ng-if="selectedTab == 'users'">
 
-        <md-list>
-            <md-subheader class="md-no-sticky">Users</md-subheader>
+
+        <md-list flex>
+            <h3>Users</h3>
             <md-list-item ng-repeat="user in users">
-                <li>{{ user.id }} - {{ user.email }}</li>
+                <img ng-src="http://lorempixel.com/100/100/cats/{{user.id}}" class="md-avatar" />
+                <p ng-init="delete.user.id = false">{{ user.auth.email }}</p>
+
+                <span ng-if="delete.user.id == true">
+                    <ng-md-icon icon="check" size="20" ng-click="delete.user.id = false"></ng-md-icon>
+                    <ng-md-icon icon="cancel" size="20" ng-click="delete.user.id = false"></ng-md-icon>
+                </span>
+
+                <ng-md-icon icon="delete" ng-if="delete.user.id == false"
+                            size="20" ng-click="delete.user.id = true"></ng-md-icon>
+                <ng-md-icon icon="mode_edit" size="20"></ng-md-icon>
             </md-list-item>
         </md-list>
+
+        <article flex>
+            Ajout
+        </article>
+
+
 
     </md-content>
 

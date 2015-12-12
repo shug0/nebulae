@@ -2,11 +2,14 @@
 
 main.page-login, main.page-signup {
 
-  padding-top: 15em;
-
   #authBox {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     transition: all ease 0.5s;
-    margin: 0 auto 0;
     width: 400px;
     height: auto;
     padding: 0;

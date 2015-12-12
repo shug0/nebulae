@@ -1,12 +1,12 @@
 main.page-adminDashboard {
 
- section {  
-   margin: 5%;
-   height: auto;
-   width: 90%;
-   background: $grey200;
-   display: block;
-   position: relative;
+  section {
+    margin: 5%;
+    height: auto;
+    width: 90%;
+    background: $grey200;
+    display: block;
+    position: relative;
   }
 
   $asideWitdh: 72px;
@@ -20,18 +20,39 @@ main.page-adminDashboard {
       padding: 10px 20px;
       width: 100%;
       display: block;
-      svg { fill: $grey500; }
+      svg {
+        fill: $grey500;
       }
     }
-  a.active svg { fill: $grey800; }
+  }
+  a.active svg {
+    fill: $grey800;
+  }
 
   md-content {
     z-index: 600;
     width: calc(100% - #{$asideWitdh});
     overflow: hidden;
-    padding: 30px;
+    padding: 0 30px 30px;
     margin-left: $asideWitdh;
     background: white;
+
+    md-list-item {
+      svg { fill: $grey600;  }
+
+      .ng-enter { animation: slideOutFadeLeft 0.3s both ease-in 0.3s;   }
+      .ng-leave { animation: slideInFadeLeft 0.3s both ease-out;  }
+
+      ng-md-icon {
+        padding: 10px;
+        cursor: pointer;
+      }
+      ng-md-icon:focus, ng-md-icon:focus {
+        outline: none
+      }
+
+    }
+
   }
 
 }

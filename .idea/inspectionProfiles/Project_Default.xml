@@ -12,7 +12,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="myValues">
         <value>
-          <list size="10">
+          <list size="13">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -23,6 +23,9 @@
             <item index="7" class="java.lang.String" itemvalue="md-progress-circular" />
             <item index="8" class="java.lang.String" itemvalue="md-toolbar" />
             <item index="9" class="java.lang.String" itemvalue="md-content" />
+            <item index="10" class="java.lang.String" itemvalue="ng-md-icon" />
+            <item index="11" class="java.lang.String" itemvalue="ng-md-item" />
+            <item index="12" class="java.lang.String" itemvalue="md-list-item" />
           </list>
         </value>
       </option>

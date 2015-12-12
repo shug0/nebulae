@@ -10,6 +10,7 @@
  */
 
 module.exports.models = {
-  "connection" : 'localDiskDb',
-  migrate: 'safe'
+    "connection" : 'localDiskDb',
+    migrate: 'safe',
+    schema : true
 };
