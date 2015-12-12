@@ -1,5 +1,7 @@
 NebulaeApp.service('UserSrv', function(Restangular) {
-    var user    =   Restangular.all('user');
+    var
+        user    =   Restangular.all('user'),
+        jwt   =   Restangular.all('user/jwt');
 
     return {
 
@@ -14,6 +16,9 @@ NebulaeApp.service('UserSrv', function(Restangular) {
         },
         'deleteUser': function(user) {
             return user.delete(user);
+        },
+        'getTokenUser': function(user) {
+            return jwt.get(user);
         }
 
     }

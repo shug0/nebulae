@@ -37,10 +37,6 @@ module.exports.waterlock = {
           },
           from: 'Nebulae App <nebulaetest@gmail.com>',
           forwardUrl: 'http://localhost:1337'
-        },
-        template:{
-          file: '../views/email.jade',
-          vars:{}
         }
       },
       createOnNotFound: false
@@ -54,13 +50,13 @@ module.exports.waterlock = {
   jsonWebTokens:{
 
     // CHANGE THIS SECRET
-    secret: 'this is my secret',
+    secret: 'vme527zip0cmz1e7y2rgr',
     expiry:{
       unit: 'days',
-      length: '7'
+      length: '1'
     },
-    audience: 'app name',
-    subject: 'subject',
+    audience: 'Nebulae',
+    subject: 'Confirmation d\'inscription',
 
     // tracks jwt usage if set to true
     trackUsage: true,
