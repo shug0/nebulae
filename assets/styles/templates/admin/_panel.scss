@@ -29,7 +29,7 @@ main.page-adminDashboard {
     fill: $grey800;
   }
 
-  md-content {
+  md-content[ng-controller="UserCtrl"] {
     z-index: 600;
     width: calc(100% - #{$asideWitdh});
     overflow: hidden;
@@ -37,7 +37,7 @@ main.page-adminDashboard {
     margin-left: $asideWitdh;
     background: white;
 
-    md-list-item {
+    md-list {
       svg { fill: $grey600;  }
 
       .ng-enter { animation: slideOutFadeLeft 0.3s both ease-in 0.3s;   }
@@ -51,6 +51,11 @@ main.page-adminDashboard {
         outline: none
       }
 
+    }
+
+    md-card {
+      margin-top:20px;
+      padding: 0px 20px;
     }
 
   }

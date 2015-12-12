@@ -43,9 +43,32 @@
             </md-list-item>
         </md-list>
 
-        <article flex>
-            Ajout
-        </article>
+
+        <md-card flex class="md-whiteframe-3dp">
+            <h3>Ajout </h3>
+
+            <md-content layout="row">
+                <md-input-container flex>
+                    <label>Title</label>
+                    <input ng-model="user.title">
+                </md-input-container>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="user.email" type="email">
+                </md-input-container>
+            </md-content>
+
+
+
+            username: 'string',
+            firstname: 'string',
+            lastname: 'string',
+            birthDate: 'date',
+            country: 'string',
+            city: 'string'
+
+        </md-card>
+
 
 
 
@@ -54,7 +77,7 @@
 
     <md-content ng-controller="SourcesCtrl" ng-if="selectedTab == 'extension'">
 
-        In vel dignissim leo. Nullam id cursus lorem. Praesent euismod tellus a mauris tincidunt, ut volutpat erat interdum. Cras ex est, aliquet eu nunc ac, tempus tincidunt justo. Phasellus vel molestie nisi. Aenean nec odio est. Nulla lobortis quam et tincidunt ultrices. Integer lacinia justo at mauris feugiat, ut hendrerit libero rutrum. Vestibulum metus massa, ultrices ac odio et, suscipit pellentesque diam. Nam in lacus ac orci facilisis mattis. Curabitur sit amet enim tristique, pharetra magna non, cursus arcu. Aliquam ac nisi risus. Donec lacus dolor, varius et sem id, cursus ultrices risus. Nullam urna lorem, luctus et mi sed, feugiat sodales ex. In id facilisis tortor.
+
 
 
 
