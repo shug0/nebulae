@@ -3,7 +3,7 @@
 NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv', function($scope, $rootScope, HomeSrv,$timeout) {
 
         // premier idée
-
+    /*
             $scope.gridsterOptions = {
                 margins: [20, 20],
                 resize:{
@@ -53,7 +53,7 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
 
             // init dashboard
             $scope.selectedDashboardId = '1';
-
+    */
         // deuxième idée
 
             // paramétre wwidget
@@ -83,30 +83,20 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
 
             // addd new widget
             $scope.addWidget2 = function(){
-                console.log(widgets);
-                if (widgets.length == 0){
-
-                }
-                else {
-                    var new_widget = ['<li><header>new </header></li>', 1, 2];
-                }
+                //console.log(widgets);
+                var new_widget = ['<li><header>new </header></li>', 1, 2];
                 widgets.push(new_widget);
                 gridster.add_widget.apply(gridster, new_widget);
-                //console.log(widgets);
             }
 
             // delete all widget
             $scope.deleteAll = function(){
-
-                console.log(widgets);
-                widgets = [];
-                $(".gridster ul >li").remove();
-                console.log(widgets);
-
+                gridster.remove_all_widgets();
             }
 
 }])
 
+/*
 NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
     function($scope, $mdDialog,$mdMedia) {
         $scope.remove = function(index) {
@@ -142,4 +132,4 @@ NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
         };
     }
 ])
-
+*/
