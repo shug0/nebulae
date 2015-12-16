@@ -63,6 +63,15 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
                 draggable: {
                     handle: 'header'
                 },
+                serialize_params: function ($w, wgd) {
+                    return {
+                        id: parseInt($w.prop('id')),
+                        col: wgd.col,
+                        row: wgd.row,
+                        size_x: wgd.size_x,
+                        size_y: wgd.size_y,
+                    };
+                },
                 resize:{
                     enabled:true
                 }
@@ -70,10 +79,10 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
 
             // initialisation widgets
             var widgets = [
-                ['<li><header>nom1</header></li>', 1, 2], // element html, largeur, hauteur
-                ['<li><header>nom2</header></li>', 3, 2],
-                ['<li><header>nom3</header></li>', 3, 2],
-                ['<li><header>nom4</header></li>', 2, 1]
+                ['<li id=0><header>nom1</header></li>', 1, 2], // element html, largeur, hauteur
+                ['<li id=1><header>nom2</header></li>', 3, 2],
+                ['<li id=2><header>nom3</header></li>', 3, 2],
+                ['<li id=3><header>nom4</header></li>', 2, 1]
             ];
 
             // add widgets on gridster
@@ -92,6 +101,15 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
             // delete all widget
             $scope.deleteAll = function(){
                 gridster.remove_all_widgets();
+            }
+
+            $scope.save = function(){
+                var s = gridster.serialize();
+               // $('#log').val(JSON.stringify(s));
+                console.log(widgets);
+                var str = JSON.stringify(widgets);
+                    $('#log').val(JSON.stringify(s));
+
             }
 
 }])
