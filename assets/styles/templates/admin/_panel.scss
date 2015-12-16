@@ -8,9 +8,7 @@ main.page-adminDashboard {
     display: block;
     position: relative;
   }
-
   $asideWitdh: 72px;
-
   aside {
     z-index: 500;
     width: $asideWitdh;
@@ -36,28 +34,27 @@ main.page-adminDashboard {
     padding: 0 30px 30px;
     margin-left: $asideWitdh;
     background: white;
+    padding-top:20px;
 
-    md-list {
-      svg { fill: $grey600;  }
-
-      .ng-enter { animation: slideOutFadeLeft 0.3s both ease-in 0.3s;   }
-      .ng-leave { animation: slideInFadeLeft 0.3s both ease-out;  }
-
-      ng-md-icon {
-        padding: 10px;
-        cursor: pointer;
-      }
-      ng-md-icon:focus, ng-md-icon:focus {
-        outline: none
+    form {
+      md-input-container {
+        .md-avatar {
+          width: 100%;
+          height: auto;
+          border-radius: 50%;
+        }
+          padding: 10px;
+        }
       }
 
-    }
-
-    md-card {
-      margin-top:20px;
-      padding: 0px 20px;
-    }
 
   }
 
+}
+
+
+.md-datepicker-calendar-pane {
+  z-index: 9999 !important;
+  border: 0 !important;
+  background: white !important;
 }

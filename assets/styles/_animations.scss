@@ -1,20 +1,31 @@
 /* ANIMATIONS
 ============================================================================= */
 
-@keyframes bottomToMiddle {
+@keyframes bottomToMiddle_IN {
   from  {  opacity: 0; transform: translateY(-50px) scale(0.9); }
   to    {  opacity: 1; transform: translateY(0) scale(1);  }
 }
 
-@keyframes MiddleToFront {
+@keyframes MiddleToFront_OUT {
   from  {  opacity: 1; transform: translateY(0) scale(1); }
   to    {  opacity: 0; transform: translateY(50px) scale(1.1);  }
 }
 
+@keyframes fadeFromRight_IN {
+  from { opacity: 0; transform: translateX(-20px);}
+  to {   opacity: 1; transform: translateX(0px);}
+}
+
+@keyframes fadeToLeft_OUT {
+  from { opacity: 1; transform: translateX(0px);}
+  to {   opacity: 0; transform: translateX(-20px);}
+}
+
+
 // --------------------------------
 
-.ng-enter    { animation: bottomToMiddle 0.4s both ease-out; z-index: 8888; }
-.ng-leave    { animation: MiddleToFront 1s both ease; z-index: 9999; }
+.ng-enter    { animation: bottomToMiddle_IN 0.4s both ease-out; z-index: 50; }
+.ng-leave    { animation: MiddleToFront_OUT 1s both ease; z-index: 80; }
 
 .page {
   position:absolute;

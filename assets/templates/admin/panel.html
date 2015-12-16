@@ -25,52 +25,87 @@
 
     <md-content ng-controller="UserCtrl" layout="row" ng-if="selectedTab == 'users'">
 
+        <form name="userForm" flex="60">
 
-        <md-list flex>
-            <h3>Users</h3>
-            <md-list-item ng-repeat="user in users">
-                <img ng-src="http://lorempixel.com/100/100/cats/{{user.id}}" class="md-avatar" />
-                <p ng-init="delete.user.id = false">{{ user.auth.email }}</p>
+            <div layout="column">
 
-                <span ng-if="delete.user.id == true">
-                    <ng-md-icon icon="check" size="20" ng-click="delete.user.id = false"></ng-md-icon>
-                    <ng-md-icon icon="cancel" size="20" ng-click="delete.user.id = false"></ng-md-icon>
-                </span>
+                <div layout="row" flex>
 
-                <ng-md-icon icon="delete" ng-if="delete.user.id == false"
-                            size="20" ng-click="delete.user.id = true"></ng-md-icon>
-                <ng-md-icon icon="mode_edit" size="20"></ng-md-icon>
-            </md-list-item>
-        </md-list>
+                    <md-input-container flex="30">
+                        <img ng-src="http://lorempixel.com/200/200/cats/" class="md-avatar">
+                    </md-input-container>
+
+                    <md-input-container flex="70" layout="column">
+                        <md-input-container flex>
+                            <label>Pseudo</label>
+                            <input ng-model="user.pseudo" type="text">
+                        </md-input-container>
+                    </md-input-container>
+
+                </div>
 
 
-        <md-card flex class="md-whiteframe-3dp">
-            <h3>Ajout </h3>
+                <div layout="row" flex>
 
-            <md-content layout="row">
+                        <md-input-container flex>
+                            <label>First Name</label>
+                            <input ng-model="user.firstname" type="text">
+                        </md-input-container>
+
+                        <md-input-container flex>
+                            <label>Last Name</label>
+                            <input ng-model="user.lastname" type="text">
+                        </md-input-container>
+
+                </div>
+
                 <md-input-container flex>
-                    <label>Title</label>
-                    <input ng-model="user.title">
-                </md-input-container>
-                <md-input-container>
                     <label>Email</label>
                     <input ng-model="user.email" type="email">
                 </md-input-container>
-            </md-content>
 
+                <div layout="row" flex>
 
+                    <md-input-container flex>
+                        <label>Password</label>
+                        <input ng-model="user.password" type="password">
+                    </md-input-container>
 
-            username: 'string',
-            firstname: 'string',
-            lastname: 'string',
-            birthDate: 'date',
-            country: 'string',
-            city: 'string'
+                    <md-input-container flex>
+                        <label>Cofirm Password</label>
+                        <input ng-model="user.passwordConfirmed" type="password">
+                    </md-input-container>
 
-        </md-card>
+                </div>
 
+                <div layout="row" flex>
 
+                    <div flex="30">
+                        <md-datepicker ng-model="user.birthDate" md-placeholder="Enter date">
+                        </md-datepicker>
+                    </div>
 
+                    <md-input-container flex="35">
+                        <label>City</label>
+                        <input ng-model="user.city" type="text">
+                    </md-input-container>
+
+                    <div flex="35">
+                        <md-input-container flex="35">
+                            <label>Country</label>
+                            <input ng-model="user.country" type="text">
+                        </md-input-container>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+        <aside flex="40">
+
+        </aside>
 
     </md-content>
 

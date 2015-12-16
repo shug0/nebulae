@@ -3,8 +3,8 @@ NebulaeApp.service('UserSrv', function(Restangular) {
 
     return {
 
-        'getUsers': function(userParam) {
-            return user.getList(userParam);
+        'getUsers': function() {
+            return user.getList({limit: 5, sort: 'createdAt DESC'});
         },
         'addUser': function(userParam) {
             return user.post(userParam);
@@ -13,7 +13,7 @@ NebulaeApp.service('UserSrv', function(Restangular) {
             return user.put(userParam);
         },
         'deleteUser': function(userParam) {
-            return user.delete(userParam);
+            return user.remove(userParam);
         }
 
     }
