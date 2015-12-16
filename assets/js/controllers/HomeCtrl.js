@@ -2,55 +2,109 @@
 
 NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv', function($scope, $rootScope, HomeSrv,$timeout) {
 
+        // premier idée
 
-        // option de css pour la grille
-        $(".gridster ul").gridster({
-            widget_margins: [10, 10]
-            //widget_base_dimensions: [400,800]
-        });
-
-        $scope.dashboards = {
-            '1': {
-                id: '1',
-                name: 'Home',
-                widgets: [{
-                    col: 0,
-                    row: 0,
-                    sizeY: 1,
-                    sizeX: 1,
-                    name: "Widget 1"
-                }, {
-                    col: 2,
-                    row: 1,
-                    sizeY: 1,
-                    sizeX: 1,
-                    name: "Widget 2"
-                }]
-            }
-        };
-
-        $scope.clear = function() {
-                $scope.dashboard.widgets = [];
+            $scope.gridsterOptions = {
+                margins: [20, 20],
+                resize:{
+                    enabled:true
+                }
             };
 
-        $scope.addWidget = function() {
-                $scope.dashboard.widgets.push({
-                    name: "New Widget",
-                    sizeX: 2,
-                    sizeY: 1
-                });
-        };
-
-        $scope.$watch('selectedDashboardId', function(newVal, oldVal) {
-                if (newVal !== oldVal) {
-                    $scope.dashboard = $scope.dashboards[newVal];
-                } else {
-                    $scope.dashboard = $scope.dashboards[1];
+            $scope.dashboards = {
+                '1': {
+                    id: '1',
+                    name: 'Home',
+                    widgets: [{
+                        col: 1,
+                        row: 1,
+                        sizeY: 1,
+                        sizeX: 1,
+                        name: "Widget 1"
+                    }, {
+                        col: 1,
+                        row: 1,
+                        sizeY: 1,
+                        sizeX: 1,
+                        name: "Widget 2"
+                    }]
                 }
+            };
+
+            $scope.clear = function() {
+                    $scope.dashboard.widgets = [];
+                };
+
+            $scope.addWidget = function() {
+                    $scope.dashboard.widgets.push({
+                        name: "New Widget",
+                        sizeX: 2,
+                        sizeY: 1
+                    });
+            };
+
+            $scope.$watch('selectedDashboardId', function(newVal, oldVal) {
+                    if (newVal !== oldVal) {
+                        $scope.dashboard = $scope.dashboards[newVal];
+                    } else {
+                        $scope.dashboard = $scope.dashboards[1];
+                    }
+                });
+
+            // init dashboard
+            $scope.selectedDashboardId = '1';
+
+        // deuxième idée
+
+            // paramétre wwidget
+            var gridster = $(".gridster > ul").gridster({
+                widget_margins: [5, 5],
+                widget_base_dimensions: [100, 55],
+                draggable: {
+                    handle: 'header'
+                },
+                resize:{
+                    enabled:true
+                }
+            }).data('gridster');
+
+            // initialisation widgets
+            var widgets = [
+                ['<li><header>nom1</header></li>', 1, 2], // element html, largeur, hauteur
+                ['<li><header>nom2</header></li>', 3, 2],
+                ['<li><header>nom3</header></li>', 3, 2],
+                ['<li><header>nom4</header></li>', 2, 1]
+            ];
+
+            // add widgets on gridster
+            $.each(widgets, function(i, widget){
+                gridster.add_widget.apply(gridster, widget)
             });
 
-        // init dashboard
-        $scope.selectedDashboardId = '1';
+            // addd new widget
+            $scope.addWidget2 = function(){
+                console.log(widgets);
+                if (widgets.length == 0){
+
+                }
+                else {
+                    var new_widget = ['<li><header>new </header></li>', 1, 2];
+                }
+                widgets.push(new_widget);
+                gridster.add_widget.apply(gridster, new_widget);
+                //console.log(widgets);
+            }
+
+            // delete all widget
+            $scope.deleteAll = function(){
+
+                console.log(widgets);
+                widgets = [];
+                $(".gridster ul >li").remove();
+                console.log(widgets);
+
+            }
+
 }])
 
 NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
