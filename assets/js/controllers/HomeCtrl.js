@@ -69,7 +69,6 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
                         col: wgd.col,
                         row: wgd.row,
                         size_x: wgd.size_x,
-                        size_y: wgd.size_y,
                     };
                 },
                 resize:{
@@ -77,17 +76,44 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
                 }
             }).data('gridster');
 
-            // initialisation widgets
-            var widgets = [
-                ['<li id=0><header>nom1</header></li>', 1, 2], // element html, largeur, hauteur
-                ['<li id=1><header>nom2</header></li>', 3, 2],
-                ['<li id=2><header>nom3</header></li>', 3, 2],
-                ['<li id=3><header>nom4</header></li>', 2, 1]
-            ];
+             // fonction qui récuperer le contennu d'un fichier
+            var Fichier = function Fichier(fichier)
+            {
+                var obj;
+                if(window.XMLHttpRequest) obj = new XMLHttpRequest(); //Pour Firefox, Opera,...
+                    else
+                        if(window.ActiveXObject) obj = new ActiveXObject("Microsoft.XMLHTTP"); //Pour Internet Explorer
+                            else return(false);
+                if (obj.overrideMimeType) obj.overrideMimeType("text/xml"); //Évite un bug de Safari
+                    obj.open("GET", fichier, false);
+                    obj.send(null);
+                if(obj.readyState == 4) return(obj.responseText);
+                    else return(false);
+            }
+
+
+            // param nom du template à charger
+            // retourne un tableau [contennuhtml,largeur,hauteur]
+            $scope.recuperationTemplate = function(nomTemplate,hauteur,largeur){
+                if(nomTemplate == "social"){
+                    var contennu = Fichier('../templates/widget/template1.html');
+                    var templateWidget =[contennu,largeur,hauteur];
+                }
+                return(templateWidget);
+            }
+
+            var el = $scope.recuperationTemplate("social",1,2);
+            var el1 = $scope.recuperationTemplate("social",3,2);
+            var el2 = $scope.recuperationTemplate("social",2,2);
+            var el3 = $scope.recuperationTemplate("social",2,1);
+
+            // initialisation widgets grâce au template récupérer
+            var widgets = [el,el1,el2,el3];
+            //console.log(widgets);
 
             // add widgets on gridster
             $.each(widgets, function(i, widget){
-                gridster.add_widget.apply(gridster, widget)
+                gridster.add_widget.apply(gridster, widget);
             });
 
             // addd new widget
@@ -96,25 +122,21 @@ NebulaeApp.controller('HomeCtrl', ['$scope', '$timeout','$rootScope', 'UserSrv',
                 var new_widget = ['<li><header>new </header></li>', 1, 2];
                 widgets.push(new_widget);
                 gridster.add_widget.apply(gridster, new_widget);
-            }
+            };
 
             // delete all widget
             $scope.deleteAll = function(){
                 gridster.remove_all_widgets();
-            }
+            };
 
             $scope.save = function(){
                 var s = gridster.serialize();
-               // $('#log').val(JSON.stringify(s));
-                console.log(widgets);
-                var str = JSON.stringify(widgets);
-                    $('#log').val(JSON.stringify(s));
-
-            }
+                $('#log').val(JSON.stringify(s));
+            };
 
 }])
 
-/*
+
 NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
     function($scope, $mdDialog,$mdMedia) {
         $scope.remove = function(index) {
@@ -150,4 +172,3 @@ NebulaeApp.controller('CustomWidgetCtrl', ['$scope','$mdDialog','$mdMedia',
         };
     }
 ])
-*/
