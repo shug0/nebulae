@@ -1,0 +1,68 @@
+md-content[ng-controller="UserCtrl"] {
+
+  form {
+    margin-bottom: 20px;
+    md-input-container {
+      .md-avatar {
+        width: 90%;
+        height: auto;
+        border-radius: 50%;
+        margin-top: 30px;
+      }
+      padding: 10px !important;
+    }
+    button {
+      margin-top: 15px;
+      width: 100% !important;
+    }
+    md-datepicker {
+      padding-top: 9px !important;
+    }
+  }
+  button svg {
+    fill: white;
+    position: absolute;
+    top: 5px;
+    left: 36px;
+  }
+  #userList {
+    padding-left: 40px;
+
+    #search {
+      padding: 12px 15px;
+      background: $grey200;
+      input {
+        padding-left: 5px;
+        background: $grey200;
+        border: 0 !important;
+        color: $grey700;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    md-list-item.md-2-line, md-list-item.md-2-line > .md-no-style {
+      min-height: initial !important;
+    }
+    button {
+      padding: 8px 15px !important;
+      background: $grey200;
+      transition: ease all 0.2s;
+      h3 {
+        font-size:0.9em;
+      }
+      &:hover {
+        cursor: pointer;
+        background: $grey300;
+
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid $grey200;
+      }
+      img {
+        margin: 0 20px 0 0 !important;
+        max-height: 100% !important;
+      }
+    }
+  }
+}

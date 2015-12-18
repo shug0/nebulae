@@ -27,34 +27,18 @@ main.page-adminDashboard {
     fill: $grey800;
   }
 
-  md-content[ng-controller="UserCtrl"] {
+  md-content[ng-controller="UserCtrl"],
+  md-content[ng-controller="BrickCtrl"] {
     z-index: 600;
     width: calc(100% - #{$asideWitdh});
     overflow: hidden;
-    padding: 0 30px 30px;
+    padding: 20px 30px 30px;
     margin-left: $asideWitdh;
     background: white;
-    padding-top:20px;
-
-    form {
-      md-input-container {
-        .md-avatar {
-          width: 100%;
-          height: auto;
-          border-radius: 50%;
-        }
-          padding: 10px;
-        }
-      }
-
-
   }
 
+
+  .ng-enter    { animation: fadeFromRight_IN 0.4s both ease-out 0.4s; z-index: 50; }
+  .ng-leave    { animation: fadeToLeft_OUT 0.4s both ease; z-index: 80; }
 }
 
-
-.md-datepicker-calendar-pane {
-  z-index: 9999 !important;
-  border: 0 !important;
-  background: white !important;
-}

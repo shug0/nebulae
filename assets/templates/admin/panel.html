@@ -2,10 +2,12 @@
 
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h1 align="center">Panel Control</h1>
+            <h1 align="center">Panel Control
+                <span ng-if="selectedTab == 'users'"> > Users</span>
+                <span ng-if="selectedTab == 'brick'"> > Brick</span>
+            </h1>
         </div>
     </md-toolbar>
-
 
     <aside ng-init="selectedTab = 'users'">
         <a href=""
@@ -15,108 +17,17 @@
         </a>
 
         <a href=""
-           ng-class="{'active':selectedTab === 'extension'}"
-           ng-click="selectedTab = 'extension'">
+           ng-class="{'active':selectedTab === 'brick'}"
+           ng-click="selectedTab = 'brick'">
             <ng-md-icon icon="extension" size="34"></ng-md-icon>
         </a>
 
     </aside>
 
+    <ng-include src="'/templates/admin/user.html'" ></ng-include>
 
-    <md-content ng-controller="UserCtrl" layout="row" ng-if="selectedTab == 'users'">
+    <ng-include src="'/templates/admin/brick.html'" ></ng-include>
 
-        <form name="userForm" flex="60">
-
-            <div layout="column">
-
-                <div layout="row" flex>
-
-                    <md-input-container flex="30">
-                        <img ng-src="http://lorempixel.com/200/200/cats/" class="md-avatar">
-                    </md-input-container>
-
-                    <md-input-container flex="70" layout="column">
-                        <md-input-container flex>
-                            <label>Pseudo</label>
-                            <input ng-model="user.pseudo" type="text">
-                        </md-input-container>
-                    </md-input-container>
-
-                </div>
-
-
-                <div layout="row" flex>
-
-                        <md-input-container flex>
-                            <label>First Name</label>
-                            <input ng-model="user.firstname" type="text">
-                        </md-input-container>
-
-                        <md-input-container flex>
-                            <label>Last Name</label>
-                            <input ng-model="user.lastname" type="text">
-                        </md-input-container>
-
-                </div>
-
-                <md-input-container flex>
-                    <label>Email</label>
-                    <input ng-model="user.email" type="email">
-                </md-input-container>
-
-                <div layout="row" flex>
-
-                    <md-input-container flex>
-                        <label>Password</label>
-                        <input ng-model="user.password" type="password">
-                    </md-input-container>
-
-                    <md-input-container flex>
-                        <label>Cofirm Password</label>
-                        <input ng-model="user.passwordConfirmed" type="password">
-                    </md-input-container>
-
-                </div>
-
-                <div layout="row" flex>
-
-                    <div flex="30">
-                        <md-datepicker ng-model="user.birthDate" md-placeholder="Enter date">
-                        </md-datepicker>
-                    </div>
-
-                    <md-input-container flex="35">
-                        <label>City</label>
-                        <input ng-model="user.city" type="text">
-                    </md-input-container>
-
-                    <div flex="35">
-                        <md-input-container flex="35">
-                            <label>Country</label>
-                            <input ng-model="user.country" type="text">
-                        </md-input-container>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </form>
-
-        <aside flex="40">
-
-        </aside>
-
-    </md-content>
-
-
-    <md-content ng-controller="SourcesCtrl" ng-if="selectedTab == 'extension'">
-
-
-
-
-
-    </md-content>
 
 
 </section>

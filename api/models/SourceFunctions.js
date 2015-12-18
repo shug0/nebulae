@@ -21,8 +21,8 @@ module.exports = {
       required: true
     },
 
-    source_id: {
-      type : "integer",
+    source: {
+      model: source,
       required: true
     },
 

@@ -20,13 +20,17 @@ module.exports = {
       required: true
     },
 
-    categorie_id: {
-      type : "integer"
+    category: {
+      collection: 'Category'
+    },
+    // API URL, Version, Tokens if needed
+    options: {
+        type: 'json'
     },
 
-    active:{
+    enabled:{
       type: "boolean",
-      defaultsTo: true
+      defaultsTo: false
     }
 
   }

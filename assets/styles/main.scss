@@ -1,8 +1,13 @@
 @import '_var';
+@import '_reset';
 @import '_global';
 @import '_animations';
 
 // Templates
 @import 'templates/auth/_auth';
+
 @import 'templates/admin/_panel';
+  @import 'templates/admin/_brick';
+  @import 'templates/admin/_user';
+
 @import 'templates/user/_user';

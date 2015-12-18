@@ -19,7 +19,6 @@ module.exports = require('waterlock').waterlocked({
         var attr = {
             password: params.password,
             user:{
-                username: params.username,
                 firstname: params.firstname,
                 lastname: params.lastname,
                 birthDate: params.birthDate,
@@ -33,7 +32,7 @@ module.exports = require('waterlock').waterlocked({
 
         waterlock.engine.findAuth(criteria, function(err, user) {
             if (user)
-                return res.badRequest("User already exists");
+                return res.ok({ error: "User already exists"});
             else
                 waterlock.engine.findOrCreateAuth(criteria, attr, function(err, auth) {
                     if (err)

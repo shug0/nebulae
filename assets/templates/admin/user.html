@@ -1,0 +1,84 @@
+<md-content ng-controller="UserCtrl" layout="row" ng-init="edit = false" ng-if="selectedTab == 'users'">
+
+    <div flex="60">
+
+        <form name="userForm" ng-submit="addUser()" layout="column">
+
+            <div layout="row" flex>
+                <md-input-container flex>
+                    <label>First Name</label>
+                    <input ng-model="user.firstname" type="text">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Last Name</label>
+                    <input ng-model="user.lastname" type="text">
+                </md-input-container>
+            </div>
+
+            <md-input-container flex>
+                <label>Email</label>
+                <input ng-model="user.email" type="email" required>
+            </md-input-container>
+
+
+            <div layout="row" flex ng-if="edit == false">
+                <md-input-container flex>
+                    <label>Password</label>
+                    <input ng-model="user.password" type="password" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Confirm Password</label>
+                    <input ng-model="user.passwordConfirmed" type="password" required>
+                </md-input-container>
+            </div>
+
+            <div layout="row" flex>
+                <md-input-container flex>
+                    <label>City</label>
+                    <input ng-model="user.city" type="text">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Country</label>
+                    <input ng-model="user.country" type="text">
+                </md-input-container>
+            </div>
+
+            <md-button flex type="submit" class="md-raised md-primary" ng-if="edit == false">Add User</md-button>
+
+        </form>
+        <div layout="row" flex>
+            <md-button flex ng-if="edit == true" class="md-raised md-warn"
+                       ng-click="removeUser(user)">Delete</md-button>
+
+            <md-button flex ng-if="edit == true" class="md-raised md-accent"
+                       ng-click="resetPassword(user)">Reset Password</md-button>
+
+            <md-button flex ng-if="edit == true" class="md-raised md-primary"
+                       ng-click="updateUser(user)">Update</md-button>
+        </div>
+
+    </div>
+
+    <div id="userList" flex="40">
+
+        <div id="search" class="md-whiteframe-2dp">
+            <md-icon><ng-md-icon icon="search" size="22"></ng-md-icon></md-icon>
+            <input ng-model="search" placeholder="Search User" type="text">
+        </div>
+
+        <md-list id="listUser">
+            <md-subheader class="md-no-sticky">Recent Users</md-subheader>
+            <div >
+                <md-list-item class="md-whiteframe-2dp md-2-line"
+                              ng-repeat="user in users" ng-click="edit = 'true'; load(user);">
+                    <img ng-src="http://lorempixel.com/200/200/cats/{{$index+1}}" class="md-avatar" />
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ user.auth.email }}</h3>
+                    </div>
+                </md-list-item>
+            </div>
+        </md-list>
+
+    </div>
+
+</md-content>
