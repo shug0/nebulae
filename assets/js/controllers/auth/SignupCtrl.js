@@ -46,7 +46,7 @@ NebulaeApp.controller('SignupCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSr
                         console.log(response);
                         if (response.auth) {
 
-                            UserSrv.getTokenUser($scope.user).then(function (response) {
+                            UserSrv.addTokenUser($scope.user).then(function (response) {
                                 if (response.error) {
                                     console.log('Erreur token');
                                 }

@@ -36,7 +36,12 @@ module.exports.waterlock = {
             }
           },
           from: 'Nebulae App <nebulaetest@gmail.com>',
+          subject: 'Your password reset!',
           forwardUrl: 'http://localhost:1337'
+        },
+        template:{
+          file: '../views/email.jade',
+          vars:{}
         }
       },
       createOnNotFound: false

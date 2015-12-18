@@ -17,7 +17,7 @@ NebulaeApp.service('UserSrv', function(Restangular) {
         'deleteUser': function(user) {
             return user.delete(user);
         },
-        'getTokenUser': function(user) {
+        'addTokenUser': function(user) {
             return jwt.get(user);
         }
 
