@@ -35,8 +35,8 @@ module.exports.waterlock = {
               pass: 'jcez3h7d8w'
             }
           },
-          from: 'nebulaetest@gmail.com',
-          subject: 'Test mail Nebulae',
+          from: 'Nebulae App <nebulaetest@gmail.com>',
+          subject: 'Your password reset!',
           forwardUrl: 'http://localhost:1337'
         },
         template:{
@@ -55,13 +55,13 @@ module.exports.waterlock = {
   jsonWebTokens:{
 
     // CHANGE THIS SECRET
-    secret: 'this is my secret',
+    secret: 'vme527zip0cmz1e7y2rgr',
     expiry:{
       unit: 'days',
-      length: '7'
+      length: '1'
     },
-    audience: 'app name',
-    subject: 'subject',
+    audience: 'Nebulae',
+    subject: 'Confirmation d\'inscription',
 
     // tracks jwt usage if set to true
     trackUsage: true,

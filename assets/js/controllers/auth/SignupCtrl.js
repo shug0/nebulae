@@ -1,4 +1,4 @@
-NebulaeApp.controller('SignupCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv', function($scope, $rootScope, $mdToast, AuthSrv) {
+NebulaeApp.controller('SignupCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv', 'UserSrv', function($scope, $rootScope, $mdToast, AuthSrv, UserSrv) {
 
     // Title
     $rootScope.templateName = "signup";
@@ -28,37 +28,41 @@ NebulaeApp.controller('SignupCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSr
             .text('Login');
     };
 
-
     $scope.signup = function () {
 
         if ($scope.user.passwordConfirmed == $scope.user.password) {
 
             AuthSrv.register($scope.user).then(function (response) {
-                console.log(response);
                 if (response.error) {
 
                     $('[type="submit"]')
                         .addClass('md-warn')
                         .text('Erreur de connexion');
 
-                    console.log(response);
-
                 }
                 if (response.auth) {
 
-                    console.log(response);
+                    AuthSrv.login($scope.user).then(function (response) {
+                        console.log(response);
+                        if (response.auth) {
 
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .content('Utilisateur créer')
-                            .position($scope.getToastPosition())
-                            .hideDelay(2000)
-                    );
+                            UserSrv.addTokenUser($scope.user).then(function (response) {
+                                if (response.error) {
+                                    console.log('Erreur token');
+                                }
+                            });
 
+                            $mdToast.show(
+                                $mdToast.simple()
+                                    .content('Votre compte a bien été créé.')
+                                    .position($scope.getToastPosition())
+                                    .hideDelay(2000)
+                            );
 
+                        }
+                    })
                 }
-            })
-
+            });
 
         }
         else {

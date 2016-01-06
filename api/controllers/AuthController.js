@@ -11,6 +11,10 @@
 module.exports = require('waterlock').waterlocked({
 
     register: function(req, res) {
+
+        // On peut pas aller plus loin mdr -_-
+        //sails.log(config.authMethod.passwordReset.mail);
+
         var params = req.params.all(),
             def = waterlock.Auth.definition,
             criteria = { },
@@ -33,7 +37,7 @@ module.exports = require('waterlock').waterlocked({
             if (user) {
                 return res.badRequest("User already exists");
             } else {
-                waterlock.engine.findOrCreateAuth(criteria, attr, function (err, newuser) {
+                waterlock.engine.findOrCreateAuth(criteria, attr, function (err, user) {
                     if (err)
                         return res.badRequest(err);
                     delete newuser.password;
