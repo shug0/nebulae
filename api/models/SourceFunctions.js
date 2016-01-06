@@ -21,11 +21,11 @@ module.exports = {
       required: true
     },
 
-    source: {
+    /*source: {
       model: source,
       required: true
     },
-
+    */
     type: {
       type : "integer",
       required: true
