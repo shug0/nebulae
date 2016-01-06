@@ -17,30 +17,20 @@ module.exports = require('waterlock').waterlocked({
             scopeKey = def.email !== undefined ? 'email' : 'username';
 
         var attr = {
-            password: params.password,
-            user:{
-                firstname: params.firstname,
-                lastname: params.lastname,
-                birthDate: params.birthDate,
-                country: params.country,
-                city: params.city
-            }
-        };
-
+            password: params.password
+        }
         attr[scopeKey] = params[scopeKey];
         criteria[scopeKey] = attr[scopeKey];
 
         waterlock.engine.findAuth(criteria, function(err, user) {
-            if (user)
-                return res.ok({ error: "User already exists"});
-            else
-                waterlock.engine.findOrCreateAuth(criteria, attr, function(err, auth) {
+            if (user) {
+                return res.badRequest("User already exists");
+            } else {
+                waterlock.engine.findOrCreateAuth(criteria, attr, function (err, user) {
                     if (err)
                         return res.badRequest(err);
-                    delete auth.password;
-
-                    return res.ok(auth);
-
+                    delete user.password;
+                    return res.ok(user);
                 });
         });
 
