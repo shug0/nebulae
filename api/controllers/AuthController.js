@@ -40,9 +40,9 @@ module.exports = require('waterlock').waterlocked({
                 waterlock.engine.findOrCreateAuth(criteria, attr, function (err, user) {
                     if (err)
                         return res.badRequest(err);
-                    delete newuser.password;
+                    delete user.password;
 
-                    return res.ok(newuser);
+                    return res.ok(user);
                 });
 
                 var subject = 'Confirmation';
