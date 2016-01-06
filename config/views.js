@@ -77,6 +77,13 @@ module.exports.views = {
 
   layout: 'layout',
 
+  'get /index': {
+    locals: {
+      layout: 'index'
+    }
+  },
+
+
   /****************************************************************************
   *                                                                           *
   * Partials are simply top-level snippets you can leverage to reuse template *
