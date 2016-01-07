@@ -18,7 +18,13 @@ module.exports = {
     parent_id: {
       type : "integer",
       defaultsTo : null
+    },
+
+      sources: {
+          collection: 'source',
+          via: 'category'
     }
+
   }
 
 };

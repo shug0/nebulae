@@ -28,6 +28,11 @@ module.exports = {
             defaultsTo: null
         }
 
+        widgets: {
+            collection: 'widget',
+            via: 'pattern'
+        }
+
     }
 };
 

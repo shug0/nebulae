@@ -21,11 +21,6 @@ module.exports = {
       required: true
     },
 
-    /*source: {
-      model: source,
-      required: true
-    },
-    */
     type: {
       type : "integer",
       required: true
@@ -34,7 +29,13 @@ module.exports = {
     parameters: {
       type: "json",
       required: true
+    },
+
+      widgets: {
+          collection: 'widget',
+          via: 'provider'
     }
+
   }
 };
 

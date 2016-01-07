@@ -21,7 +21,7 @@ module.exports = {
     },
 
     category: {
-      collection: 'Category'
+        model: 'Category'
     },
     // API URL, Version, Tokens if needed
     options: {
