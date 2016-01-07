@@ -1,7 +1,7 @@
 'use strict';
 
 var NebulaeApp = angular.module('NebulaeApp',
-    ['ngRoute', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'ngAnimate', 'restangular']);
+    ['ngRoute', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'ngAnimate', 'restangular', 'gridster']);
 
 NebulaeApp.config(['$routeProvider',
     function($routeProvider) {
@@ -20,6 +20,9 @@ NebulaeApp.config(['$routeProvider',
             })
             .when('/admin/', {
                 templateUrl: '/templates/admin/panel.html'
+            })
+            .when('/dashboard/', {
+                templateUrl: '/templates/dashboard/dashboard.html'
             })
             .otherwise({
               redirectTo: '/login',

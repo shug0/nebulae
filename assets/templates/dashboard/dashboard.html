@@ -1,0 +1,16 @@
+<section layout="row" ng-controller="DashboardCtrl">
+
+    <div gridster="gridsterOpts">
+
+        <md-card gridster-item="widget" ng-repeat="widget in widgets">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{widget.title}}</span>
+                    <span class="md-subhead">Yolo</span>
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
+
+    </div>
+
+</section>

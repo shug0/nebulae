@@ -16,10 +16,13 @@ module.exports = {
       required: true
     },
 
+      widgets: {collection: 'widget'},
+
     widgets_config: {
       type: "json",
       defaultsTo : null
     }
+
 
   }
 };

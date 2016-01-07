@@ -12,7 +12,11 @@ module.exports = {
       firstname: 'string',
       lastname: 'string',
       country: 'string',
-      city: 'string'
+      city: 'string',
+
+
+
+
   }),
   
   beforeCreate: require('waterlock').models.user.beforeCreate,

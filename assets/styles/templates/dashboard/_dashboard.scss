@@ -1,0 +1,23 @@
+section[ng-controller="DashboardCtrl"] {
+  width: 100%;
+  height: 100%;
+  background: $grey100;
+  padding: 1em;
+
+  .gridster {
+    width: 100%;
+    margin: 0;
+
+    md-card {
+      padding: 10px 15px;
+      transition: ease all 0.2s;
+
+    }
+
+  }
+
+}
+
+.gridster-item-moving {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+}

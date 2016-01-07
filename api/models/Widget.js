@@ -6,30 +6,20 @@
 */
 
 module.exports = {
-  //connection: 'mongoNebulae',
-  connection: 'localDiskDb',
 
-  attributes: {
+    attributes: {
 
-    name: {
-      type: "string",
-      required: true
-    },
+        title: 'string',
+        pattern: {model: 'WidgetPattern'},
+        gridster: {
+            sizeX: 'integer',
+            sizeY: 'integer',
+            row: 'integer',
+            col: 'integer'
+        },
+        provider: {model: 'SourceFunction'}
 
-    type: {
-      type: "string"
-    },
-
-    template: {
-      type: "string",
-      required: true
-    },
-
-    design: {
-      type: "json",
-      defaultsTo : null
     }
 
-  }
 };
 
