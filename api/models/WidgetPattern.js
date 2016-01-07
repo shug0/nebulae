@@ -26,7 +26,7 @@ module.exports = {
         design: {
             type: "json",
             defaultsTo: null
-        }
+        },
 
         widgets: {
             collection: 'widget',

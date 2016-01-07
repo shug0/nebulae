@@ -1,7 +1,23 @@
 md-content[ng-controller="BrickCtrl"] {
 
+  #categories,
+  #currentSource{
+    height: 100%;
+    border: 1px solid black;
+  }
+  #categories{
+
+    .md-list-item-text{
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  #currentSource{
 
 
+
+  }
 
 
 }

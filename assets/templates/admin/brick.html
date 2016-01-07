@@ -1,5 +1,31 @@
-<md-content ng-controller="BrickCtrl" ng-if="selectedTab == 'extension'">
+<md-content layout="row" ng-controller="BrickCtrl" ng-if="selectedTab == 'brick'">
 
+    <div id="categories" flex="20">
 
+        <md-list-item class="md-2-line" ng-repeat="category in categories">
+            <div ng-click="changeCategory(category.id)" class="md-list-item-text">
+                <h4>{{category.name}}</h4>
+            </div>
+            <div ng-if="currentCategory==category.name" class="animate-if">
+                <md-list-item class="md-2-line" ng-repeat="src in currentCatSrc">
+                    <div class="md-list-item-text">
+                        <h5>{{src.name}}</h5>
+                    </div>
+                </md-list-item>
+            </div>
+        </md-list-item>
+
+    </div>
+
+    <div id="currentSource" flex="80">
+
+        <div layout="column">
+
+            <div flex>Source</div>
+            <div flex>Parametres fonction</div>
+
+        </div>
+
+    </div>
 
 </md-content>
