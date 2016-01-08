@@ -28,6 +28,11 @@ module.exports = {
         type: 'json'
     },
 
+      functions: {
+          collections: 'SourceFunction',
+          via: 'source'
+      },
+
     enabled:{
       type: "boolean",
       defaultsTo: false
