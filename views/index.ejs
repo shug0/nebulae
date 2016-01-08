@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="NebulaeApp">
+<html>
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,19 +26,26 @@
 
     <main id="container">
         <section id="apercu">
-            <div class="apercu-background">
 
+            <div class="background">
                 <video id="video" loop="loop" preload="auto" class="video-playing" autoplay>
                     <source type="video/mp4" src="/videos/test.mp4"/>
                     <source type="video/webm" src="/videos/test.webm"/>
                 </video>
-
             </div>
 
-            <div class="apercu-content">
-                <div class="container">
-
-
+            <div class="card mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                    <h2 class="text mdl-card__title-text">Connect your interest</h2>
+                </div>
+                <div class="text mdl-card__supporting-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                       Inscription
+                    </a>
                 </div>
             </div>
 

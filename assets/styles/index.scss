@@ -14,39 +14,101 @@ header {
   position: absolute;
   width: 100%;
   z-index: 1000;
-}
 
-#header {
-  padding: 10px 5% 0;
-}
+  #header {
+    padding: 20px 5% 0 3%;
 
-#apercu {
-  height: 600px;
-  position: relative;
+    .mdl-layout-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
 
-  .apercu-background {
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    #video {
-      position: absolute;
-      height: auto;
-      width: 100%;
-      bottom: 0;
     }
 
   }
 
 }
 
-@media only screen and ( max-width: 1066px) {
 
-  #video {
-    top: 0;
+#container {
+
+  #apercu {
+    height: 600px;
+    position: relative;
+
+    .background {
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      #video {
+        position: absolute;
+        height: auto;
+        width: 100%;
+        bottom: 0;
+      }
+
+    }
+
+    .card {
+      position: absolute;
+      width: 350px;
+      top: 200px;
+      right: 15%;
+      background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+
+      .text {
+        color: #ffffff;
+      }
+    }
+
+
+  }
+
+  #presentation {
+    background: rgba(255, 255, 255, 1) none repeat scroll 0 0;
+    height:250px;
+    width: 100%;
   }
 }
 
+@media only screen and ( max-width: 1066px) {
+
+  #container {
+    #apercu {
+      .background {
+
+        #video {
+          top: 0;
+          height: 100%;
+          width:auto;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+        }
+
+      }
+    }
+  }
+}
+
+@media only screen and ( max-width: 768px) {
+
+  #container {
+    #apercu {
+      height: 432px;
+      .card {
+        right: 0;
+        position: relative;
+        margin: auto;
+      }
+    }
+  }
+
+}
