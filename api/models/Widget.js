@@ -16,8 +16,7 @@ module.exports = {
             sizeY: 'integer',
             row: 'integer',
             col: 'integer'
-        },
-        provider: {model: 'SourceFunction'}
+        }
 
     }
 

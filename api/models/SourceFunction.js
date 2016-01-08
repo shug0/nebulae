@@ -6,8 +6,6 @@
 */
 
 module.exports = {
-  //connection: 'mongoNebulae',
-  connection: 'localDiskDb',
 
   attributes: {
 
@@ -22,9 +20,11 @@ module.exports = {
     },
 
     type: {
-      type : "integer",
+        type: "string",
       required: true
     },
+
+      source: {model: 'Source'},
 
     parameters: {
       type: "json",
@@ -32,8 +32,8 @@ module.exports = {
     },
 
       widgets: {
-          collection: 'widget',
-          via: 'provider'
+          collection: 'WidgetPattern',
+          via: 'sourceFunction'
     }
 
   }

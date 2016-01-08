@@ -31,7 +31,9 @@ module.exports = {
         widgets: {
             collection: 'widget',
             via: 'pattern'
-        }
+        },
+
+        sourceFunction: {model: 'sourceFunction'}
 
     }
 };
