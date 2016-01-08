@@ -77,12 +77,6 @@ module.exports.views = {
 
   layout: 'layout',
 
-  'get /index': {
-    locals: {
-      layout: 'index'
-    }
-  },
-
 
   /****************************************************************************
   *                                                                           *

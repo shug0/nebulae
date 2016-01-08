@@ -1,26 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="NebulaeApp">
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nebulae</title>
 
-    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
-    <link rel="stylesheet" href="/bower_components/angular-material-icons/angular-material-icons.min.js">
+    <!--STYLES-->
+    <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
+    <script src="/bower_components/material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/styles/index.css">
 
 </head>
 <body>
+   <header>
+       <div id="header" class="mdl-layout__header-row">
+           <span class="mdl-layout-title">NEBULAE</span>
+           <div class="mdl-layout-spacer"></div>
+           <nav class="mdl-navigation">
+               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Connexion</button>
+           </nav>
+       </div>
+   </header>
 
-    <header>
 
-
-    </header>
     <main id="container">
         <section id="apercu">
             <div class="apercu-background">
+
+                <video id="video" loop="loop" preload="auto" class="video-playing" autoplay>
+                    <source type="video/mp4" src="/videos/test.mp4"/>
+                    <source type="video/webm" src="/videos/test.webm"/>
+                </video>
+
             </div>
 
             <div class="apercu-content">
+                <div class="container">
+
+
+                </div>
             </div>
 
         </section>
@@ -35,9 +54,9 @@
     </main>
 
 
-<footer>
+    <footer>
 
-</footer>
+    </footer>
 
 </body>
 </html>

@@ -1,0 +1,52 @@
+// GLOBAL
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#container {
+
+}
+
+header {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+#header {
+  padding: 10px 5% 0;
+}
+
+#apercu {
+  height: 600px;
+  position: relative;
+
+  .apercu-background {
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    #video {
+      position: absolute;
+      height: auto;
+      width: 100%;
+      bottom: 0;
+    }
+
+  }
+
+}
+
+@media only screen and ( max-width: 1066px) {
+
+  #video {
+    top: 0;
+  }
+}
+
