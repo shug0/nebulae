@@ -8,7 +8,7 @@
             </div>
             <div ng-if="currentCategory==category.name" class="animate-if">
                 <md-list-item class="md-2-line" ng-repeat="src in currentCatSrc">
-                    <div class="md-list-item-text">
+                    <div ng-click="changeSource(src.id)" class="md-list-item-text">
                         <h5>{{src.name}}</h5>
                     </div>
                 </md-list-item>
@@ -17,12 +17,24 @@
 
     </div>
 
-    <div id="currentSource" flex="80">
+    <div id="partSource" flex="80">
 
         <div layout="column">
 
-            <div flex>Source</div>
-            <div flex>Parametres fonction</div>
+            <div flex>
+                <div layout="row">
+                    <div flex="70">
+                        <ng-include src="'/templates/admin/source.html'" ></ng-include>
+                    </div>
+                    <div flex="30">Fonctions de la source</div>
+                </div>
+            </div>
+            <div flex>
+                <div layout="row">
+                    <div flex="60">Détails Fonction</div>
+                    <div flex>Tester</div>
+                </div>
+            </div>
 
         </div>
 

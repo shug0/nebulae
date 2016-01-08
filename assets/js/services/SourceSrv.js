@@ -6,6 +6,9 @@ NebulaeApp.service('SourceSrv', function(Restangular) {
         'getSources': function() {
             return source.getList();
         },
+        'getSourceById': function(src){
+            return Restangular.one('source', src).get();
+        },
         'addSource': function(srcParam) {
             return source.post(srcParam);
         },

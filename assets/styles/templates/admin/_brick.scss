@@ -1,7 +1,7 @@
 md-content[ng-controller="BrickCtrl"] {
 
   #categories,
-  #currentSource{
+  #partSource{
     height: 100%;
     border: 1px solid black;
   }
@@ -13,9 +13,21 @@ md-content[ng-controller="BrickCtrl"] {
     }
   }
 
-  #currentSource{
+  #partSource{
+    border:none;
+    div[layout="row"]{
+      border: 1px solid black;
+    }
 
+    #srcContainer{
 
+      #enableSwitchSrc{
+        *{
+          display: inline-block;
+        }
+      }
+
+    }
 
   }
 
