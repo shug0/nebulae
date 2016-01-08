@@ -24,7 +24,7 @@ module.exports = {
       required: true
     },
 
-      source: {model: 'Source'},
+      source: {model: 'source'},
 
     parameters: {
       type: "json",

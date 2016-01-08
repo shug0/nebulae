@@ -24,12 +24,12 @@ module.exports = {
         model: 'Category'
     },
     // API URL, Version, Tokens if needed
-    options: {
+    list_options: {
         type: 'json'
     },
 
     functions: {
-        collections: 'SourceFunction',
+        collection: 'sourceFunction',
         via: 'source'
     },
 

@@ -3,7 +3,6 @@ md-content[ng-controller="BrickCtrl"] {
   #categories,
   #partSource{
     height: 100%;
-    border: 1px solid black;
   }
   #categories{
 
@@ -14,8 +13,8 @@ md-content[ng-controller="BrickCtrl"] {
   }
 
   #partSource{
-    border:none;
-    div[layout="row"]{
+
+    div.layout-row > div{
       border: 1px solid black;
     }
 
@@ -26,7 +25,12 @@ md-content[ng-controller="BrickCtrl"] {
           display: inline-block;
         }
       }
+    }
 
+    #functionsContainer{
+      h5{
+        text-align: center;
+      }
     }
 
   }

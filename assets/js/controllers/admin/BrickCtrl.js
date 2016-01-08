@@ -19,14 +19,18 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
         };
 
         $scope.currentSource ;
-        $scope.currentFunctions ;
+        $scope.currentFunctions = [];
         $scope.changeSource = function(src){
             console.log(src)
             SourceSrv.getSourceById(src).then(function(response){
                 $scope.currentSource = response ;
                 $scope.currentFunctions = response.functions ;
-                console.log(response)
+                console.log($scope.currentFunctions)
             });
+        };
+
+        $scope.changeFunction = function(f){
+            console.log("change function : "+f);
         };
 
     }
