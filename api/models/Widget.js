@@ -10,7 +10,7 @@ module.exports = {
     attributes: {
 
         title: 'string',
-        pattern: {model: 'WidgetPattern'},
+        pattern: {model: 'widgetPattern'},
         gridster: {
             sizeX: 'integer',
             sizeY: 'integer',
