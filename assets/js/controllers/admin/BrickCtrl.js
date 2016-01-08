@@ -1,12 +1,45 @@
-NebulaeApp.controller('SourcesCtrl', ['$scope', '$rootScope', '$mdToast',
-    function($scope, $rootScope, $mdToast) {
+NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
+    function($scope, CategorySrv, SourceSrv) {
 
-    // Title
-    $rootScope.templateName = "adminDashboard";
+        $scope.categories = [] ;
+        CategorySrv.getCategories().then(function(response){
+            for(var i=0 ; i<response.length ; i++){
+                $scope.categories.push( {id:response[i].id,name:response[i].name} );
+            }
+        });
 
+        $scope.currentCategory ;
+        $scope.currentCatSrc ;
+        $scope.changeCategory = function(cat){
+            CategorySrv.getCategorieById(cat).then(function(response){
+                $scope.currentCategory = response.name ;
+                $scope.currentCatSrc = response.sources ;
+                console.log(response)
+            });
+        };
 
+        $scope.currentSource ;
+        $scope.currentFunctions = [];
+        $scope.changeSource = function(src){
+            console.log(src)
+            SourceSrv.getSourceById(src).then(function(response){
+                $scope.currentSource = response ;
+                $scope.currentFunctions = response.functions ;
+                console.log($scope.currentFunctions)
+            });
+        };
 
+        $scope.changeFunction = function(f){
+            console.log("change function : "+f);
+            for(var i=0 ; i<$scope.currentFunctions.length ; i++){
+                if(f == $scope.currentFunctions[i].id){
+                    $scope.currentFunction = $scope.currentFunctions[i] ;
+                    console.log($scope.currentFunction)
+                }
+            }
+        };
 
-}]);
+    }
+]);
 
 'use strict';

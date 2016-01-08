@@ -1,0 +1,49 @@
+<md-content layout="row" ng-controller="BrickCtrl" ng-if="selectedTab == 'brick'">
+
+    <div id="categories" flex="20">
+
+        <md-list-item class="md-2-line" ng-repeat="category in categories">
+            <div ng-click="changeCategory(category.id)" class="md-list-item-text">
+                <h4>{{category.name}}</h4>
+            </div>
+            <div ng-if="currentCategory==category.name">
+                    <md-list-item class="md-2-line" ng-repeat="src in currentCatSrc">
+                        <div ng-click="changeSource(src.id)" class="md-list-item-text">
+                            <h5>{{src.name}}</h5>
+                        </div>
+                    </md-list-item>
+            </div>
+        </md-list-item>
+
+    </div>
+
+    <div id="partSource" flex="80">
+
+        <div layout="column">
+
+            <div flex>
+                <div layout="row">
+                    <div flex="70">
+                        <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
+                    </div>
+                    <div flex="30">
+                        <ng-include src="'/templates/admin/brick/functionsList.html'" ></ng-include>
+                    </div>
+                </div>
+            </div>
+            <div flex>
+                <div layout="row">
+                    <div flex="60">
+                        <ng-include src="'/templates/admin/brick/function/form.html'" ></ng-include>
+                    </div>
+                    <div flex>
+                        <md-button class="md-raised md-primary">Tester</md-button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</md-content>
