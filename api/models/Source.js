@@ -28,10 +28,10 @@ module.exports = {
         type: 'json'
     },
 
-      functions: {
-          collections: 'SourceFunction',
-          via: 'source'
-      },
+    functions: {
+        collections: 'SourceFunction',
+        via: 'source'
+    },
 
     enabled:{
       type: "boolean",

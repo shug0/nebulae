@@ -24,16 +24,16 @@ module.exports = {
       required: true
     },
 
-      source: {model: 'Source'},
+    source: {model: 'Source'},
 
     parameters: {
       type: "json",
       required: true
     },
 
-      widgets: {
-          collection: 'WidgetPattern',
-          via: 'sourceFunction'
+    widgets: {
+      collection: 'WidgetPattern',
+      via: 'sourceFunction'
     }
 
   }

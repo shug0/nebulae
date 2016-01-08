@@ -14,6 +14,10 @@ module.exports = {
             required: true
         },
 
+        options: {
+          type: "json"
+        },
+
         description: {
             type: "string"
         },

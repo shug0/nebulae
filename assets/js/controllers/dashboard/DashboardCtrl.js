@@ -1,7 +1,7 @@
 'use strict';
 
-NebulaeApp.controller('DashboardCtrl', ['$scope', '$rootScope', '$mdToast',
-    function ($scope, $rootScope, $mdToast) {
+NebulaeApp.controller('DashboardCtrl', ['$scope', '$rootScope', '$mdToast', 'DashboardSrv',
+    function ($scope, $rootScope, $mdToast, DashboardSrv) {
 
         // Title
         $rootScope.templateName = "dashboard";
