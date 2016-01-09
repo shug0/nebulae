@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-#container {
-
-}
-
 header {
   position: absolute;
   width: 100%;
@@ -18,7 +14,7 @@ header {
   #header {
     padding: 20px 5% 0 3%;
 
-    .mdl-layout-title {
+    h1.mdl-layout-title {
       font-size: 48px;
       font-weight: 700;
       color: #ffffff;
@@ -32,9 +28,9 @@ header {
 }
 
 
-#container {
+main#container {
 
-  #apercu {
+  section#apercu {
     height: 600px;
     position: relative;
 
@@ -70,17 +66,73 @@ header {
 
   }
 
-  #presentation {
+  section#presentation {
     background: rgba(255, 255, 255, 1) none repeat scroll 0 0;
     height:250px;
     width: 100%;
+
+    .bloc {
+      text-align: center;
+
+      .container {
+        display: inline-block;
+      }
+
+      .icon {
+        background: rgba(25, 166, 187, 1) none repeat scroll 0 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        vertical-align: middle;
+      }
+
+      .content {
+        vertical-align: middle;
+        text-align: left;
+
+        h2 {
+          font-size: 24px;
+          line-height: 24px;
+          vertical-align: middle;
+
+        }
+      }
+
+    }
+  }
+
+  section#multisupport {
+    background: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2009-25-l-xlarge_web.jpg") repeat scroll center center / cover;
+    height: 750px;
+    width: 100%;
+  }
+
+  section#section-1 {
+    width: 1170px;
+
+    .bloc {
+
+
+      .icon {
+        background: rgba(14, 163, 127, 1) none repeat scroll 0 0;
+        height: 150px;
+        width: 250px;
+        border-radius: 110px;
+        margin: 35px 0 0 auto
+      }
+    }
+
+    .content {
+
+    }
+
   }
 }
 
 @media only screen and ( max-width: 1066px) {
 
-  #container {
-    #apercu {
+  main#container {
+    section#apercu {
       .background {
 
         #video {
@@ -100,8 +152,8 @@ header {
 
 @media only screen and ( max-width: 768px) {
 
-  #container {
-    #apercu {
+  main#container {
+    section#apercu {
       height: 432px;
       .card {
         right: 0;
