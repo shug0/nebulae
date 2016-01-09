@@ -8,20 +8,24 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
             }
         });
 
-        $scope.currentCategory ;
-        $scope.currentCatSrc ;
+        $scope.currentCategory = "" ;
+        $scope.currentCatSrc = [] ;
         $scope.changeCategory = function(cat){
-            CategorySrv.getCategorieById(cat).then(function(response){
-                $scope.currentCategory = response.name ;
-                $scope.currentCatSrc = response.sources ;
-                console.log(response)
-            });
+            if($scope.currentCategory==""){
+                CategorySrv.getCategorieById(cat).then(function(response){
+                    $scope.currentCategory = response.name ;
+                    $scope.currentCatSrc = response.sources ;
+                    console.log(response)
+                });
+            }else{
+                $scope.currentCategory = "" ;
+            }
         };
 
-        $scope.currentSource ;
+        $scope.currentSource = "";
         $scope.currentFunctions = [];
         $scope.changeSource = function(src){
-            console.log(src)
+            $scope.currentFunction = "" ;
             SourceSrv.getSourceById(src).then(function(response){
                 $scope.currentSource = response ;
                 $scope.currentFunctions = response.functions ;
@@ -30,7 +34,6 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
         };
 
         $scope.changeFunction = function(f){
-            console.log("change function : "+f);
             for(var i=0 ; i<$scope.currentFunctions.length ; i++){
                 if(f == $scope.currentFunctions[i].id){
                     $scope.currentFunction = $scope.currentFunctions[i] ;
