@@ -14,7 +14,7 @@ module.exports = {
             required: true
         },
 
-        options: {
+        widget_options: {
           type: "json"
         },
 

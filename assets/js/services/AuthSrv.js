@@ -1,8 +1,9 @@
 NebulaeApp.service('AuthSrv', function(Restangular) {
     var
-        register    =   Restangular.all('auth/register'),
-        login       =   Restangular.all('auth/login'),
-        logout      =   Restangular.all('auth/logout');
+        register        =   Restangular.all('auth/register'),
+        login           =   Restangular.all('auth/login'),
+        logout          =   Restangular.all('auth/logout'),
+        isConnected     =   Restangular.all('auth/isConnected');
 
     return {
 
@@ -16,6 +17,10 @@ NebulaeApp.service('AuthSrv', function(Restangular) {
 
         'logout': function(user) {
             return logout.post(user);
+        },
+
+        'isConnected': function() {
+            return isConnected.post()
         }
 
     }

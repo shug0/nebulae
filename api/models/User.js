@@ -14,7 +14,10 @@ module.exports = {
       country: 'string',
       city: 'string',
 
-
+      dashboard: {
+          collection: 'dashboard',
+          via: 'owner'
+      }
 
 
   }),

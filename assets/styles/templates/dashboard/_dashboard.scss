@@ -2,7 +2,7 @@ section[ng-controller="DashboardCtrl"] {
   width: 100%;
   height: 100%;
   background: $grey100;
-  padding: 1em;
+  padding: calc(#{$md-toolbar-tools_height} + 1em) 1em 1em 1em;
 
   .gridster {
     width: 100%;

@@ -18,7 +18,10 @@ module.exports = {
     widgets_config: {
       type: "json",
       defaultsTo : null
-    }
+    },
+
+    owner: { model: 'user'}
+
   }
 };
 

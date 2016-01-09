@@ -53,10 +53,17 @@ module.exports = require('waterlock').waterlocked({
                     '<p>Cliquez sur le lien qui n\'existe pas encore ! Excellent.</p>';
 
                 MailServices.sendMail({email: params.email, subject: subject, content: content});
-
             }
-
         });
+    },
+
+    isConnected: function(req, res) {
+        if (req.session.authenticated) {
+            res.ok(true)
+        }
+        else {
+            res.ok(false);
+        }
 
     }
 
