@@ -6,13 +6,30 @@
     <br>
     <div id="enableSwitchSrc">
         <label>Actif </label>
-        <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="currentSource.enabled"></md-switch>
+        <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="switch"></md-switch>
     </div>
     <br>
     <div>
         <label>Paramètres</label>
         <br>
-
+        <div layout="row">
+            <div flex="70" >
+                <div layout-gt-sm="row" ng-repeat="opt in currentSource.list_options" >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Nom</label>
+                        <input ng-model="opt.name">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Valeur</label>
+                        <input ng-model="opt.value">
+                    </md-input-container>
+                </div>
+            </div>
+            <div flex="30">
+                <md-button ng-click="addSrcParam()" class="md-raised md-primary">Ajouter</md-button>
+                <md-button ng-click="saveSource()" class="md-raised md-primary">Valider</md-button>
+            </div>
+        </div>
     </div>
 
 

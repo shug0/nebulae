@@ -22,14 +22,16 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
             }
         };
 
-        $scope.currentSource = "";
+        $scope.switch = true ;
+        $scope.currentSource = {};
+        $scope.currentSource.id = 99999 ;
         $scope.currentFunctions = [];
         $scope.changeSource = function(src){
             $scope.currentFunction = "" ;
             SourceSrv.getSourceById(src).then(function(response){
-                $scope.currentSource = response ;
-                $scope.currentFunctions = response.functions ;
-                console.log($scope.currentFunctions)
+                $scope.currentSource = response.plain()
+                $scope.currentFunctions = $scope.currentSource.functions ;
+                $scope.switch = $scope.currentSource.enabled ;
             });
         };
 
@@ -39,6 +41,30 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
                     $scope.currentFunction = $scope.currentFunctions[i] ;
                     console.log($scope.currentFunction)
                 }
+            }
+        };
+
+        $scope.saveSource = function(){
+            SourceSrv.putSource($scope.currentSource);
+                /*.then(function(response){
+                console.log(response);
+                alert("Modificaiton cool");
+            });*/
+        };
+
+/*        $scope.$watch('switch', function(newValue, oldValue) {
+            SourceSrv.patchSource($scope.currentSource.id,newValue).then(function(response){
+                console.log(response);
+                alert("Modificaiton cool")
+            });
+        });
+*/
+        $scope.addSrcParam = function(){
+            if( $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].name == "" ||
+                $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].value == ""){
+                alert("Merci de finir de compléter blablabla")
+            }else{
+                $scope.currentSource.list_options.push({name:"",value:""});
             }
         };
 

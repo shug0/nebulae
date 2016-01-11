@@ -23,10 +23,10 @@
 
             <div flex>
                 <div layout="row">
-                    <div flex="70">
+                    <div flex="70" ng-if="currentSource!={}">
                         <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
                     </div>
-                    <div flex="30">
+                    <div flex>
                         <ng-include src="'/templates/admin/brick/functionsList.html'" ></ng-include>
                     </div>
                 </div>
