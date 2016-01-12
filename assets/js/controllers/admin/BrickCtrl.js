@@ -24,7 +24,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
 
         $scope.switch = true ;
         $scope.currentSource = {};
-        $scope.currentSource.id = 99999 ;
+        $scope.currentSource.id = 0 ;
         $scope.currentFunctions = [];
         $scope.changeSource = function(src){
             $scope.currentFunction = "" ;
@@ -32,6 +32,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
                 $scope.currentSource = response.plain()
                 $scope.currentFunctions = $scope.currentSource.functions ;
                 $scope.switch = $scope.currentSource.enabled ;
+                console.log($scope.currentSource);
             });
         };
 
@@ -46,19 +47,13 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
 
         $scope.saveSource = function(){
             SourceSrv.putSource($scope.currentSource);
-                /*.then(function(response){
-                console.log(response);
-                alert("Modificaiton cool");
-            });*/
         };
 
-/*        $scope.$watch('switch', function(newValue, oldValue) {
-            SourceSrv.patchSource($scope.currentSource.id,newValue).then(function(response){
-                console.log(response);
-                alert("Modificaiton cool")
-            });
-        });
-*/
+        $scope.$watch("currentSource.enabled", function(newValue, oldValue) {
+            console.log("enabled : "+$scope.currentSource.enabled);
+            $scope.saveSource();
+        },true);
+
         $scope.addSrcParam = function(){
             if( $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].name == "" ||
                 $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].value == ""){
