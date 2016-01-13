@@ -1,11 +1,12 @@
 // GLOBAL
 
 *, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body, html {
-  min-height: 100%;
   background: $light-grey !important;
 }
 
@@ -19,20 +20,9 @@ body:before {
   display: block;
 }
 
-.page {
-  position:absolute;
-  top: 0;
-  height: 100%;
-  width:100%;
-
-  md-toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
+main {
+  min-height: calc(100% - #{$md-toolbar-tools_height});
 }
-
 
 .md-toolbar-tools, md-toolbar {
   height: $md-toolbar-tools_height !important ;

@@ -34,7 +34,7 @@ NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$mdToa
     $scope.login = function () {
 
         AuthSrv.login($scope.user).then(
-            function(user) {
+            function() {
                 $rootScope.isAuthenticated = true;
                 $location.path('/dashboard/');
             },

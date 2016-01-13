@@ -7,25 +7,19 @@ NebulaeApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
             .when('/login/', {
-                templateUrl: '/templates/auth/login.html',
-                controller: 'LoginCtrl'
+                templateUrl: '/templates/auth/login.html'
             })
             .when('/signup/', {
-                templateUrl: '/templates/auth/signup.html',
-                controller: 'SignupCtrl'
+                templateUrl: '/templates/auth/signup.html'
             })
             .when('/user/', {
-                templateUrl: '/templates/user/addUser.html',
-                controller: 'UserCtrl'
+                templateUrl: '/templates/user/addUser.html'
             })
             .when('/admin/', {
                 templateUrl: '/templates/admin/panel.html',
-                isAuthenticated: true,
-                isAdmin: true
             })
             .when('/dashboard/', {
-                templateUrl: '/templates/dashboard/dashboard.html',
-                isAuthenticated: true
+                templateUrl: '/templates/dashboard/dashboard.html'
             })
             .otherwise({
                 redirectTo: '/login',
@@ -34,30 +28,7 @@ NebulaeApp.config(['$routeProvider',
     }
 ]);
 
-NebulaeApp.run(function ($rootScope, $location, AuthSrv) {
-    $rootScope.$on("$routeChangeStart", function (event, next, current) {
-        // Teste si l'utilistateur est log via la variable globale
-        if ($rootScope.isAuthenticated == true) {
-            if (
-                next.templateUrl == "/templates/auth/login.html" ||
-                next.templateUrl == "/templates/auth/signup.html"
-            ) {
-                $location.path("/dashboard/");
-            }
-        }
-        // Teste si l'utilistateur est log via req.session
-        if (AuthSrv.isConnected().then(function(response) { return response })) {
-            if (
-                next.templateUrl == "/templates/auth/login.html" ||
-                next.templateUrl == "/templates/auth/signup.html"
-            ) {
-                $location.path("/dashboard/");
-            }
-        }
-    });
-});
-
-
+// COLOR CONFIG
 NebulaeApp.config(
     function ($mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -66,9 +37,45 @@ NebulaeApp.config(
     }
 );
 
+// RESTANGULAR URL CONFIG
 NebulaeApp.config(
     function (RestangularProvider) {
         RestangularProvider.setBaseUrl('/');
     }
 );
+
+NebulaeApp.run(function ($rootScope, $location, AuthSrv) {
+
+    AuthSrv.isConnected().then(function (response) {
+        $rootScope.isAuthenticated = response
+    });
+
+    AuthSrv.sessionUser().then(function (response) {
+        $rootScope.sessionUser = response;
+    });
+
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+
+        AuthSrv.isConnected().then(function (response) {
+
+            if (response) {
+                if (
+                    next.loadedTemplateUrl == "/templates/auth/login.html" ||
+                    next.loadedTemplateUrl == "/templates/auth/signup.html"
+                ) {
+                    $location.path("/dashboard/");
+                }
+            }
+            else {
+                if (
+                    next.$$route.controller == "/templates/dashboard/dashboard.html" ||
+                    next.$$route.controller == "/templates/admin/*"
+                ) {
+                    $location.path("/login/");
+                }
+            }
+        });
+    });
+
+});
 
