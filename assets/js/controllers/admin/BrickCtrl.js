@@ -15,7 +15,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
                 CategorySrv.getCategorieById(cat).then(function(response){
                     $scope.currentCategory = response.name ;
                     $scope.currentCatSrc = response.sources ;
-                    console.log(response)
+                  //  console.log(response)
                 });
             }else{
                 $scope.currentCategory = "" ;
@@ -32,7 +32,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
                 $scope.currentSource = response.plain()
                 $scope.currentFunctions = $scope.currentSource.functions ;
                 $scope.switch = $scope.currentSource.enabled ;
-                console.log($scope.currentSource);
+                //console.log($scope.currentSource);
             });
         };
 
@@ -40,7 +40,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
             for(var i=0 ; i<$scope.currentFunctions.length ; i++){
                 if(f == $scope.currentFunctions[i].id){
                     $scope.currentFunction = $scope.currentFunctions[i] ;
-                    console.log($scope.currentFunction)
+              //      console.log($scope.currentFunction)
                 }
             }
         };
@@ -50,19 +50,40 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
         };
 
         $scope.$watch("currentSource.enabled", function(newValue, oldValue) {
-            console.log("enabled : "+$scope.currentSource.enabled);
+            //console.log("enabled : "+$scope.currentSource.enabled);
             $scope.saveSource();
         },true);
 
         $scope.addSrcParam = function(){
             if( $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].name == "" ||
                 $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].value == ""){
-                alert("Merci de finir de compléter blablabla")
+                alert("Merci de finir de compléter blablabla");
             }else{
                 $scope.currentSource.list_options.push({name:"",value:""});
             }
         };
 
+        ///// Function /////
+        $scope.currentFunction = {} ;
+        $scope.optionTypes = [
+            {name:"API", url:"templates/admin/brick/function/apiForm.html"},
+            {name:"RSS", url:"templates/admin/brick/function/rssForm.html"}
+        ];
+        $scope.optionType = $scope.optionTypes[0]; //{name:"API", url:"templates/admin/brick/function/apiForm.html"} ;
+
+        $scope.optionMethods = [
+            {name:"GET",value:"get"},
+            {name:"POST",value:"post"}
+        ];
+/*
+        $scope.$watch('optionType.url', function(newValue, oldValue) {
+            angular.forEach($scope.optionTypes, function(value, key) {
+                if(value.url==newValue){
+                    //$scope.optionType.name = value.name ;
+                }
+            })
+        });
+*/
     }
 ]);
 

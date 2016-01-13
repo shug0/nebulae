@@ -1,0 +1,20 @@
+<md-content md-theme="docs-dark" layout-padding layout-gt-sm="row">
+    <md-input-container class="md-block">
+        <label>Complément URL</label>
+        <input type="text" ng-model="currentFunction.parameters.url">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+        <label>Méthode</label>
+        <md-select ng-model="currentFunction.parameters.method">
+            <md-option
+                    ng-value="optionMethod.value"
+                    ng-repeat="optionMethod in optionMethods">{{optionMethod.name}}</md-option>
+        </md-select>
+    </md-input-container>
+</md-content>
+
+<br>
+
+<!--<button ng-click="addApiParameter()">Ajouter un paramètre</button>-->
+<md-button class="md-raised md-primary" ng-click="">Ajouter un paramètre</md-button>

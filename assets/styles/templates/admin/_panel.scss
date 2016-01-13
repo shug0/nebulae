@@ -29,7 +29,7 @@ main.page-adminDashboard {
 
   md-content[ng-controller="UserCtrl"],
   md-content[ng-controller="BrickCtrl"] {
-    z-index: 600;
+   /* z-index: 600;*/
     width: calc(100% - #{$asideWitdh});
     overflow: hidden;
     padding: 20px 30px 30px;
