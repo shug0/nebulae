@@ -1,5 +1,16 @@
 md-content[ng-controller="BrickCtrl"] {
 
+  .bg_red{
+    background-color: red;
+  }
+  .bg_white{
+    background-color: white;
+  }
+
+  > div{
+    border: red 1px solid;
+  }
+
   #categories,
   #partSource{
     height: 100%;
@@ -17,10 +28,13 @@ md-content[ng-controller="BrickCtrl"] {
 
   #partSource{
 
-    div.layout-row > div{
-      border: 1px solid black;
+    > div{
+      border:green solid 1px;
     }
 
+    h4{
+      text-align: center;
+    }
     #srcContainer{
 
       #enableSwitchSrc{
@@ -30,10 +44,15 @@ md-content[ng-controller="BrickCtrl"] {
       }
     }
 
-    #functionsListContainer{
-      h5{
-        text-align: center;
-      }
+    #functionContainer{
+
+    }
+
+  }
+
+  #functionsListContainer{
+    h5{
+      text-align: center;
     }
 
   }

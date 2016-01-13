@@ -40,7 +40,11 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
             for(var i=0 ; i<$scope.currentFunctions.length ; i++){
                 if(f == $scope.currentFunctions[i].id){
                     $scope.currentFunction = $scope.currentFunctions[i] ;
-              //      console.log($scope.currentFunction)
+                    console.log($scope.currentFunction)
+                    $scope.currentFunction.parameters.datas = [] ;
+                    //$scope.currentFunction.type = f.type ;
+                    // Update type swith with the function type
+                    //console.log($scope.currentFunction)
                 }
             }
         };
@@ -48,9 +52,8 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
         $scope.saveSource = function(){
             SourceSrv.putSource($scope.currentSource);
         };
-
+        // Watch if switch value change
         $scope.$watch("currentSource.enabled", function(newValue, oldValue) {
-            //console.log("enabled : "+$scope.currentSource.enabled);
             $scope.saveSource();
         },true);
 
@@ -75,15 +78,34 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
             {name:"GET",value:"get"},
             {name:"POST",value:"post"}
         ];
-/*
-        $scope.$watch('optionType.url', function(newValue, oldValue) {
+
+        $scope.allTypes = [
+            {name:"String",value:"string"},
+            {name:"Integer",value:"integer"}
+        ];
+
+        // $scope.currentFunction.parameters.datas = [] ;
+        $scope.addApiParameter = function(){
+            $scope.currentFunction.parameters.datas.push({name:"",value:"",required:true})
+        };
+
+        $scope.saveFunction = function(){
+            console.log($scope.currentFunction);
+        };
+
+//        $scope.$watch('optionType.url', function(newValue, oldValue) {
+        $scope.$watch('currentFunction.type', function(newValue, oldValue) {
+            console.log($scope.optionTypes)
             angular.forEach($scope.optionTypes, function(value, key) {
-                if(value.url==newValue){
-                    //$scope.optionType.name = value.name ;
+                console.log(value)
+                console.log(newValue)
+                if(value.name.toUpperCase() ==
+                    newValue.toUpperCase()){
+                    $scope.optionType.url = value.url ;
                 }
             })
         });
-*/
+
     }
 ]);
 

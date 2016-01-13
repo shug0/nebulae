@@ -17,34 +17,21 @@
 
     </div>
 
-    <div id="partSource" flex="80">
+    <div id="partSource" flex="60">
 
         <div layout="column">
-
             <div flex>
-                <div layout="row">
-                    <div flex="70" ng-if="currentSource!={}">
-                        <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
-                    </div>
-                    <div flex>
-                        <ng-include src="'/templates/admin/brick/functionsList.html'" ></ng-include>
-                    </div>
-                </div>
+                <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
             </div>
-            <!-- ng-hide="currentSource==''" -->
-            <div flex >
-                <div layout="row">
-                    <div flex="80">
-                        <ng-include src="'/templates/admin/brick/function/form.html'" ></ng-include>
-                    </div>
-                    <div flex>
-                        <md-button class="md-raised md-primary">Tester</md-button>
-                    </div>
-                </div>
+            <div flex>
+                <ng-include src="'/templates/admin/brick/function/functionForm.html'" ></ng-include>
             </div>
-
         </div>
 
+    </div>
+
+    <div id="functionsListContainer" flex="20">
+        <ng-include src="'/templates/admin/brick/functionsList.html'" ></ng-include>
     </div>
 
 </md-content>
