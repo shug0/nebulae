@@ -68,7 +68,6 @@ main#container {
 
   section#presentation {
     background: rgba(255, 255, 255, 1) none repeat scroll 0 0;
-    height:250px;
     width: 100%;
 
     .bloc {
@@ -107,11 +106,18 @@ main#container {
     width: 100%;
   }
 
+  section#section-1, section#section-2 {
+    padding: 40px 8px;
+  }
+
+  section#section-1 .mdl-grid,
+  section#section-2 .mdl-grid,
+  section#contact .mdl-grid {
+    max-width: 1170px;
+  }
+
   section#section-1 {
-    width: 1170px;
-
     .bloc {
-
 
       .icon {
         background: rgba(14, 163, 127, 1) none repeat scroll 0 0;
@@ -127,7 +133,53 @@ main#container {
     }
 
   }
+
+  section#section-2 {
+    background: rgba(235, 235, 235, 1);
+    .bloc {
+
+      .icon {
+        background: rgba(14, 163, 127, 1) none repeat scroll 0 0;
+        height: 150px;
+        width: 250px;
+        border-radius: 110px;
+        margin: 35px 0 0 0;
+      }
+    }
+
+    .content {
+
+    }
+
+  }
+
+  section#medias {
+    background: url("http://pol-demo1.gogetthemes.com/wp-content/uploads/2015/06/img4.jpg") repeat scroll center center / cover;
+    height: 750px;
+    width: 100%;
+
+  }
+
+  section#contact {
+    background: rgba(235, 235, 235, 1);
+    height: 400px;
+  }
 }
+
+footer {
+  #liens {
+    background: rgba(51, 54, 58, 1);
+    height: 250px;
+  }
+
+  #copyright {
+    background: rgba(25, 25, 25, 1);
+    height: 100px;
+
+  }
+
+}
+
 
 @media only screen and ( max-width: 1066px) {
 
