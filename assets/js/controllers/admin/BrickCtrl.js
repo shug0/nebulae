@@ -1,5 +1,5 @@
-NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
-    function($scope, CategorySrv, SourceSrv) {
+NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'SourceFunctionSrv',
+    function($scope, CategorySrv, SourceSrv, SourceFunctionSrv) {
 
         $scope.categories = [] ;
         CategorySrv.getCategories().then(function(response){
@@ -41,10 +41,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
                 if(f == $scope.currentFunctions[i].id){
                     $scope.currentFunction = $scope.currentFunctions[i] ;
                     console.log($scope.currentFunction)
-                    $scope.currentFunction.parameters.datas = [] ;
-                    //$scope.currentFunction.type = f.type ;
-                    // Update type swith with the function type
-                    //console.log($scope.currentFunction)
+                    //$scope.currentFunction.parameters.datas = [] ;
                 }
             }
         };
@@ -86,25 +83,32 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv',
 
         // $scope.currentFunction.parameters.datas = [] ;
         $scope.addApiParameter = function(){
-            $scope.currentFunction.parameters.datas.push({name:"",value:"",required:true})
+            $scope.currentFunction.parameters.datas.push({name:"",type:"",required:true})
         };
 
         $scope.saveFunction = function(){
             console.log($scope.currentFunction);
+            SourceFunctionSrv.putFunction($scope.currentFunction);
         };
 
 //        $scope.$watch('optionType.url', function(newValue, oldValue) {
         $scope.$watch('currentFunction.type', function(newValue, oldValue) {
-            console.log($scope.optionTypes)
+            console.log($scope.optionTypes);
             angular.forEach($scope.optionTypes, function(value, key) {
-                console.log(value)
-                console.log(newValue)
+                console.log(value.name+" == "+newValue);
                 if(value.name.toUpperCase() ==
-                    newValue.toUpperCase()){
-                    $scope.optionType.url = value.url ;
+                    newValue.toUpperCase() ){
+                    console.log("Dans le switch de l'url")
+                    $scope.optionType = {name:value.name,url:value.url} ;
+                    console.log($scope.optionType)
                 }
             })
         });
+
+        $scope.deleteDataParameter = function(index){
+            $scope.currentFunction.parameters.datas.splice(index,1);
+        };
+
 
     }
 ]);

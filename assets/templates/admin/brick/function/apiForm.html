@@ -33,8 +33,8 @@
             <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="dat.required"></md-switch>
         </div>
         <div flex>
-            <md-button class="bg_red" aria-label="Insert Drive">
-                <ng-md-icon icon="extension" size="34"></ng-md-icon>
+            <md-button ng-click="deleteDataParameter($index)" class="bg_red" aria-label="Insert Drive">
+                <ng-md-icon icon="delete" size="34"></ng-md-icon>
             </md-button>
         </div>
     </div>
