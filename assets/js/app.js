@@ -68,8 +68,9 @@ NebulaeApp.run(function ($rootScope, $location, AuthSrv) {
             }
             else {
                 if (
-                    next.$$route.controller == "/templates/dashboard/dashboard.html" ||
-                    next.$$route.controller == "/templates/admin/*"
+                    next.loadedTemplateUrl == "/templates/dashboard/dashboard.html" ||
+                    next.loadedTemplateUrl == "/templates/admin/panel.html" ||
+                    next.loadedTemplateUrl == "/templates/admin/user.html"
                 ) {
                     $location.path("/login/");
                 }

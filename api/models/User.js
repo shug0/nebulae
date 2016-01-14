@@ -14,6 +14,11 @@ module.exports = {
       country: 'string',
       city: 'string',
 
+      role: {
+          type: 'string',
+          defaultsTo: 'user'
+      },
+
       dashboard: {
           collection: 'dashboard',
           via: 'owner'
