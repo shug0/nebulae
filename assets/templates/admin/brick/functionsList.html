@@ -1,6 +1,11 @@
 <h5>Fonctionalités</h5>
+
 <md-list-item class="md-2-line" ng-repeat="f in currentFunctions">
     <div ng-click="changeFunction(f.id)" class="md-list-item-text">
         <h5>{{f.name}}</h5>
     </div>
 </md-list-item>
+
+<md-button ng-click="addFunction()" class="md-fab" aria-label="Eat cake">
+    <ng-md-icon icon="add" size="40"></ng-md-icon>
+</md-button>

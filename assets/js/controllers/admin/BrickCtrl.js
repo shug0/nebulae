@@ -55,9 +55,13 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         },true);
 
         $scope.addSrcParam = function(){
-            if( $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].name == "" ||
-                $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].value == ""){
-                alert("Merci de finir de compléter blablabla");
+            if(typeof $scope.currentSource.list_options == "undefined"){
+                $scope.currentSource.list_options = [] ;
+            }
+            if( $scope.currentSource.list_options.length > 0 &&
+                ($scope.currentSource.list_options[$scope.currentSource.list_options.length-1].name == "" ||
+                $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].value == "" ) ){
+                alert("Merci de finir de compléter les paramètres");
             }else{
                 $scope.currentSource.list_options.push({name:"",value:""});
             }
@@ -69,45 +73,72 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
             {name:"API", url:"templates/admin/brick/function/apiForm.html"},
             {name:"RSS", url:"templates/admin/brick/function/rssForm.html"}
         ];
-        $scope.optionType = $scope.optionTypes[0]; //{name:"API", url:"templates/admin/brick/function/apiForm.html"} ;
+        $scope.optionType = {name:"",url:"templates/admin/brick/function/noneForm.html"} // $scope.optionTypes[0]; //  ; // {name:"API", url:"templates/admin/brick/function/apiForm.html"} ;
 
         $scope.optionMethods = [
             {name:"GET",value:"get"},
             {name:"POST",value:"post"}
         ];
-
         $scope.allTypes = [
             {name:"String",value:"string"},
             {name:"Integer",value:"integer"}
         ];
 
-        // $scope.currentFunction.parameters.datas = [] ;
-        $scope.addApiParameter = function(){
-            $scope.currentFunction.parameters.datas.push({name:"",type:"",required:true})
+        $scope.addFunction = function(){
+            $scope.currentFunction = {source:$scope.currentSource.id, parameters:{}} ;
+            $scope.optionType = {name:"",url:"templates/admin/brick/function/noneForm.html"};
         };
 
         $scope.saveFunction = function(){
-            console.log($scope.currentFunction);
-            SourceFunctionSrv.putFunction($scope.currentFunction);
+            console.log($scope.currentFunction)
+            if(typeof $scope.currentFunction.id != "undefined")
+                SourceFunctionSrv.putFunction($scope.currentFunction);
+            else
+                SourceFunctionSrv.addFunction($scope.currentFunction);
         };
 
-//        $scope.$watch('optionType.url', function(newValue, oldValue) {
+        // On function type change
         $scope.$watch('currentFunction.type', function(newValue, oldValue) {
-            console.log($scope.optionTypes);
             angular.forEach($scope.optionTypes, function(value, key) {
-                console.log(value.name+" == "+newValue);
-                if(value.name.toUpperCase() ==
-                    newValue.toUpperCase() ){
-                    console.log("Dans le switch de l'url")
-                    $scope.optionType = {name:value.name,url:value.url} ;
-                    console.log($scope.optionType)
+                if(value.name.toUpperCase() == newValue.toUpperCase() ){
+                    $scope.optionType = {name:value.name,url:value.url};
                 }
-            })
+            });
         });
 
+        // Ajout/Suppression de parametres/pages (API/RSS)
+        $scope.addApiParameter = function(){
+            if(typeof $scope.currentFunction.parameters.datas == "undefined"){
+                $scope.currentFunction.parameters.datas = [] ;
+            }
+            if( $scope.currentFunction.parameters.datas.length > 0 &&
+                ($scope.currentFunction.parameters.datas[$scope.currentFunction.parameters.datas.length-1].name == "" ||
+                $scope.currentFunction.parameters.datas[$scope.currentFunction.parameters.datas.length-1].type == "" ) ){
+                alert("Merci de finir de compléter les paramètres");
+            }else{
+                $scope.currentFunction.parameters.datas.push({name:"",type:"",required:true})
+            }
+        };
+        $scope.addRssParameter = function(){
+            if(typeof $scope.currentFunction.parameters.pages == "undefined"){
+                $scope.currentFunction.parameters.pages = [] ;
+            }
+            if( $scope.currentFunction.parameters.pages.length > 0 &&
+                $scope.currentFunction.parameters.pages[$scope.currentFunction.parameters.pages.length-1].url == ""){
+                alert("Merci de finir de compléter les paramètres");
+            }else{
+                $scope.currentFunction.parameters.pages.push({
+                    page: $scope.currentFunction.parameters.pages.length+2,    // +2 pour la page principale ajouter à cette nouvelle page
+                    url:""
+                });
+            }
+        };
         $scope.deleteDataParameter = function(index){
             $scope.currentFunction.parameters.datas.splice(index,1);
         };
+        $scope.deleteRssPage = function(){
+            $scope.currentFunction.parameters.pages.splice(-1,1);
+        }
 
 
     }
