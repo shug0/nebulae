@@ -5,5 +5,15 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-module.exports = {};
+module.exports = {
+
+
+    request: function(){
+
+        console.log("Coucou !!!")
+
+
+    }
+
+};
 

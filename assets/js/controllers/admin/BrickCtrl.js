@@ -111,6 +111,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
             if(typeof $scope.currentFunction.parameters.datas == "undefined"){
                 $scope.currentFunction.parameters.datas = [] ;
             }
+            // Avant ajout on check si les dernièrs paramètres sont complet
             if( $scope.currentFunction.parameters.datas.length > 0 &&
                 ($scope.currentFunction.parameters.datas[$scope.currentFunction.parameters.datas.length-1].name == "" ||
                 $scope.currentFunction.parameters.datas[$scope.currentFunction.parameters.datas.length-1].type == "" ) ){
@@ -123,6 +124,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
             if(typeof $scope.currentFunction.parameters.pages == "undefined"){
                 $scope.currentFunction.parameters.pages = [] ;
             }
+            // Avant ajout on check si les dernièrs paramètres sont complet
             if( $scope.currentFunction.parameters.pages.length > 0 &&
                 $scope.currentFunction.parameters.pages[$scope.currentFunction.parameters.pages.length-1].url == ""){
                 alert("Merci de finir de compléter les paramètres");
