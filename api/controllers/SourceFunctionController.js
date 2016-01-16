@@ -8,9 +8,11 @@
 module.exports = {
 
 
-    request: function(){
+    doRequest: function(id){
 
-        console.log("Coucou !!!")
+        SourceFunction.findOne({id:24}).exec(function findOneCB(err, found){
+            console.log('We found '+found.name);
+        });
 
 
     }

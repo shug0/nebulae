@@ -43,5 +43,12 @@ module.exports = {
             });
         }).end();
 
+    },
+
+    getFunctionById : function(theId){
+
+        SourceFunction.findOne({id:theId}).exec(function findOneCB(err, found){
+            console.log(found.parameters);
+        });
     }
 };
