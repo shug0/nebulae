@@ -26,17 +26,17 @@ module.exports.policies = {
   ***************************************************************************/
 
   AuthController: { '*': true },
-
+  /*
   DashboardController: {
     '*': 'isAuthenticated'
   },
 
-  UserController:             { '*': ['isAdmin', 'isAuthenticated'] },
+  UserController:             { '*': ['isAuthenticated'] },
   SourceController:           { '*': ['isAdmin', 'isAuthenticated'] },
   WidgetController:           { '*': ['isAdmin', 'isAuthenticated'] },
   WidgetPatternController:    { '*': ['isAdmin', 'isAuthenticated'] },
   SourceFunctionController:   { '*': ['isAdmin', 'isAuthenticated'] },
-
+  */
 
   /***************************************************************************
   *                                                                          *

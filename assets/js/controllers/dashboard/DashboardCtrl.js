@@ -10,10 +10,13 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$rootScope', '$mdToast', 'Das
             margins: [20, 20]
         };
 
-        $scope.widgets = [
-            {sizeX: 2, sizeY: 1, row: 0, col: 0, title: 'twitter'},
-            {sizeX: 2, sizeY: 2, row: 0, col: 2, title: 'meteo'}
-
-        ];
+        DashboardSrv.getDashboard($rootScope.sessionUser).then(
+            function(dashboard) {
+                $scope.dashboard = dashboard;
+            },
+            function errorCallback(data) {
+                console.log(data);
+            }
+        );
 
     }]);

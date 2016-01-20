@@ -46,37 +46,39 @@ NebulaeApp.config(
 
 NebulaeApp.run(function ($rootScope, $location, AuthSrv) {
 
+        initRootScope(AuthSrv, $rootScope);
+
+        $rootScope.$on("$routeChangeStart", function (event, next) {
+
+            AuthSrv.isConnected().then(function (response) {
+                if (response) {
+                    if (
+                        next.loadedTemplateUrl == "/templates/auth/login.html" ||
+                        next.loadedTemplateUrl == "/templates/auth/signup.html"
+                    ) {
+                        $location.path("/dashboard/");
+                    }
+                }
+                else {
+                    if (
+                        next.loadedTemplateUrl == "/templates/dashboard/dashboard.html" ||
+                        next.loadedTemplateUrl == "/templates/admin/panel.html" ||
+                        next.loadedTemplateUrl == "/templates/admin/user.html"
+                    ) {
+                        $location.path("/login/");
+                    }
+                }
+            });
+        }
+    );
+});
+
+
+function initRootScope(AuthSrv, $rootScope) {
     AuthSrv.isConnected().then(function (response) {
         $rootScope.isAuthenticated = response
     });
-
     AuthSrv.sessionUser().then(function (response) {
         $rootScope.sessionUser = response;
     });
-
-    $rootScope.$on("$routeChangeStart", function (event, next, current) {
-
-        AuthSrv.isConnected().then(function (response) {
-
-            if (response) {
-                if (
-                    next.loadedTemplateUrl == "/templates/auth/login.html" ||
-                    next.loadedTemplateUrl == "/templates/auth/signup.html"
-                ) {
-                    $location.path("/dashboard/");
-                }
-            }
-            else {
-                if (
-                    next.loadedTemplateUrl == "/templates/dashboard/dashboard.html" ||
-                    next.loadedTemplateUrl == "/templates/admin/panel.html" ||
-                    next.loadedTemplateUrl == "/templates/admin/user.html"
-                ) {
-                    $location.path("/login/");
-                }
-            }
-        });
-    });
-
-});
-
+}

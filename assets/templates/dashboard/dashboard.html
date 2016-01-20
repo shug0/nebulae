@@ -1,9 +1,11 @@
 
 <section layout="row" ng-controller="DashboardCtrl">
 
+    <h4>{{dashboard.name}}</h4>
+
     <div gridster="gridsterOpts">
 
-        <md-card gridster-item="widget" ng-repeat="widget in widgets">
+        <md-card gridster-item="widget" ng-repeat="widget in dashboard.widgets">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{widget.title}}</span>

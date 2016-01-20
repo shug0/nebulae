@@ -10,7 +10,6 @@ main.page-adminDashboard {
   }
   $asideWitdh: 72px;
   aside {
-    z-index: 500;
     width: $asideWitdh;
     position: absolute;
     background: $grey200;
@@ -29,7 +28,6 @@ main.page-adminDashboard {
 
   md-content[ng-controller="UserCtrl"],
   md-content[ng-controller="BrickCtrl"] {
-    z-index: 600;
     width: calc(100% - #{$asideWitdh});
     overflow: hidden;
     padding: 20px 30px 30px;

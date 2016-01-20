@@ -1,11 +1,12 @@
-NebulaeApp.controller('SignupCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv', 'UserSrv', function($scope, $rootScope, $mdToast, AuthSrv, UserSrv) {
+NebulaeApp.controller('SignupCtrl', ['$scope','$location', '$rootScope', '$mdToast', 'AuthSrv', 'UserSrv',
+    function($scope, $location, $rootScope, $mdToast, AuthSrv, UserSrv) {
 
     // Title
     $rootScope.templateName = "signup";
 
     // Scope Model
     $scope.user = {};
-    $scope.user.email = 'test@test.me';
+    $scope.user.email = '';
     $scope.user.password= '';
 
     // Init Toast Position
@@ -58,6 +59,10 @@ NebulaeApp.controller('SignupCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSr
                                     .position($scope.getToastPosition())
                                     .hideDelay(2000)
                             );
+
+                            initRootScope(AuthSrv, $rootScope);
+                            $location.path("/dashboard/");
+
 
                         }
                     })
