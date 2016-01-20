@@ -14,6 +14,10 @@ module.exports = {
             required: true
         },
 
+        widget_options: {
+          type: "json"
+        },
+
         description: {
             type: "string"
         },

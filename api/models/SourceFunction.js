@@ -31,9 +31,9 @@ module.exports = {
       required: true
     },
 
-      widgets: {
-          collection: 'WidgetPattern',
-          via: 'sourceFunction'
+    widgets: {
+      collection: 'WidgetPattern',
+      via: 'sourceFunction'
     }
 
   }

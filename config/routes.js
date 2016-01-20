@@ -38,6 +38,11 @@ module.exports.routes = {
   },
   */
 
+  '/index': {
+    controller: 'IndexController',
+    action: 'index'
+  }
+
     /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

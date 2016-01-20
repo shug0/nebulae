@@ -6,9 +6,6 @@
 */
 
 module.exports = {
-  //connection: 'mongoNebulae',
-  connection: 'localDiskDb',
-
   attributes: {
 
     name: {
@@ -16,13 +13,14 @@ module.exports = {
       required: true
     },
 
-      widgets: {collection: 'widget'},
+    widgets: {collection: 'widget'},
 
     widgets_config: {
       type: "json",
       defaultsTo : null
-    }
+    },
 
+    owner: { model: 'user'}
 
   }
 };

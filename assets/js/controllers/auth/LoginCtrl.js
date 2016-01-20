@@ -1,4 +1,5 @@
-NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv', function($scope, $rootScope, $mdToast, AuthSrv) {
+NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$mdToast', 'AuthSrv',
+    function($scope, $rootScope, $location, $mdToast, AuthSrv) {
 
     // Title
     $rootScope.templateName = "login";
@@ -33,8 +34,9 @@ NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$mdToast', 'AuthSrv
     $scope.login = function () {
 
         AuthSrv.login($scope.user).then(
-            function(user) {
-                console.log(user);
+            function() {
+                $rootScope.isAuthenticated = true;
+                $location.path('/dashboard/');
             },
             function errorCallback(data) {
                 $('[type="submit"]')

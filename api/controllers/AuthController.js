@@ -49,14 +49,20 @@ module.exports = require('waterlock').waterlocked({
 
                 var content = '<h1>Confirmation sur Nebulae</h1>' +
                     '<p>Votre email est '+params.email+'</p>' +
-                        // '<p>Votre token est : '+jwt['token']+'</p>' +
                     '<p>Cliquez sur le lien qui n\'existe pas encore ! Excellent.</p>';
 
                 MailServices.sendMail({email: params.email, subject: subject, content: content});
-
             }
-
         });
+    },
+
+    isConnected: function(req, res) {
+        if (req.session.authenticated) {
+            res.ok(true)
+        }
+        else {
+            res.ok(false);
+        }
 
     }
 

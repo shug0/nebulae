@@ -6,8 +6,6 @@
 */
 
 module.exports = {
-  //connection: 'mongoNebulae',
-  connection: 'localDiskDb',
 
   attributes: {
     name:{
@@ -21,7 +19,7 @@ module.exports = {
     },
 
     category: {
-        model: 'Category'
+        model: 'category'
     },
     // API URL, Version, Tokens if needed
     list_options: {

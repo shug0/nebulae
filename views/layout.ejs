@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
 	<!--STYLES-->
+	<link rel="stylesheet" href="/styles/index.css">
 	<link rel="stylesheet" href="/styles/main.css">
 	<link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
 	<link rel="stylesheet" href="/bower_components/angular-gridster/dist/angular-gridster.min.css">
@@ -14,8 +15,6 @@
 
 </head>
 <body>
-
-	<%- partial ('partial/header.ejs') %>
 
 	<main class="page page-{{templateName}}" ng-view>
 
@@ -43,6 +42,7 @@
 	<script src="/js/controllers/user/UserCtrl.js"></script>
 	<script src="/js/services/AuthSrv.js"></script>
 	<script src="/js/services/CategorySrv.js"></script>
+	<script src="/js/services/DashboardSrv.js"></script>
 	<script src="/js/services/SourceFunctionSrv.js"></script>
 	<script src="/js/services/SourceSrv.js"></script>
 	<script src="/js/services/UserSrv.js"></script>
