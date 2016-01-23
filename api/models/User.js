@@ -29,6 +29,5 @@ module.exports = {
     }),
 
     beforeCreate: require('waterlock').models.user.beforeCreate,
-
     beforeUpdate: require('waterlock').models.user.beforeUpdate
 };

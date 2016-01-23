@@ -21,8 +21,11 @@ NebulaeApp.config(['$routeProvider',
             .when('/dashboard/', {
                 templateUrl: '/templates/dashboard/dashboard.html'
             })
+            .when('/404/', {
+                templateUrl: '/templates/404.html'
+            })
             .otherwise({
-                redirectTo: '/login',
+                redirectTo: '/404',
                 caseInsensitiveMatch: true
             })
     }

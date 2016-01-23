@@ -9,7 +9,16 @@
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{widget.title}}</span>
-                    <span class="md-subhead">Yolo</span>
+                    <div ng-switch="widget.status">
+                        <div ng-switch-when="true">
+                            <ng-include src="'/templates/dashboard/widgets_templates/'+widget.pattern.template"></ng-include>
+                        </div>
+                        <div ng-switch-default>
+                            <ng-include src="'/templates/dashboard/widgets_templates/loading.html'"></ng-include>
+                        </div>
+                    </div>
+
+
                 </md-card-title-text>
             </md-card-title>
         </md-card>
