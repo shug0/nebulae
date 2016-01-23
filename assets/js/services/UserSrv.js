@@ -17,11 +17,15 @@ NebulaeApp.service('UserSrv', function(Restangular) {
                 var userWithId = _.find(users, function(user) {
                     return user.id === userParam.id;
                 });
+
                 if (userParam.email !== "") { userWithId.auth.email = userParam.email;  }
                 if (userParam.firstname !== "") { userWithId.firstname = userParam.firstname ; }
                 if (userParam.lastname!== "") { userWithId.lastname = userParam.lastname; }
                 if (userParam.country!== "") { userWithId.country = userParam.country; }
                 if (userParam.city!== "") { userWithId.city = userParam.city; }
+                if (userParam.role!== "") { userWithId.role = userParam.role; }
+                if (userParam.gravatar!== "") { userWithId.gravatar= userParam.gravatar; }
+
                 userWithId.put();
             });
         },

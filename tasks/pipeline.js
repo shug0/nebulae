@@ -18,10 +18,11 @@ var jsFilesToInject = [
     '/bower_components/angular-animate/angular-animate.min.js',
     '/bower_components/lodash/lodash.min.js',
     '/bower_components/restangular/dist/restangular.min.js',
-    'bower_components/javascript-detect-element-resize/jquery.resize.js',
-    'bower_components/angular-gridster/dist/angular-gridster.min.js',
+    '/bower_components/javascript-detect-element-resize/jquery.resize.js',
+    '/bower_components/angular-gridster/dist/angular-gridster.min.js',
+    '/bower_components/js-md5/js/md5.min.js',
     'js/**/*.js',
-    'js/**/*/*.js'
+    'js/**/*/*.js',
 ];
 
 var templateFilesToInject = [

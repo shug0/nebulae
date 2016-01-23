@@ -6,7 +6,7 @@ NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$mdToa
 
     // Scope Model
     $scope.user = {};
-    $scope.user.email = 'test@test.me';
+    $scope.user.email = '';
     $scope.user.password= '';
 
     // Init Toast Position
@@ -35,7 +35,7 @@ NebulaeApp.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$mdToa
 
         AuthSrv.login($scope.user).then(
             function() {
-                $rootScope.isAuthenticated = true;
+                initRootScope(AuthSrv, $rootScope);
                 $location.path('/dashboard/');
             },
             function errorCallback(data) {

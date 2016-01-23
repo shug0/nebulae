@@ -28,9 +28,14 @@ main {
   height: $md-toolbar-tools_height !important ;
   line-height: $md-toolbar-tools_height;
   min-height: $md-toolbar-tools_height !important ;
-  a{
+  a, span{
     font-size:0.8em;
     padding: 0 13px;
+  }
+  img.md-avatar {
+    border-radius: 50%;
+    height: 35px;
+
   }
 }
 

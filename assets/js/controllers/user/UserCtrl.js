@@ -1,5 +1,6 @@
 'use strict';
 
+
 NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', '$mdToast', 'UserSrv', 'AuthSrv',
     function ($scope, $rootScope, $mdToast, UserSrv, AuthSrv) {
 
@@ -8,6 +9,8 @@ NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', '$mdToast', 'UserSrv'
         $scope.user = {};
         $scope.users = [];
 
+        $scope.roles = ['user', 'admin'];
+
         // Init Toast Position
         $scope.toastPosition = angular.extend({}, {
             bottom: false,
@@ -15,6 +18,7 @@ NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', '$mdToast', 'UserSrv'
             left: false,
             right: true
         });
+
         $scope.getToastPosition = function () {
             return Object.keys($scope.toastPosition)
                 .filter(function (pos) {
@@ -84,17 +88,22 @@ NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', '$mdToast', 'UserSrv'
             })
         };
 
-        $scope.updateUser = function (user) {
-            UserSrv.updateUser(user);
-            /*UserSrv.updateUser(user).then(function(response) {
 
-             $mdToast.show(
-             $mdToast.simple()
-             .content(user.auth.email+' has been updated.')
-             .position($scope.getToastPosition())
-             .hideDelay(2000)
-             );
-             })*/
+
+        $scope.updateUser = function (user) {
+            user.gravatar = md5(user.email);
+            console.log(UserSrv.updateUser(user));
+
+            /*.then(function(response) {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .content(user.auth.email+' has been updated.')
+                        .position($scope.getToastPosition())
+                        .hideDelay(2000)
+                );
+            })*/
+
         };
 
     }]);

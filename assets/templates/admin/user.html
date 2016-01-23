@@ -15,10 +15,20 @@
                 </md-input-container>
             </div>
 
-            <md-input-container flex>
-                <label>Email</label>
-                <input ng-model="user.email" type="email" required>
-            </md-input-container>
+            <div layout="row" flex>
+                <md-input-container flex="60">
+                    <label>Email</label>
+                    <input ng-model="user.email" type="email" required>
+                </md-input-container>
+
+                <md-input-container flex="40">
+                    <label>Role</label>
+                    <md-select ng-model="user.role" aria-label="User role">
+                        <md-option ng-repeat="role in roles" ng-value="role">{{role}}</md-option>
+                    </md-select>
+                </md-input-container>
+
+            </div>
 
 
             <div layout="row" flex ng-if="edit == false">
@@ -71,7 +81,7 @@
             <div >
                 <md-list-item class="md-whiteframe-2dp md-2-line"
                               ng-repeat="user in users" ng-click="edit = 'true'; load(user);">
-                    <img ng-src="http://lorempixel.com/200/200/cats/{{$index+1}}" class="md-avatar" />
+                    <img ng-src="http://gravatar.com/avatar/{{user.gravatar}}" class="md-avatar" />
                     <div class="md-list-item-text" layout="column">
                         <h3>{{ user.auth.email }}</h3>
                     </div>

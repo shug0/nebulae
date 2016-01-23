@@ -1,23 +1,11 @@
 NebulaeApp.service('DashboardSrv', function(Restangular) {
     var
-        dashboard      =   Restangular.all('auth/logout');
+        dashboard      =   Restangular.all('dashboard');
 
     return {
 
         'getDashboard': function(user) {
-
-        },
-
-        'login': function(user) {
-            return login.post(user);
-        },
-
-        'register': function(user) {
-            return register.post(user);
-        },
-
-        'logout': function(user) {
-            return logout.post(user);
+            return dashboard.get(user.id)
         }
 
     }
