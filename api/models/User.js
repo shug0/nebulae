@@ -24,11 +24,10 @@ module.exports = {
             via: 'owner'
         },
 
-        gravatar: 'string',
+        gravatar: 'string'
 
     }),
 
     beforeCreate: require('waterlock').models.user.beforeCreate,
-
     beforeUpdate: require('waterlock').models.user.beforeUpdate
 };
