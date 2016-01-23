@@ -1,14 +1,65 @@
 md-content[ng-controller="BrickCtrl"] {
 
+  height: 650px !important;
+
   .bg_red{
     background-color: red;
   }
   .bg_white{
     background-color: white;
   }
+  .bg_green{
+    background-color: green;
+  }
+  .bg_blue{
+    background-color: blue;
+  }
+  .little_btn{
+    font-size: 30px;
+    max-width: 30px;
+    min-width: 0px;
+    float: right;
+    top: 0;
+  }
+
+  .listshadow{
+    background: #949292; /* EEEEEE; ; */
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+                0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  }
+  .hoverSrc{
+    background: #C0C0C0;
+  }
+
+  ul[name="listCategories"] li,
+  md-list-item{
+    padding:0;
+    min-height:60px !important;
+    >*{
+      text-align: center !important;
+    }
+  }
 
   > div{
     border: red 1px solid;
+    max-height: 1500px;
+
+    .subheader_container{
+      md-subheader{
+        font-size: 20px;
+        margin: 16px;
+        padding: 0;
+        height: 20px;
+
+        >*{
+          display: inline-block;
+        }
+        md-button{
+          margin:0;
+        }
+      }
+    }
   }
 
   #categories,
@@ -22,6 +73,12 @@ md-content[ng-controller="BrickCtrl"] {
       list-style: none;
       padding: 0 ;
       text-align: center;
+    }
+    ul[name="listCategories"]{
+      margin:0;
+      li {
+        padding: 15% 0;
+      }
     }
 
   }
@@ -51,9 +108,8 @@ md-content[ng-controller="BrickCtrl"] {
   }
 
   #functionsListContainer{
-    h5{
-      text-align: center;
-    }
+
+
 
   }
 

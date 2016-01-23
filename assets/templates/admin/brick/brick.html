@@ -2,28 +2,48 @@
 
     <div id="categories" flex="20">
 
+        <md-subheader class="md-primary">
+            <span>Catégories</span>
+            <md-button ng-click="inputCat=(inputCat)? false : true ;" class="little_btn bg_blue md-raised md-primary">+</md-button>
+        </md-subheader>
+        <div layout="row" ng-if="inputCat">
+            <md-input-container flex="90" class="md-block">
+                <label>New category</label>
+                <input type="text" ng-model="newCat.name">
+            </md-input-container>
+            <div flex>
+                <md-button ng-click="addCategory()" class="little_btn bg_green md-raised">
+                    <ng-md-icon icon="done" size="15"></ng-md-icon>
+                </md-button>
+            </div>
+        </div>
         <ul name="listCategories">
-            <li ng-repeat="category in categories">
-                <div ng-click="changeCategory(category.id)">
-                    <h4>{{category.name}}</h4>
+            <li ng-repeat="category in categories" ng-click="changeCategory(category.id);"
+                ng-class="{listshadow: hoverCat}"
+                ng-mouseenter="hoverCat = true"
+                ng-mouseleave="hoverCat = false">
+                <div>
+                    <span>{{category.name}}</span>
                 </div>
                 <ul name="listSources" ng-if="currentCategory==category.name" ng-animate="'animate'">
-                    <li ng-click="changeSource(src.id)" ng-repeat="src in currentCatSrc">
-                        <h5>{{src.name}}</h5>
+                    <li ng-click="changeSource(src.id)" ng-repeat="src in currentCatSrc"
+                        ng-class="{hoverSrc: hoverSrc}"
+                        ng-mouseenter="hoverSrc = true"
+                        ng-mouseleave="hoverSrc = false">
+                        <span>{{src.name}}</span>
                     </li>
                 </ul>
             </li>
         </ul>
-
     </div>
 
     <div id="partSource" flex="60">
 
         <div layout="column">
-            <div flex>
+            <div flex="50">
                 <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
             </div>
-            <div flex>
+            <div flex="50">
                 <ng-include src="'/templates/admin/brick/function/functionForm.html'" ></ng-include>
             </div>
         </div>

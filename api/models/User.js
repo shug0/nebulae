@@ -24,7 +24,7 @@ module.exports = {
             via: 'owner'
         },
 
-        gravatar: 'string',
+        gravatar: 'string'
 
     }),
 

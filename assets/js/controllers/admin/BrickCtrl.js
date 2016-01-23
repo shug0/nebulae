@@ -1,12 +1,20 @@
 NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'SourceFunctionSrv',
     function($scope, CategorySrv, SourceSrv, SourceFunctionSrv) {
 
+        $scope.inputCat = false ;
+        $scope.newCat = {name:""} ;
         $scope.categories = [] ;
         CategorySrv.getCategories().then(function(response){
             for(var i=0 ; i<response.length ; i++){
                 $scope.categories.push( {id:response[i].id,name:response[i].name} );
             }
         });
+
+        $scope.currentFunctions = [];
+        SourceFunctionSrv.getFunctions().then(function(response){
+            $scope.currentFunctions = response.plain() ;
+        });
+        //console.log($scope.currentFunctions);
 
         $scope.currentCategory = "" ;
         $scope.currentCatSrc = [] ;
@@ -22,10 +30,27 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
             }
         };
 
+        $scope.addCategory = function(){
+            console.log("add -> "+$scope.newCat.name);
+            if($scope.newCat.name==""){
+                alert("Champe vide");
+                return false;
+            }
+            CategorySrv.addCategory($scope.newCat.name).then(function(response){
+                var back = response.plain() ;
+                if(back.name==$scope.newCat.name){
+                    $scope.categories.push( {id:back.id,name:back.name} );
+                    $scope.inputCat = false ;
+                    $scope.newCat.name = "" ;
+                }else{
+                    alert("Une erreur est survneue !");
+                }
+            });
+        };
+
         $scope.switch = true ;
         $scope.currentSource = {};
         $scope.currentSource.id = 0 ;
-        $scope.currentFunctions = [];
         $scope.changeSource = function(src){
             $scope.currentFunction = "" ;
             SourceSrv.getSourceById(src).then(function(response){
@@ -40,7 +65,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
             for(var i=0 ; i<$scope.currentFunctions.length ; i++){
                 if(f == $scope.currentFunctions[i].id){
                     $scope.currentFunction = $scope.currentFunctions[i] ;
-                    console.log($scope.currentFunction)
+                   // console.log($scope.currentFunction)
                     //$scope.currentFunction.parameters.datas = [] ;
                 }
             }
@@ -55,15 +80,15 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         },true);
 
         $scope.addSrcParam = function(){
-            if(typeof $scope.currentSource.list_options == "undefined"){
-                $scope.currentSource.list_options = [] ;
+            if(typeof $scope.currentSource.options == "undefined"){
+                $scope.currentSource.options = [] ;
             }
-            if( $scope.currentSource.list_options.length > 0 &&
-                ($scope.currentSource.list_options[$scope.currentSource.list_options.length-1].name == "" ||
-                $scope.currentSource.list_options[$scope.currentSource.list_options.length-1].value == "" ) ){
+            if( $scope.currentSource.options.length > 0 &&
+                ($scope.currentSource.options[$scope.currentSource.options.length-1].name == "" ||
+                $scope.currentSource.options[$scope.currentSource.options.length-1].value == "" ) ){
                 alert("Merci de finir de compléter les paramètres");
             }else{
-                $scope.currentSource.list_options.push({name:"",value:""});
+                $scope.currentSource.options.push({name:"",value:""});
             }
         };
 
@@ -90,7 +115,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         };
 
         $scope.saveFunction = function(){
-            console.log($scope.currentFunction)
+           // console.log($scope.currentFunction)
             if(typeof $scope.currentFunction.id != "undefined")
                 SourceFunctionSrv.putFunction($scope.currentFunction);
             else

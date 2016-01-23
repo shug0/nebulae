@@ -10,7 +10,8 @@ NebulaeApp.service('CategorySrv', function(Restangular) {
             return Restangular.one('category', cat).get();
         },
         'addCategory': function(catParam) {
-            return category.post(catParam);
+            console.log(catParam)
+            return category.post({name:catParam});
         },
         'putCategory': function(cat) {
             return category.put(cat);
