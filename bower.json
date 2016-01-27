@@ -32,6 +32,7 @@
     "restangular": "~1.5.1",
     "material-design-lite": "~1.0.6",
     "angular-gridster": "~0.13.5",
-    "js-md5": "~2.1.0"
+    "js-md5": "~2.1.0",
+    "lodash": "3.10.1"
   }
 }
