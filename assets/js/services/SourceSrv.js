@@ -17,10 +17,12 @@ NebulaeApp.service('SourceSrv', function(Restangular) {
                 var userWithId = _.find(sources, function(theSrc) {
                     return theSrc.id === src.id;
                 });
+                console.log(src.optionslist)
                 if(src.name!=""){ userWithId.name = src.name };
                 if(src.description!=""){ userWithId.description = src.description };
                 if(src.enabled!=""){ userWithId.enabled = src.enabled };
-                if(src.options!=""){ userWithId.options = src.options };
+                if(src.optionslist!={}){ userWithId.options = src.optionslist };
+              //console.log()
                 userWithId.put();
             });
         },

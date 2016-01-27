@@ -49,15 +49,16 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         };
 
         $scope.switch = true ;
-        $scope.currentSource = {};
-        $scope.currentSource.id = 0 ;
+        $scope.currentSource = {id:0};
         $scope.changeSource = function(src){
-            $scope.currentFunction = "" ;
+            $scope.currentFunction = {id:0} ;
             SourceSrv.getSourceById(src).then(function(response){
-                $scope.currentSource = response.plain()
+                console.log(response);
+                $scope.currentSource = response.plain();
                 $scope.currentFunctions = $scope.currentSource.functions ;
                 $scope.switch = $scope.currentSource.enabled ;
-                //console.log($scope.currentSource);
+                console.log($scope.currentSource);
+
             });
         };
 
@@ -72,6 +73,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         };
 
         $scope.saveSource = function(){
+            console.log($scope.currentSource)
             SourceSrv.putSource($scope.currentSource);
         };
         // Watch if switch value change
@@ -80,20 +82,20 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         },true);
 
         $scope.addSrcParam = function(){
-            if(typeof $scope.currentSource.options == "undefined"){
-                $scope.currentSource.options = [] ;
+            if(typeof $scope.currentSource.optionslist == "undefined"){
+                $scope.currentSource.optionslist = [] ;
             }
-            if( $scope.currentSource.options.length > 0 &&
-                ($scope.currentSource.options[$scope.currentSource.options.length-1].name == "" ||
-                $scope.currentSource.options[$scope.currentSource.options.length-1].value == "" ) ){
+            if( $scope.currentSource.optionslist.length > 0 &&
+                ($scope.currentSource.optionslist[$scope.currentSource.optionslist.length-1].name == "" ||
+                $scope.currentSource.optionslist[$scope.currentSource.optionslist.length-1].value == "" ) ){
                 alert("Merci de finir de compléter les paramètres");
             }else{
-                $scope.currentSource.options.push({name:"",value:""});
+                $scope.currentSource.optionslist.push({name:"",value:""});
             }
         };
 
         ///// Function /////
-        $scope.currentFunction = {} ;
+        $scope.currentFunction = {id:0} ;
         $scope.optionTypes = [
             {name:"API", url:"templates/admin/brick/function/apiForm.html"},
             {name:"RSS", url:"templates/admin/brick/function/rssForm.html"}

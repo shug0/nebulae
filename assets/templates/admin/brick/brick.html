@@ -2,10 +2,11 @@
 
     <div id="categories" flex="20">
 
-        <md-subheader class="md-primary">
-            <span>Catégories</span>
+        <div class="subheader_container">
+            <md-subheader class="md-primary">Categories</md-subheader>
             <md-button ng-click="inputCat=(inputCat)? false : true ;" class="little_btn bg_blue md-raised md-primary">+</md-button>
-        </md-subheader>
+        </div>
+
         <div layout="row" ng-if="inputCat">
             <md-input-container flex="90" class="md-block">
                 <label>New category</label>
@@ -13,7 +14,7 @@
             </md-input-container>
             <div flex>
                 <md-button ng-click="addCategory()" class="little_btn bg_green md-raised">
-                    <ng-md-icon icon="done" size="15"></ng-md-icon>
+                    <ng-md-icon icon="done" size="20"></ng-md-icon>
                 </md-button>
             </div>
         </div>
@@ -37,15 +38,13 @@
         </ul>
     </div>
 
-    <div id="partSource" flex="60">
+    <div id="partSource" layout="column" flex="60">
 
-        <div layout="column">
-            <div flex="50">
-                <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
-            </div>
-            <div flex="50">
-                <ng-include src="'/templates/admin/brick/function/functionForm.html'" ></ng-include>
-            </div>
+        <div flex ng-show="currentSource.id!=0">
+            <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
+        </div>
+        <div flex ng-show="currentFunction.id!=0">
+            <ng-include src="'/templates/admin/brick/function/functionForm.html'" ></ng-include>
         </div>
 
     </div>
