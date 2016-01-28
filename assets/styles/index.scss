@@ -160,6 +160,16 @@ main#container {
 
   }
 
+  section#join-us {
+    background: rgba(63, 81, 181, 1);
+    padding: 20px 0 40px;
+    text-align: center;
+    h3 {
+      color: #ffffff;
+      font-size: 24px;
+    }
+  }
+
   section#contact {
     background: rgba(235, 235, 235, 1);
     height: 400px;
@@ -211,6 +221,26 @@ footer {
         right: 0;
         position: relative;
         margin: auto;
+      }
+    }
+  }
+
+  main#container {
+    section#section-1 {
+      .bloc {
+        .icon {
+          margin: 35px auto 0;
+        }
+      }
+    }
+  }
+
+  main#container {
+    section#section-2 {
+      .bloc {
+        .icon {
+          margin: 0 auto 35px;
+        }
       }
     }
   }
