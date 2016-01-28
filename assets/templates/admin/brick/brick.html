@@ -2,48 +2,55 @@
 
     <div id="categories" flex="20">
 
-        <md-list-item class="md-2-line" ng-repeat="category in categories">
-            <div ng-click="changeCategory(category.id)" class="md-list-item-text">
-                <h4>{{category.name}}</h4>
+        <div class="subheader_container">
+            <md-subheader class="md-primary">Categories</md-subheader>
+            <md-button ng-click="inputCat=(inputCat)? false : true ;" class="little_btn bg_blue md-raised md-primary">+</md-button>
+        </div>
+
+        <div layout="row" ng-if="inputCat">
+            <md-input-container flex="90" class="md-block">
+                <label>New category</label>
+                <input type="text" ng-model="newCat.name">
+            </md-input-container>
+            <div flex>
+                <md-button ng-click="addCategory()" class="little_btn bg_green md-raised">
+                    <ng-md-icon icon="done" size="20"></ng-md-icon>
+                </md-button>
             </div>
-            <div ng-if="currentCategory==category.name">
-                    <md-list-item class="md-2-line" ng-repeat="src in currentCatSrc">
-                        <div ng-click="changeSource(src.id)" class="md-list-item-text">
-                            <h5>{{src.name}}</h5>
-                        </div>
-                    </md-list-item>
-            </div>
-        </md-list-item>
+        </div>
+        <ul name="listCategories">
+            <li ng-repeat="category in categories" ng-click="changeCategory(category.id);"
+                ng-class="{listshadow: hoverCat}"
+                ng-mouseenter="hoverCat = true"
+                ng-mouseleave="hoverCat = false">
+                <div>
+                    <span>{{category.name}}</span>
+                </div>
+                <ul name="listSources" ng-if="currentCategory==category.name" ng-animate="'animate'">
+                    <li ng-click="changeSource(src.id)" ng-repeat="src in currentCatSrc"
+                        ng-class="{hoverSrc: hoverSrc}"
+                        ng-mouseenter="hoverSrc = true"
+                        ng-mouseleave="hoverSrc = false">
+                        <span>{{src.name}}</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="partSource" layout="column" flex="60">
+
+        <div flex ng-show="currentSource.id!=0">
+            <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
+        </div>
+        <div flex ng-show="currentFunction.id!=0">
+            <ng-include src="'/templates/admin/brick/function/functionForm.html'" ></ng-include>
+        </div>
 
     </div>
 
-    <div id="partSource" flex="80">
-
-        <div layout="column">
-
-            <div flex>
-                <div layout="row">
-                    <div flex="70">
-                        <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
-                    </div>
-                    <div flex="30">
-                        <ng-include src="'/templates/admin/brick/functionsList.html'" ></ng-include>
-                    </div>
-                </div>
-            </div>
-            <div flex>
-                <div layout="row">
-                    <div flex="60">
-                        <ng-include src="'/templates/admin/brick/function/form.html'" ></ng-include>
-                    </div>
-                    <div flex>
-                        <md-button class="md-raised md-primary">Tester</md-button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+    <div id="functionsListContainer" flex="20">
+        <ng-include src="'/templates/admin/brick/functionsList.html'" ></ng-include>
     </div>
 
 </md-content>

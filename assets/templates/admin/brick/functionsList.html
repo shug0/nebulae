@@ -1,10 +1,13 @@
-<div id="functionsListContainer">
-
-    <h5>Fonctionalités</h5>
-    <md-list-item class="md-2-line" ng-repeat="f in currentFunctions">
-        <div ng-click="changeFunction(f.id)" class="md-list-item-text">
-            <h5>{{f.name}}</h5>
-        </div>
-    </md-list-item>
-
+<div class="subheader_container">
+    <md-subheader class="md-primary">Fonctionalités</md-subheader>
+    <md-button ng-click="addFunction()" class="little_btn bg_blue md-raised md-primary">+</md-button>
 </div>
+<!--  -->
+<md-list-item class="md-2-line" ng-repeat="f in currentFunctions" ng-click="changeFunction(f.id)"
+              ng-class="{listshadow: hover}"
+              ng-mouseenter="hover = true"
+              ng-mouseleave="hover = false">
+    <div class="md-list-item-text">
+        <span>{{f.name}}</span>
+    </div>
+</md-list-item>

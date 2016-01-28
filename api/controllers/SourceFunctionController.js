@@ -5,5 +5,17 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-module.exports = {};
+module.exports = {
+
+
+    doRequest: function(id){
+
+        SourceFunction.findOne({id:24}).exec(function findOneCB(err, found){
+            console.log('We found '+found.name);
+        });
+
+
+    }
+
+};
 

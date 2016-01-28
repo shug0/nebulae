@@ -1,0 +1,26 @@
+<div id="functionContainer">
+
+<div layout="row">
+    <md-input-container class="md-block" flex="70">
+        <label>Nom</label>
+        <input type="text" ng-model="currentFunction.name">
+    </md-input-container>
+    <md-input-container>
+        <label>Type</label>
+        <md-select ng-model="currentFunction.type">
+            <md-option ng-repeat="opt in optionTypes" value="{{opt.name}}">
+                {{opt.name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+</div>
+
+    <md-input-container class="md-block">
+        <label>Description</label>
+        <input ng-model="currentFunction.description">
+    </md-input-container>
+
+    <div ng-include src="optionType.url"></div>
+
+    <md-button class="md-raised md-primary" ng-click="saveFunction()">Valider</md-button>
+</div>

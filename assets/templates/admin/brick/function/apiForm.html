@@ -1,0 +1,42 @@
+<md-content>
+    <div layout="row">
+        <md-input-container class="md-block" flex="40">
+            <label>Complément URL</label>
+            <input type="text" ng-model="currentFunction.parameters.url">
+        </md-input-container>
+        <md-input-container class="md-block" flex>
+            <label>Méthode</label>
+            <md-select ng-model="currentFunction.parameters.method">
+                <md-option
+                        ng-value="optionMethod.value"
+                        ng-repeat="optionMethod in optionMethods">{{optionMethod.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="addApiParameter()" flex>+</md-button>
+    </div>
+    <!-- ng-if="currentFunction.parameters.datas.length>0" -->
+    <div layout="row" ng-repeat="dat in currentFunction.parameters.datas">
+        <md-input-container class="md-block" flex="40">
+            <label>Nom</label>
+            <input type="text" ng-model="dat.name">
+        </md-input-container>
+        <md-input-container class="md-block" flex="20">
+            <label>Type</label>
+            <md-select ng-model="dat.type">
+                <md-option
+                        ng-value="type.value"
+                        ng-repeat="type in allTypes">{{type.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <div class="requiredSwitch" flex>
+            <label>Requis</label>
+            <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="dat.required"></md-switch>
+        </div>
+        <div flex>
+            <md-button ng-click="deleteDataParameter($index)" class="bg_red" aria-label="Insert Drive">
+                <ng-md-icon icon="delete" size="34"></ng-md-icon>
+            </md-button>
+        </div>
+    </div>
+
+</md-content>

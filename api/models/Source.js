@@ -22,7 +22,7 @@ module.exports = {
         model: 'category'
     },
     // API URL, Version, Tokens if needed
-    options: {
+    optionslist: {
         type: 'json'
     },
 

@@ -7,6 +7,7 @@ var cssFilesToInject = [
 var jsFilesToInject = [
     'js/dependencies/sails.io.js',
     'js/dependencies/**/*.js',
+    '/bower_components/lodash/lodash.min.js',
     '/bower_components/angular/angular.min.js',
     '/bower_components/jquery/dist/jquery.js',
     '/bower_components/angular-route/angular-route.js',
