@@ -2,30 +2,23 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
     function($scope, CategorySrv, SourceSrv, SourceFunctionSrv) {
 
         $scope.inputCat = false ;
-        $scope.newCat = {name:""} ;
-        $scope.categories = [] ;
+
+
         CategorySrv.getCategories().then(function(response){
-            for(var i=0 ; i<response.length ; i++){
-                $scope.categories.push( {id:response[i].id,name:response[i].name} );
-            }
+            $scope.categories = response.plain();
         });
 
-        $scope.currentFunctions = [];
         SourceFunctionSrv.getFunctions().then(function(response){
             $scope.currentFunctions = response.plain() ;
         });
-        //console.log($scope.currentFunctions);
 
-        $scope.currentCategory = "" ;
-        $scope.currentCatSrc = [] ;
-        $scope.changeCategory = function(cat){
-            if($scope.currentCategory==""){
-                CategorySrv.getCategorieById(cat).then(function(response){
+        $scope.changeCategory = function(category){
+            if($scope.currentCategory=="") {
+                CategorySrv.getCategoryById(category).then(function(response){
                     $scope.currentCategory = response.name ;
                     $scope.currentCatSrc = response.sources ;
-                  //  console.log(response)
                 });
-            }else{
+            } else{
                 $scope.currentCategory = "" ;
             }
         };
@@ -100,7 +93,8 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
             {name:"API", url:"templates/admin/brick/function/apiForm.html"},
             {name:"RSS", url:"templates/admin/brick/function/rssForm.html"}
         ];
-        $scope.optionType = {name:"",url:"templates/admin/brick/function/noneForm.html"} // $scope.optionTypes[0]; //  ; // {name:"API", url:"templates/admin/brick/function/apiForm.html"} ;
+        $scope.optionType = {name:"",url:"templates/admin/brick/function/noneForm.html"}
+        // $scope.optionTypes[0]; //  ; // {name:"API", url:"templates/admin/brick/function/apiForm.html"} ;
 
         $scope.optionMethods = [
             {name:"GET",value:"get"},

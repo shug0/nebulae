@@ -21,7 +21,7 @@ NebulaeApp.service('SourceSrv', function(Restangular) {
                 if(src.name!=""){ userWithId.name = src.name };
                 if(src.description!=""){ userWithId.description = src.description };
                 if(src.enabled!=""){ userWithId.enabled = src.enabled };
-                if(src.optionslist!={}){ userWithId.options = src.optionslist };
+                if(src.optionslist!={}){ userWithId.optionslist = src.optionslist };
               //console.log()
                 userWithId.put();
             });

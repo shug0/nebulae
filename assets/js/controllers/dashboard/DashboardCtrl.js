@@ -11,6 +11,7 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$rootScope', '$parse', '$mdTo
         $scope.gridsterOpts = {
             margins: [20, 20]
         };
+        console.log("salt");
 
         DashboardSrv.getDashboard($rootScope.sessionUser).then(
             function (dashboard) {

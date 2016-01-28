@@ -1,16 +1,16 @@
 NebulaeApp.service('CategorySrv', function(Restangular) {
-    var category    =   Restangular.all('category')
+    var category    =   Restangular.all('category');
 
     return {
 
         'getCategories': function() {
             return category.getList();
         },
-        'getCategorieById': function(cat){
+        "getCategoryById": function(cat){
             return Restangular.one('category', cat).get();
         },
         'addCategory': function(catParam) {
-            console.log(catParam)
+            console.log(catParam);
             return category.post({name:catParam});
         },
         'putCategory': function(cat) {
