@@ -71,6 +71,9 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         };
         // Watch if switch value change
         $scope.$watch("currentSource.enabled", function(newValue, oldValue) {
+            if(typeof $scope.currentSource.enabled=="undefined")
+                return false;
+
             $scope.saveSource();
         },true);
 
@@ -120,7 +123,11 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
 
         // On function type change
         $scope.$watch('currentFunction.type', function(newValue, oldValue) {
+            if(typeof $scope.currentFunction.type == "undefined")
+                return false;
+
             angular.forEach($scope.optionTypes, function(value, key) {
+                console.log(value);
                 if(value.name.toUpperCase() == newValue.toUpperCase() ){
                     $scope.optionType = {name:value.name,url:value.url};
                 }
