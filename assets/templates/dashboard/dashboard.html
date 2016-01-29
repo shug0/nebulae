@@ -3,7 +3,22 @@
 
     <h4>{{dashboard.name}}</h4>
 
-    <div gridster="gridsterOpts">
+    <aside flex="5" ng-init="selectedTab = 'users'">
+        <a href=""
+           ng-class="{'active':selectedTab === 'users'}"
+           ng-click="selectedTab = 'users'">
+            <ng-md-icon icon="people_outline" size="34"></ng-md-icon>
+        </a>
+
+        <a href=""
+           ng-class="{'active':selectedTab === 'brick'}"
+           ng-click="selectedTab = 'brick'">
+            <ng-md-icon icon="extension" size="34"></ng-md-icon>
+        </a>
+
+    </aside>
+
+    <div flex="95" gridster="gridsterOpts">
 
         <md-card gridster-item="widget" ng-repeat="widget in dashboard.widgets">
             <md-card-title>

@@ -2,7 +2,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
     function($scope, CategorySrv, SourceSrv, SourceFunctionSrv) {
 
         $scope.inputCat = false ;
-
+        $scope.newCat = {} ;
 
         CategorySrv.getCategories().then(function(response){
             $scope.categories = response.plain();
