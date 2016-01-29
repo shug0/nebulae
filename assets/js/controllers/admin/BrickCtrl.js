@@ -24,19 +24,19 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
         };
 
         $scope.addCategory = function(){
-            console.log("add -> "+$scope.newCat.name);
+            console.log("add -> "+$scope.newCat);
             if($scope.newCat.name==""){
                 alert("Champe vide");
                 return false;
             }
-            CategorySrv.addCategory($scope.newCat.name).then(function(response){
+            CategorySrv.addCategory($scope.newCat).then(function(response){
                 var back = response.plain() ;
-                if(back.name==$scope.newCat.name){
+                if(back.name==$scope.newCat){
                     $scope.categories.push( {id:back.id,name:back.name} );
                     $scope.inputCat = false ;
-                    $scope.newCat.name = "" ;
+                    $scope.newCat = "" ;
                 }else{
-                    alert("Une erreur est survneue !");
+                    alert("Une erreur est survenue !");
                 }
             });
         };

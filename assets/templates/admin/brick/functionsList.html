@@ -2,12 +2,9 @@
     <md-subheader class="md-primary">Fonctionalités</md-subheader>
     <md-button ng-click="addFunction()" class="little_btn bg_blue md-raised md-primary">+</md-button>
 </div>
-<!--  -->
-<md-list-item class="md-2-line" ng-repeat="f in currentFunctions" ng-click="changeFunction(f.id)"
-              ng-class="{listshadow: hover}"
-              ng-mouseenter="hover = true"
-              ng-mouseleave="hover = false">
+
+<md-list-item class="md-2-line" ng-repeat="function in currentFunctions" ng-click="changeFunction(function.id)">
     <div class="md-list-item-text">
-        <span>{{f.name}}</span>
+        <span>{{function.name}}</span>
     </div>
 </md-list-item>
