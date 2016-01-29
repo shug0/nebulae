@@ -82,6 +82,7 @@ function initRootScope(AuthSrv, $rootScope) {
         $rootScope.isAuthenticated = response
     });
     AuthSrv.sessionUser().then(function (response) {
+        console.log(response)
         $rootScope.sessionUser = response;
     });
 }

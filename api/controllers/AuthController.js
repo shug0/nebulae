@@ -71,10 +71,12 @@ module.exports = require('waterlock').waterlocked({
 
             var user = {
                 id: req.session.user.auth.id,
+                idUser: req.session.user.id,
                 firstname: req.session.user.firstname,
                 lastname: req.session.user.lastname,
                 email: req.session.user.auth.email,
                 gravatar: req.session.user.gravatar
+                ,dashboards: req.session.user.dashboard
             };
             res.ok(user);
         }
