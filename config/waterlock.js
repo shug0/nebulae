@@ -25,7 +25,7 @@ module.exports.waterlock = {
   {
       name:'waterlock-local-auth',
       passwordReset:{
-        tokens: false,
+        tokens: true,
         mail: {
           protocol: 'SMTP',
           options:{
@@ -36,11 +36,11 @@ module.exports.waterlock = {
             }
           },
           from: 'Nebulae App <nebulaetest@gmail.com>',
-          subject: 'Your password reset!',
-          forwardUrl: 'http://localhost:1337'
+          subject: 'Your password reset',
+          forwardUrl: 'http://localhost:1337/#/resetPassword'
         },
         template:{
-          file: '../views/email.jade',
+          file: "../views/mail_resetPassword/email.jade",
           vars:{}
         }
       },
@@ -60,8 +60,8 @@ module.exports.waterlock = {
       unit: 'days',
       length: '1'
     },
-    audience: 'Nebulae',
-    subject: 'Confirmation d\'inscription',
+    audience: "app name",
+    subject: "subject",
 
     // tracks jwt usage if set to true
     trackUsage: true,
