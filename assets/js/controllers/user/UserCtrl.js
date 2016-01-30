@@ -78,10 +78,21 @@ NebulaeApp.controller('UserCtrl', ['$scope', '$rootScope', '$mdToast', 'UserSrv'
 
         $scope.removeUser = function (user) {
             UserSrv.deleteUser(user).then(function (response) {
-                $scope.users.splice($scope.users.indexOf(user), 1)
+                $scope.users.splice($scope.users.indexOf(user), 1);
                 $mdToast.show(
                     $mdToast.simple()
                         .content(user.auth.email + ' has been deleted.')
+                        .position($scope.getToastPosition())
+                        .hideDelay(2000)
+                );
+            })
+        };
+
+        $scope.resetPasswordUser = function (user) {
+            UserSrv.sendResetPassUser({email:$scope.user.auth.email}).then(function (response) {
+                $mdToast.show(
+                    $mdToast.simple()
+                        .content('Reset has sent to '+ user.auth.email)
                         .position($scope.getToastPosition())
                         .hideDelay(2000)
                 );

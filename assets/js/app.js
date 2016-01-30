@@ -21,6 +21,9 @@ NebulaeApp.config(['$routeProvider',
             .when('/dashboard/', {
                 templateUrl: '/templates/dashboard/dashboard.html'
             })
+            .when('/resetPassword/', {
+                templateUrl: '/templates/auth/resetPassword.html'
+            })
             .when('/404/', {
                 templateUrl: '/templates/404.html'
             })
