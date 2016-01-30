@@ -1,5 +1,9 @@
-NebulaeApp.controller('ResetCtrl', ['$scope','$location', '$rootScope', '$mdToast', 'AuthSrv', 'UserSrv',
-    function($scope, $location, $rootScope, $mdToast, AuthSrv, UserSrv) {
+NebulaeApp.controller('ResetCtrl', ['$scope','$location', '$rootScope', '$mdToast', 'AuthSrv',
+    function($scope, $location, $rootScope, $mdToast, AuthSrv) {
+
+        if ($location.search().token == null) {
+            $location.path("/login/");
+        }
 
         // Title
         $rootScope.templateName = "resetPassword";
@@ -30,13 +34,21 @@ NebulaeApp.controller('ResetCtrl', ['$scope','$location', '$rootScope', '$mdToas
         $scope.resetPassword = function () {
 
             if ($scope.user.newPasswordConfirmed == $scope.user.newPassword) {
-                AuthSrv.resetPassword({password:$scope.user.newPassword, token:$location.search().token}).then(function (response) {
+                AuthSrv.resetPassword({password:$scope.user.newPassword, token:$location.search().token}).then(function () {
                     $mdToast.show(
                         $mdToast.simple()
-                            .content('Reset OK for '+ $scope.user.email)
+                            .content('Reset OK : Please login')
                             .position($scope.getToastPosition())
                             .hideDelay(2000)
                     );
+                    $location.path("/login/");
+                },
+                function errorCallback(data) {
+                   if (data.data == 404) {
+                       $('[type="submit"]')
+                           .addClass('md-warn')
+                           .text('Reset Invalide');
+                   }
                 })
 
             }
