@@ -37,7 +37,7 @@ NebulaeApp.controller('ResetCtrl', ['$scope','$location', '$rootScope', '$mdToas
                 AuthSrv.resetPassword({password:$scope.user.newPassword, token:$location.search().token}).then(function () {
                     $mdToast.show(
                         $mdToast.simple()
-                            .content('Reset OK : Please login')
+                            .content('Password has been reset successfully')
                             .position($scope.getToastPosition())
                             .hideDelay(2000)
                     );

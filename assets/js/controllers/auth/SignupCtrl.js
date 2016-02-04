@@ -23,10 +23,11 @@ NebulaeApp.controller('SignupCtrl', ['$scope','$location', '$rootScope', '$mdToa
     };
 
     // Error message
-    $scope.resetError = function () {
+    $scope.resetError = function (error) {
+        console.log(error);
         $('[type="submit"]')
             .removeClass('md-warn')
-            .text('Login');
+            .text('Sign Up');
     };
 
     $scope.signup = function () {
@@ -34,12 +35,15 @@ NebulaeApp.controller('SignupCtrl', ['$scope','$location', '$rootScope', '$mdToa
         if ($scope.user.passwordConfirmed == $scope.user.password) {
 
             AuthSrv.register($scope.user).then(function (response) {
+                if (response == 'email already exist') {
+                    $('[type="submit"]')
+                        .addClass('md-warn')
+                        .text(response);
+                }
                 if (response.error) {
-
                     $('[type="submit"]')
                         .addClass('md-warn')
                         .text('Erreur de connexion');
-
                 }
                 if (response.auth) {
 

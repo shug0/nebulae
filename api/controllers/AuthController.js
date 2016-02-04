@@ -36,7 +36,7 @@ module.exports = require('waterlock').waterlocked({
 
         waterlock.engine.findAuth(criteria, function (err, user) {
             if (user) {
-                return res.badRequest("User already exists");
+                return res.ok('email already exist');
             } else {
                     waterlock.engine.findOrCreateAuth(criteria, attr, function (err, user) {
                     if (err)

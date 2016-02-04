@@ -32,8 +32,9 @@ NebulaeApp.service('UserSrv', function(Restangular) {
                 userWithId.put();
             });
         },
-        'deleteUser': function(user) {
-            return user.delete(user);
+        'deleteUser': function(userParam) {
+            console.log(userParam);
+            return user.remove(userParam);
         },
         'sendResetPassUser': function(email) {
             return reset.post(email);
