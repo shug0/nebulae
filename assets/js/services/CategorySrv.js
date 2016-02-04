@@ -9,6 +9,9 @@ NebulaeApp.service('CategorySrv', function(Restangular) {
         "getCategoryById": function(cat){
             return Restangular.one('category', cat).get();
         },
+        'getSourcesByCategory': function(catId){
+            return source = Restangular.one('category', catId).customGET("sources");
+        },
         'addCategory': function(catParam) {
             console.log(catParam);
             return category.post({name:catParam});

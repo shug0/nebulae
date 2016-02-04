@@ -9,6 +9,10 @@ NebulaeApp.service('SourceSrv', function(Restangular) {
         'getSourceById': function(src){
             return Restangular.one('source', src).get();
         },
+        'getSourcesByCategory': function(categoryId){
+            alert("category : "+typeof categoryId);
+            return source.get({category:categoryId});
+        },
         'addSource': function(srcParam) {
             return source.post(srcParam);
         },
