@@ -11,13 +11,42 @@ section[ng-controller="DashboardCtrl"] {
     md-card {
       padding: 10px 15px;
       transition: ease all 0.2s;
-
     }
 
   }
 
+  #addingWidget{
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    background-color: green;
+    font-size: 40px;
+  }
 }
 
 .gridster-item-moving {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+}
+
+
+md-dialog[ng-controller="ChoosingSrcCtrl"]{
+  width:80%;
+  height:80%;
+
+  #categoriesList{
+    md-list-item{
+      >*{
+        text-align: center !important;
+      }
+    }
+  }
+
+  #sourcesList{
+    > md-list-item{
+      width: 20%;
+      float: left;
+      text-align: center;
+    }
+
+  }
 }
