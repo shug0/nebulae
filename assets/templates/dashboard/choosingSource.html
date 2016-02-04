@@ -1,0 +1,36 @@
+<md-dialog aria-label="Choose a source"  ng-controller="ChoosingSrcCtrl" ng-cloak>
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Choose a source</h2>
+            <span flex></span>
+        <!--
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        -->
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div class="md-dialog-content" layout="row">
+
+            <div id="categoriesList" flex="20">
+                <md-list-item class="md-2-line" ng-click="refreshSources(0)">
+                    All categories
+                </md-list-item>
+                <md-list-item class="md-2-line" ng-repeat="category in allCategories" ng-click="refreshSources(category.id)">
+                    {{category.name}}
+                </md-list-item>
+            </div>
+
+            <div id="sourcesList" flex="80">
+                <md-list-item class="md-2-line" ng-repeat="source in sourcesByCategories" ng-click="refreshFunctions(source.id)">
+                    <span>{{source.name}}</span>
+                </md-list-item>
+            </div>
+
+        </div>
+    </md-dialog-content>
+
+</md-dialog>

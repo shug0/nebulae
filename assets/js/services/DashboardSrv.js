@@ -1,5 +1,7 @@
 NebulaeApp.service('DashboardSrv', function(Restangular) {
     var
+        userDashboards = [],
+        currentDashboard = {},
         dashboard      =   Restangular.all('dashboard');
 
     return {
