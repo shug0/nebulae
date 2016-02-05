@@ -24,7 +24,6 @@ NebulaeApp.controller('SignupCtrl', ['$scope','$location', '$rootScope', '$mdToa
 
     // Error message
     $scope.resetError = function (error) {
-        console.log(error);
         $('[type="submit"]')
             .removeClass('md-warn')
             .text('Sign Up');
