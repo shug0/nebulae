@@ -18,7 +18,7 @@ NebulaeApp.controller('BrickCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 'Sourc
                     $scope.currentCategory = response.name ;
                     $scope.currentCatSrc = response.sources ;
                 });
-            } else{
+            }else{
                 $scope.currentCategory = "" ;
             }
         };
