@@ -17,7 +17,7 @@
 
             <div id="categoriesList" flex="20">
                 <md-list-item class="md-2-line" ng-click="refreshSources(0)">
-                    All categories
+                    <span>All categories</span>
                 </md-list-item>
                 <md-list-item class="md-2-line" ng-repeat="category in allCategories" ng-click="refreshSources(category.id)">
                     {{category.name}}

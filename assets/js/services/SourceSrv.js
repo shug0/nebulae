@@ -1,5 +1,6 @@
 NebulaeApp.service('SourceSrv', function(Restangular) {
-    var source    =   Restangular.all('source')
+    var source    =   Restangular.all('source'),
+        currentSource = {} ;
 
     return {
 
@@ -18,15 +19,15 @@ NebulaeApp.service('SourceSrv', function(Restangular) {
         },
         'putSource': function(src) {
             source.getList().then(function(sources) {
-                var userWithId = _.find(sources, function(theSrc) {
+                var sourceWithId = _.find(sources, function(theSrc) {
                     return theSrc.id === src.id;
                 });
                 console.log(src.optionslist)
-                if(src.name!=""){ userWithId.name = src.name };
-                if(src.description!=""){ userWithId.description = src.description };
-                if(src.enabled!=""){ userWithId.enabled = src.enabled };
-                if(src.optionslist!={}){ userWithId.optionslist = src.optionslist };
-                userWithId.put();
+                if(src.name!=""){ sourceWithId.name = src.name };
+                if(src.description!=""){ sourceWithId.description = src.description };
+                if(src.enabled!=""){ sourceWithId.enabled = src.enabled };
+                if(src.optionslist!={}){ sourceWithId.optionslist = src.optionslist };
+                sourceWithId.put();
             });
         },
         'deleteSource': function(src) {
