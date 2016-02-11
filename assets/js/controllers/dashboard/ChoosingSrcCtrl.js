@@ -1,7 +1,7 @@
 'use strict';
 
-NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', '$mdSidenav', 'SourceFunctionSrv',
-    function ($scope, CategorySrv, SourceSrv, $mdSidenav, SourceFunctionSrv) {
+NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', '$mdSidenav', 'SourceFunctionSrv', 'WidgetSrv', 'DashboardSrv',
+    function ($scope, CategorySrv, SourceSrv, $mdSidenav, SourceFunctionSrv, WidgetSrc, DashboardSrv) {
 // , $mdSidenav
         $scope.sourceChoose = false ;
 
@@ -40,6 +40,7 @@ NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 
         /******* Sidenav *******/
         $scope.isSidenavOpen = false ;
         $scope.theFunction = {} ;
+        $scope.widget = {} ;
         $scope.openFunction = function(functionId){
             SourceFunctionSrv.getFunctionById(functionId).then(function(functionFound){
                 $scope.theFunction = functionFound.plain();
@@ -48,10 +49,21 @@ NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 
             $mdSidenav('right').toggle();
         };
 
+    /*
         $scope.$watch("isSidenavOpen",function(newValue,oldValue){
 
             if(!$mdSidenav('right').isOpen())
                 $scope.theFunction = {} ;
         });
+    */
+        $scope.addWidget = function(){
+            $scope.widget.dashboard = DashboardSrv.currentDashboard.id ;
+
+            WidgetSrc.addWidget($scope.widget).then(function(responseWidget){
+               var newWidget = responseWidget.plain();
+                console.log("Widget ajouté !!!");
+                console.log("Id : "+newWidget.id+" - Title ! "+newWidget.title)
+            });
+        };
 
     }]);

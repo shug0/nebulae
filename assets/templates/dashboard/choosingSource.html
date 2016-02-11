@@ -31,6 +31,7 @@
             </div>
             <div ng-show="sourceChoose" id="functionsList" flex="80">
                 <md-toolbar md-scroll-shrink>
+                   <!-- <ng-md-icon icon="keyboard return" size="34"></ng-md-icon> -->
                     <div class="md-toolbar-tools">{{sourceName}}</div>
                 </md-toolbar>
                 <md-list-item class="md-2-line" ng-repeat="function in functionsList" ng-click="openFunction(function.id)">
@@ -43,14 +44,20 @@
                         <span>{{theFunction.description}}</span>
                         <div ng-if="theFunction.parameters!=={}">
                             <h5>Paramètres</h5>
-                            <div ng-repeat="data in theFunction.parameters.datas">
+                            <form ng-submit="addWidget()">
                                 <md-input-container class="md-block">
-                                    <label>{{data.label}}</label>
-                                    <input type="{{data.type}}" ng-model="p.url">
+                                    <label>Title</label>
+                                    <input type="text" ng-model="widget.title">
                                 </md-input-container>
-                            </div>
+                                <div ng-repeat="data in theFunction.parameters.datas">
+                                    <md-input-container class="md-block">
+                                        <label>{{data.label}}</label>
+                                        <input type="{{data.type}}" ng-model="widget.config" ng-required="data.required">
+                                    </md-input-container>
+                                </div>
+                                <md-button class="md-accent md-raised" type="submit">Add widget</md-button>
+                            </form>
                         </div>
-                        <md-button>Add</md-button>
                     </md-content>
                 </md-sidenav>
 

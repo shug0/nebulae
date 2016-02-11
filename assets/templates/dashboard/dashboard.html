@@ -11,20 +11,18 @@
 
     <div flex="95" gridster="gridsterOpts">
 
-        <md-card gridster-item="widget" ng-repeat="widget in dashboard.widgets">
+        <md-card gridster-item="widget" ng-repeat="widget in widgetsDashboard">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{widget.title}}</span>
                     <div ng-switch="widget.status">
                         <div ng-switch-when="true">
-                            <ng-include src="'/templates/dashboard/widgets_templates/'+widget.pattern.template"></ng-include>
+                            <ng-include src="'/templates/dashboard/widgets_templates/'+widget.pattern"></ng-include>
                         </div>
                         <div ng-switch-default>
                             <ng-include src="'/templates/dashboard/widgets_templates/loading.html'"></ng-include>
                         </div>
                     </div>
-
-
                 </md-card-title-text>
             </md-card-title>
         </md-card>

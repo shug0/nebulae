@@ -11,20 +11,28 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
         $scope.gridsterOpts = {
             margins: [20, 20]
         };
-        console.log("salt");
+
+        $scope.widgetsDashboard = [] ;
 
         // Get all dashboard's user
+/*        DashboardSrv.getDashboardsByUserTwo($rootScope.sessionUser.idUser).then(function(allDashboardsResponse){
+            var allDashboards = allDashboardsResponse.plain();
+            console.log(allDashboards)
+        });
+  */
         DashboardSrv.getDashboardsByUser($rootScope.sessionUser.idUser).then(function(allDashboardsResponse){
             var allDashboards = allDashboardsResponse.plain();
-            if(allDashboards.length==0)
-                return false ;
-
+            console.log(allDashboards)
+            if(allDashboards.length==0) {
+                return false;
+            }
             DashboardSrv.userDashboards = allDashboards ;
             $scope.allDashboards = allDashboards ;
             DashboardSrv.currentDashboard = allDashboards[0] ;
             $scope.loadDashboard(allDashboards[0]);
         });
 
+        // Open popup for choosing new Widget
         $scope.choosingWidget = function(ev) {
             $mdDialog.show({
                 templateUrl: 'templates/dashboard/choosingSource.html',
@@ -41,31 +49,37 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
 
 
         $scope.loadDashboard = function(dashboard){
-            console.log("The fucking first dashboard on the fucking user : "+dashboard.name);
+            // We delete all widgets present
+            $scope.widgetsDashboard = [] ;
 
-     /*       for (var i = 0; i < dashboard.widgets.length; i++) {
+            for (var i = 0; i < dashboard.widgets.length; i++) {
 
                 (function (i) {
                     APISrv.getWidgetPattern(dashboard.widgets[i].pattern).then(
                         function (widgetPattern) {
-
+                            widgetPattern = widgetPattern.plain();
                             SourceSrv.getSourceById(widgetPattern.sourceFunction.source).then(
                                 function(source) {
-
+                                    source = source.plain();
                                     APISrv.getDataFromAPI(widgetPattern, source).then(
                                         function(data) {
                                             console.log(data.plain());
+                                            console.log($scope.widgetsDashboard[i].status);
+                                            $scope.widgetsDashboard[i].status = true ;
                                         }
                                     );
-                                    //dashboard.widgets[i].pattern = widgetPattern;
-                                    //dashboard.widgets[i].status = true;
+                                    $scope.widgetsDashboard[i] = {
+                                        title:dashboard.widgets[i].title,
+                                        status:false,
+                                        pattern:widgetPattern.template
+                                    };
                                 }
                             )
                         }
                     )
                 })(i);
             }
-    */
+
 
 
        }; // End loadDashboard function...
