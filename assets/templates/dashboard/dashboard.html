@@ -9,7 +9,7 @@
         </a>
     </aside>
 
-    <div flex="95" gridster="gridsterOpts">
+    <div flex="95" gridster="gridsterOpts" gridster-changed="updated()">
 
         <md-card gridster-item="widget" ng-repeat="widget in widgetsDashboard">
             <md-card-title>
@@ -17,7 +17,9 @@
                     <span class="md-headline">{{widget.title}}</span>
                     <div ng-switch="widget.status">
                         <div ng-switch-when="true">
-                            <ng-include src="'/templates/dashboard/widgets_templates/'+widget.pattern"></ng-include>
+                            <div ng-controller="WidgetCtrl" ng-init="datas=widget.datas">
+                                <ng-include src="'/templates/dashboard/widgets_templates/'+widget.pattern"></ng-include>
+                            </div>
                         </div>
                         <div ng-switch-default>
                             <ng-include src="'/templates/dashboard/widgets_templates/loading.html'"></ng-include>

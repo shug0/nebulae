@@ -4,7 +4,7 @@ NebulaeApp.service('WidgetSrv', function(Restangular) {
     return {
 
         'addWidget': function(widget){
-            console.log(widget)
+            console.log(widget);
             return widget.post(widget);
         }
     /*
