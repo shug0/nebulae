@@ -12,7 +12,11 @@ module.exports = {
         title: 'string',
         pattern: {model: 'widgetPattern'},
         gridster: "json",
-        dashboard: { model: 'dashboard' }
+        dashboard: { model: 'dashboard' },
+        design: {
+            type: "json",
+            defaultsTo: null
+        }
 
     }
 

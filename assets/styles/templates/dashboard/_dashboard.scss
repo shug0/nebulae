@@ -11,6 +11,33 @@ section[ng-controller="DashboardCtrl"] {
     md-card {
       padding: 10px 15px;
       transition: ease all 0.2s;
+
+      &:hover div.widget_settings{
+        display: block;
+      }
+      div.widget_settings{
+        display: none;
+        width: 48px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 5px 5px 0 0;
+        
+        >*{
+          float: left;
+          svg {
+            fill: $grey500;
+            &:hover{
+              fill: $grey800;
+            }
+          }
+        }
+      }
+
+      h4.md-headline{
+        text-align: center;
+        margin: 10px;
+      }
     }
 
   }

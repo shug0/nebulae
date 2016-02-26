@@ -3,9 +3,8 @@ NebulaeApp.service('WidgetSrv', function(Restangular) {
 
     return {
 
-        'addWidget': function(widget){
-            console.log(widget);
-            return widget.post(widget);
+        'addWidget': function(theWidget){
+            return widget.post(theWidget);
         }
     /*
         ,

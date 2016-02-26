@@ -1,8 +1,11 @@
 <md-content>
-
-    <span>{{datas.name}}</span><br/>
+<!--
     <span>Lattitude : {{datas.coord.lat}}</span><br/>
-    <span>Longitude : {{datas.coord.lon}}</span><br/>
-    <span>Weather : {{datas.weather[0].main}}</span><br/>
+    <span>Longitude : {{datas.coord.lon}}</span><br/> -->
+    <span>Général : {{datas.weather[0].main}}</span><br/>
+    <span>Température : {{datas.main.temp}} °K</span><br/>
+    <br/>
+    <span>Humidité : {{datas.main.humidity}} %</span><br/>
+    <span>Pression : {{datas.main.pressure}} hpa</span><br/>
 
 </md-content>

@@ -13,7 +13,10 @@ module.exports = {
       required: true
     },
 
-    widgets: {collection: 'widget',via: 'dashboard'},
+    widgets: {
+      collection: 'widget',
+      via: 'dashboard'
+    },
 
     widgets_config: {
       type: "json",

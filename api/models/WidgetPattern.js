@@ -27,11 +27,6 @@ module.exports = {
             required: true
         },
 
-        design: {
-            type: "json",
-            defaultsTo: null
-        },
-
         widgets: {
             collection: 'widget',
             via: 'pattern'

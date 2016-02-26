@@ -49,20 +49,19 @@ NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 
             $mdSidenav('right').toggle();
         };
 
-    /*
-        $scope.$watch("isSidenavOpen",function(newValue,oldValue){
-
-            if(!$mdSidenav('right').isOpen())
-                $scope.theFunction = {} ;
-        });
-    */
         $scope.addWidget = function(){
             $scope.widget.dashboard = DashboardSrv.currentDashboard.id ;
+            $scope.widget.pattern = 2 ; // Default id pattern
 
             WidgetSrc.addWidget($scope.widget).then(function(responseWidget){
                var newWidget = responseWidget.plain();
-                console.log("Widget ajouté !!!");
-                console.log("Id : "+newWidget.id+" - Title ! "+newWidget.title)
+                console.log(DashboardSrv.currentDashboard);
+                console.log(newWidget);
+                if(typeof DashboardSrv.currentDashboard.widgets == "undefined"){
+                    DashboardSrv.currentDashboard.widgets = newWidget ;
+                }else{
+                    DashboardSrv.currentDashboard.widgets.push(newWidget);
+                }
             });
         };
 

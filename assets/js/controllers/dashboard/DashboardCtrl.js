@@ -5,10 +5,9 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
 
         // Title
         $rootScope.templateName = "dashboard";
-
         $scope.templateState = "loading";
-
         $scope.gridsterOpts = {
+            //columns:10,
             margins: [20, 20]
         };
 
@@ -30,7 +29,6 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
 
         // Open popup for choosing new Widget
         $scope.choosingWidget = function(ev) {
-            //$scope.widgetsDashboard.push({title:"coucou",status:false});
             $mdDialog.show({
                 templateUrl: 'templates/dashboard/choosingSource.html',
                 parent: angular.element(document.body),
@@ -39,15 +37,33 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
                 fullscreen: true
             });
         };
-
         $scope.cancel = function(){
             $mdDialog.cancel();
         };
 
+        // When new dashboard insert
+        $scope.$watch(function(){return DashboardSrv.userDashboards;}, function (newValue) {
+            $scope.allDashboards = newValue ;
+            $scope.cancel();
+        }, true);
+
+        // When current dashboard change
+        $scope.$watch(function(){return DashboardSrv.currentDashboard;}, function (newValue) {
+            if(DashboardSrv.currentDashboard=={} || typeof newValue == "undefined")
+                return false;
+
+            $scope.crtdashboard = newValue ;
+            $scope.widgetsDashboard = newValue.widgets ;
+            $scope.cancel();
+        }, true);
+
         $scope.loadDashboard = function(dashboard){
             DashboardSrv.currentDashboard = dashboard ;
+            $scope.crtdashboard = dashboard ;
             // We delete all widgets present
             $scope.widgetsDashboard = [] ;
+            if(typeof dashboard.widgets=="undefined")
+                return false;
 
             for (var i = 0; i < dashboard.widgets.length; i++) {
 
@@ -60,20 +76,18 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
                                     source = source.plain();
                                     APISrv.getDataFromAPI(widgetPattern, source).then(
                                         function(data) {
-                                           // WidgetSrc.allDatasWidgets[i] = data.plain();
-                                           // console.log(WidgetSrc.allDatasWidgets[i]);
+                                            // All datas loaded...
+                                            $scope.widgetsDashboard[i].pattern = widgetPattern.template ;
                                             $scope.widgetsDashboard[i].status = true ;
                                             $scope.widgetsDashboard[i].datas = data.plain() ;
                                         }
                                     );
                                     $scope.widgetsDashboard[i] = {
                                         title:dashboard.widgets[i].title,
+                                        index:i,
+                                        idWidget:dashboard.widgets[i].id,
                                         status:false,
-                                        pattern:widgetPattern.template,
-                                        col:2,
-                                        row:0,
-                                        sizeX:3,
-                                        sizeY:2
+                                        pattern:"loading.html"
                                     };
                                 }
                             )
@@ -81,6 +95,24 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
                     )
                 })(i);
             }
-
        }; // End loadDashboard function...
+
+        $scope.addDashboard = function(ev){
+            $mdDialog.show({
+                templateUrl: 'templates/dashboard/addDashboard.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true
+            });
+        };
+
+        $scope.editWidget = function(widgetId){
+            alert("Edition du Widget !")
+        };
+
+        $scope.removeWidget = function(index,widgetId){
+            $scope.widgetsDashboard.splice(index,1);
+        }
+
    }]);

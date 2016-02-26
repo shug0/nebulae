@@ -1,20 +1,25 @@
 
 <section layout="row" ng-controller="DashboardCtrl">
 
-    <h4>{{dashboard.name}}</h4>
+    <h4>{{crtdashboard.name}}</h4>
 
     <aside flex="5">
         <a href="" ng-repeat="dashboard in allDashboards" ng-click="loadDashboard(dashboard)">
-            <ng-md-icon icon="people_outline" size="34"></ng-md-icon>
+            <ng-md-icon icon="dashboard" size="34"></ng-md-icon>
         </a>
+        <md-button class="md-primary md-raise" ng-click="addDashboard()">New</md-button>
     </aside>
 
     <div flex="95" gridster="gridsterOpts" gridster-changed="updated()">
 
         <md-card gridster-item="widget" ng-repeat="widget in widgetsDashboard">
+            <div class="widget_settings">
+                <ng-md-icon ng-click="editWidget()" icon="settings" size="24"></ng-md-icon>
+                <ng-md-icon ng-click="removeWidget(widget.index,widget.idWidget)" icon="close" size="24"></ng-md-icon>
+            </div>
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">{{widget.title}}</span>
+                    <h4 class="md-headline">{{widget.title}}</h4>
                     <div ng-switch="widget.status">
                         <div ng-switch-when="true">
                             <div ng-controller="WidgetCtrl" ng-init="datas=widget.datas">

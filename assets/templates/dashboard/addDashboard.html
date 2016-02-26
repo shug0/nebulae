@@ -1,0 +1,22 @@
+<md-dialog aria-label="New dashboard" ng-controller="AddindDashboardCtrl" ng-cloak>
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>New dashboard</h2>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div class="md-dialog-content" layout="row">
+
+            <md-input-container class="md-block">
+                <label>Name</label>
+                <input type="text" ng-model="newDashboard" ng-required="1">
+            </md-input-container>
+
+            <md-button ng-click="postDashboard()">Insert</md-button>
+
+        </div>
+    </md-dialog-content>
+
+</md-dialog>
