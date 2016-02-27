@@ -38,7 +38,7 @@ module.exports.routes = {
   },
   */
 
-  '/index': {
+  '/site': {
     controller: 'IndexController',
     action: 'index'
   }
