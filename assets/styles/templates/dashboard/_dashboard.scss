@@ -33,8 +33,14 @@ md-dialog[ng-controller="ChoosingSrcCtrl"]{
   width:80%;
   height:80%;
 
+  md-dialog-content{
+    height: 100%;
+  }
+
   #categoriesList{
     md-list-item{
+      padding:0;
+      min-height:60px !important;
       >*{
         text-align: center !important;
       }
@@ -45,8 +51,18 @@ md-dialog[ng-controller="ChoosingSrcCtrl"]{
     > md-list-item{
       width: 20%;
       float: left;
-      text-align: center;
+      text-align: center !important;
     }
-
   }
+
+  #functionsList{
+    height: 100%;
+    > md-list-item{
+      width: 25%;
+      float: left;
+      height: 100px;
+      margin: 3% auto;
+    }
+  }
+
 }

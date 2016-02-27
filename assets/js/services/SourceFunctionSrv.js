@@ -16,7 +16,7 @@ NebulaeApp.service('SourceFunctionSrv', function(Restangular) {
             f.getList().then(function(functions){
                 var functionWithId = _.find(functions, function(theFunct){
                     return theFunct.id === func.id ;
-                })
+                });
 
                 if(func.name!=""){ functionWithId.name = func.name }
                 if(func.description!=""){ functionWithId.description = func.description }
