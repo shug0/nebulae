@@ -1,13 +1,13 @@
 'use strict';
 
-NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', '$mdSidenav', 'SourceFunctionSrv', 'WidgetSrv', 'DashboardSrv',
-    function ($scope, CategorySrv, SourceSrv, $mdSidenav, SourceFunctionSrv, WidgetSrc, DashboardSrv) {
+NebulaeApp.controller('ChoosingSrcCtrl', ['$scope','CategorySrv', 'SourceSrv', '$mdSidenav', 'SourceFunctionSrv', 'WidgetSrv', 'DashboardSrv','PatternSrv','WidgetSrv',
+    function ($scope,CategorySrv, SourceSrv, $mdSidenav, SourceFunctionSrv, WidgetSrc, DashboardSrv,PatternSrv,WidgetSrv) {
 // , $mdSidenav
         $scope.sourceChoose = false ;
 
         CategorySrv.getCategories().then(function(categoriesFound){
             $scope.allCategories = categoriesFound.plain();
-            console.log($scope.allCategories);
+            //console.log($scope.allCategories);
         });
 
         $scope.refreshSources = function(categoryId){
@@ -27,12 +27,28 @@ NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 
 
         $scope.refreshSources(0);
 
-        $scope.refreshFunctions = function(sourceId){
+        $scope.patternsList = [] ;
+        $scope.refreshPatterns = function(sourceId){
             SourceSrv.getSourceById(sourceId).then(function(sourceFound){
                 var theSrc = sourceFound.plain();
-                $scope.sourceName = theSrc.name ;
-                $scope.functionsList = theSrc.functions ;
-                $scope.sourceChoose = true ;
+                SourceSrv.currentSource = theSrc ;
+                //console.log(sourceFound);
+                angular.forEach(theSrc.functions, function(value, key) {
+                    SourceFunctionSrv.getFunctionById(value.id).then(function(theFunction){
+                        var func = theFunction.plain();
+                        console.log(func);
+                        SourceFunctionSrv.getPatternsByFunction(func.id).then(function(allPatterns){
+                            var patterns = allPatterns.plain();
+                            angular.forEach(patterns,function(value,key){
+                                value.function = func.id ;
+                                $scope.patternsList.push(value);
+                            });
+                            //console.log($scope.patternsList);
+                            $scope.sourceName = theSrc.name ;
+                            $scope.sourceChoose = true ;
+                        });
+                    });
+                });
             });
         };
 
@@ -41,27 +57,33 @@ NebulaeApp.controller('ChoosingSrcCtrl', ['$scope', 'CategorySrv', 'SourceSrv', 
         $scope.isSidenavOpen = false ;
         $scope.theFunction = {} ;
         $scope.widget = {} ;
-        $scope.openFunction = function(functionId){
+        $scope.openFunction = function(functionId,patternId){
             SourceFunctionSrv.getFunctionById(functionId).then(function(functionFound){
+                PatternSrv.currentIdPattern = patternId ;
                 $scope.theFunction = functionFound.plain();
                 console.log($scope.theFunction)
             });
             $mdSidenav('right').toggle();
         };
 
+        $scope.preferences = {} ;
         $scope.addWidget = function(){
             $scope.widget.dashboard = DashboardSrv.currentDashboard.id ;
-            $scope.widget.pattern = 2 ; // Default id pattern
+            $scope.widget.pattern = PatternSrv.currentIdPattern ;
+            $scope.widget.preferences = [] ;
+
+            angular.forEach($scope.preferences, function(value, key) {
+                $scope.widget.preferences.push({name:key,value:value});
+            });
 
             WidgetSrc.addWidget($scope.widget).then(function(responseWidget){
                var newWidget = responseWidget.plain();
-                console.log(DashboardSrv.currentDashboard);
-                console.log(newWidget);
                 if(typeof DashboardSrv.currentDashboard.widgets == "undefined"){
                     DashboardSrv.currentDashboard.widgets = newWidget ;
                 }else{
                     DashboardSrv.currentDashboard.widgets.push(newWidget);
                 }
+                WidgetSrv.newWidget = true ;
             });
         };
 

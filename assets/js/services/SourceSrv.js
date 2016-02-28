@@ -32,6 +32,10 @@ NebulaeApp.service('SourceSrv', function(Restangular) {
         },
         'deleteSource': function(src) {
             return source.delete(src);
+        },
+        'getWidgetsBySource': function (idSrc) {
+            console.log("dans le service");
+            return Restangular.all('sourceFunction').customGET("source",idSrc);
         }
 
     }

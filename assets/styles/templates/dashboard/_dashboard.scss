@@ -62,11 +62,15 @@ md-dialog[ng-controller="ChoosingSrcCtrl"]{
 
   md-dialog-content{
     height: 100%;
+    >div{
+      padding:0;
+    }
   }
 
   #categoriesList{
     md-list-item{
-      padding:0;
+      padding:24px;
+      text-align: center !important;
       min-height:60px !important;
       >*{
         text-align: center !important;
@@ -76,19 +80,38 @@ md-dialog[ng-controller="ChoosingSrcCtrl"]{
 
   #sourcesList{
     > md-list-item{
+      margin: 20px;
       width: 20%;
       float: left;
       text-align: center !important;
+      span{
+        text-align: center;
+        width:100%;
+      }
     }
   }
 
   #functionsList{
     height: 100%;
+
+    md-toolbar{
+      background: green;
+    }
     > md-list-item{
       width: 25%;
       float: left;
       height: 100px;
       margin: 3% auto;
+
+      span{
+        text-align: center;
+        width:100%;
+      }
+    }
+    #sidenav{
+      h2{
+        text-align: center;
+      }
     }
   }
 

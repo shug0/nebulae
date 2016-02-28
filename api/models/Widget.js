@@ -16,6 +16,10 @@ module.exports = {
         design: {
             type: "json",
             defaultsTo: null
+        },
+        preferences:{
+            type: "json",
+            defaultsTo: null
         }
 
     }

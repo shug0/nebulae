@@ -1,10 +1,17 @@
 NebulaeApp.service('WidgetSrv', function(Restangular) {
-    var widget = Restangular.all('widget');
+    var widget = Restangular.all('widget'),
+        newWidget = false ;
 
     return {
 
         'addWidget': function(theWidget){
             return widget.post(theWidget);
+        },
+        'getTemplateById': function(idPattern){
+            return Restangular.one('widgetPattern', idPattern).get();
+        },
+        'deleteWidget': function(w){
+            return Restangular.one("widget", w).remove();
         }
     /*
         ,

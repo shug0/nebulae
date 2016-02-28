@@ -1,14 +1,8 @@
-<md-dialog aria-label="Choose a source"  ng-controller="ChoosingSrcCtrl" ng-cloak>
-
+<md-dialog aria-label="Choose a source" ng-controller="ChoosingSrcCtrl"  ng-cloak>
+<!-- -->
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>Choose a source</h2>
-            <span flex></span>
-        <!--
-            <md-button class="md-icon-button" ng-click="cancel()">
-                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-            </md-button>
-        -->
         </div>
     </md-toolbar>
 
@@ -25,7 +19,7 @@
             </div>
 
             <div ng-show="!sourceChoose" id="sourcesList" flex="80">
-                <md-list-item class="md-2-line" ng-repeat="source in sourcesByCategories" ng-click="refreshFunctions(source.id)">
+                <md-list-item class="md-2-line" ng-repeat="source in sourcesByCategories" ng-click="refreshPatterns(source.id)">
                     <span>{{source.name}}</span>
                 </md-list-item>
             </div>
@@ -34,25 +28,25 @@
                    <!-- <ng-md-icon icon="keyboard return" size="34"></ng-md-icon> -->
                     <div class="md-toolbar-tools">{{sourceName}}</div>
                 </md-toolbar>
-                <md-list-item class="md-2-line" ng-repeat="function in functionsList" ng-click="openFunction(function.id)">
-                    <img src="/images/functions/{{function.id}}.jpg" width="100%" height="100%">
+        <!--        <md-list-item class="md-2-line" ng-repeat="function in functionsList" ng-click="openFunction(function.id)"> -->
+                <md-list-item class="md-2-line" ng-repeat="pattern in patternsList" ng-click="openFunction(pattern.function,pattern.id)">
+                    <span>{{pattern.name}}</span>
                 </md-list-item>
 
-                <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right"  md-is-open="isSidenavOpen">
+                <md-sidenav id="sidenav" class="md-sidenav-right md-whiteframe-z2" md-component-id="right"  md-is-open="isSidenavOpen">
                     <md-content>
                         <h2>{{theFunction.name}}</h2>
                         <span>{{theFunction.description}}</span>
                         <div ng-if="theFunction.parameters!=={}">
-                            <h5>Paramètres</h5>
                             <form ng-submit="addWidget()">
                                 <md-input-container class="md-block">
-                                    <label>Title</label>
+                                    <label>Titre</label>
                                     <input type="text" ng-model="widget.title">
                                 </md-input-container>
                                 <div ng-repeat="data in theFunction.parameters.datas">
                                     <md-input-container class="md-block">
                                         <label>{{data.label}}</label>
-                                        <input type="{{data.type}}" ng-model="widget.config" ng-required="data.required">
+                                        <input type="{{data.type}}" ng-model="preferences[data.name]" ng-required="data.required">
                                     </md-input-container>
                                 </div>
                                 <md-button class="md-accent md-raised" type="submit">Add widget</md-button>

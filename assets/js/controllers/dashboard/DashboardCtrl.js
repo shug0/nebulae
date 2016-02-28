@@ -1,7 +1,7 @@
 'use strict';
 
-NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$parse', '$mdToast', 'DashboardSrv', 'APISrv', 'SourceSrv',
-    function ($scope, $mdDialog, $rootScope, $parse, $mdToast, DashboardSrv, APISrv, SourceSrv) {
+NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$parse', '$mdToast', 'DashboardSrv', 'APISrv', 'SourceSrv', 'SourceFunctionSrv','WidgetSrv',
+    function ($scope, $mdDialog, $rootScope, $parse, $mdToast, DashboardSrv, APISrv, SourceSrv, SourceFunctionSrv,WidgetSrv) {
 
         // Title
         $rootScope.templateName = "dashboard";
@@ -14,7 +14,7 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
         $scope.widgetsDashboard = [] ;
         $scope.$watch('widgetsDashboard', function(items){
             // one of the items changed
-            console.log($scope.widgetsDashboard);
+            //console.log($scope.widgetsDashboard);
         }, true);
 
         DashboardSrv.getDashboardsByUser($rootScope.sessionUser.idUser).then(function(allDashboardsResponse){
@@ -29,13 +29,13 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
 
         // Open popup for choosing new Widget
         $scope.choosingWidget = function(ev) {
-            $mdDialog.show({
-                templateUrl: 'templates/dashboard/choosingSource.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose:true,
-                fullscreen: true
-            });
+             $mdDialog.show({
+                 templateUrl: 'templates/dashboard/choosingSource.html',
+                 parent: angular.element(document.body),
+                 targetEvent: ev,
+                 clickOutsideToClose:true,
+                 fullscreen: true
+             });
         };
         $scope.cancel = function(){
             $mdDialog.cancel();
@@ -53,7 +53,46 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
                 return false;
 
             $scope.crtdashboard = newValue ;
-            $scope.widgetsDashboard = newValue.widgets ;
+
+            //console.log($scope.widgetsDashboard);
+            if(WidgetSrv.newWidget){
+                //alert('cool')
+                //$scope.loadDashboard(DashboardSrv.currentDashboard);
+
+                var i = newValue.widgets.length-1 ;
+                var lastWidget = newValue.widgets[i] ;
+                WidgetSrv.getTemplateById(lastWidget.pattern).then(function(pattern){
+                    var p = pattern.plain();
+
+                    console.log("Avant")
+                    console.log($scope.widgetsDashboard[i])
+                    APISrv.getDataFromAPI(lastWidget.preferences, SourceSrv.currentSource).then(
+                        function(data) {
+                            // All datas loaded...
+                            $scope.widgetsDashboard[i].pattern = p.template ;
+                            $scope.widgetsDashboard[i].status = true ;
+                            $scope.widgetsDashboard[i].datas = data.plain() ;
+                            console.log("Après")
+                            console.log($scope.widgetsDashboard[i])
+                            SourceSrv.currentSource = {} ;
+                        }
+                    );
+                    $scope.widgetsDashboard[i] = {
+                        title:lastWidget.title,
+                        index:i,
+                        idWidget:lastWidget.id,
+                        status:false,
+                        pattern:"loading.html"
+                    };
+                    console.log("Pendant")
+                    console.log($scope.widgetsDashboard[i])
+                    WidgetSrv.newWidget = false ;
+                });
+
+
+            }else{
+                $scope.widgetsDashboard = newValue.widgets ;
+            }
             $scope.cancel();
         }, true);
 
@@ -74,8 +113,8 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
                             SourceSrv.getSourceById(widgetPattern.sourceFunction.source).then(
                                 function(source) {
                                     source = source.plain();
-                                    APISrv.getDataFromAPI(widgetPattern, source).then(
-                                        function(data) {
+                                    APISrv.getDataFromAPI(dashboard.widgets[i].preferences, source).then(
+                                        function(data) { //console.log(data.plain());
                                             // All datas loaded...
                                             $scope.widgetsDashboard[i].pattern = widgetPattern.template ;
                                             $scope.widgetsDashboard[i].status = true ;
@@ -112,7 +151,12 @@ NebulaeApp.controller('DashboardCtrl', ['$scope', '$mdDialog', '$rootScope', '$p
         };
 
         $scope.removeWidget = function(index,widgetId){
-            $scope.widgetsDashboard.splice(index,1);
+            angular.forEach($scope.widgetsDashboard,function(value,key){
+                if(value.idWidget==widgetId){
+                    WidgetSrv.deleteWidget(widgetId);
+                    $scope.widgetsDashboard.splice(key,1);
+                }
+            });
         }
 
    }]);

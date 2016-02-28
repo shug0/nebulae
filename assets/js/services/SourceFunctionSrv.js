@@ -1,5 +1,6 @@
 NebulaeApp.service('SourceFunctionSrv', function(Restangular) {
-    var f    =   Restangular.all('sourceFunction')
+    var f    =   Restangular.all('sourceFunction'),
+        currentFunction = {id:-1};
 
     return {
 
@@ -8,6 +9,9 @@ NebulaeApp.service('SourceFunctionSrv', function(Restangular) {
         },
         'getFunctionById': function(func){
             return Restangular.one('sourceFunction', func).get();
+        },
+        'getPatternsByFunction': function(funcId){
+            return Restangular.all('widgetPattern').customGET('',{sourceFunction:funcId});
         },
         'addFunction': function(funcParam) {
             return f.post(funcParam);
