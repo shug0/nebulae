@@ -7,7 +7,6 @@ logs
 .tmp
 .idea
 assets/bower_components
-assets/videos
 # Runtime data
 pids
 *.pid

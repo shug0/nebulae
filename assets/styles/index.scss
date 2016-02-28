@@ -46,7 +46,8 @@ main#container {
         position: absolute;
         height: auto;
         width: 100%;
-        bottom: 0;
+        top: 50%;
+        margin-top: -25%;
       }
 
     }
@@ -188,6 +189,23 @@ footer {
 
   }
 
+}
+
+@media only screen and ( max-width: 1199px) {
+  main#container {
+
+    section#apercu {
+
+      .background {
+
+        #video {
+          margin-top: 0;
+          top:0;
+          bottom: 0;
+        }
+      }
+    }
+  }
 }
 
 
