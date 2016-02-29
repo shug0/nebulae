@@ -1,6 +1,6 @@
 <md-content layout="row" ng-controller="BrickCtrl" ng-if="selectedTab == 'brick'">
 
-    <div id="categories" flex="20">
+    <div id="categories" ng-controller="CategoriesCtrl" flex="20">
 
         <div class="subheader_container">
             <md-subheader class="md-primary">Categories</md-subheader>
@@ -8,7 +8,7 @@
         </div>
 
         <div layout="row" ng-if="inputCat">
-            <md-input-container flex="90" class="md-block">
+            <md-input-container flex="95" class="md-block">
                 <label>New category</label>
                 <input type="text" ng-model="newCat">
             </md-input-container>
@@ -18,38 +18,31 @@
                 </md-button>
             </div>
         </div>
-        <ul name="listCategories">
-            <li ng-repeat="category in categories" ng-click="changeCategory(category.id);"
-                ng-class="{listshadow: hoverCat}"
-                ng-mouseenter="hoverCat = true"
-                ng-mouseleave="hoverCat = false">
-                <div>
-                    <span>{{category.name}}</span>
-                </div>
-                <ul name="listSources" ng-if="currentCategory==category.name" ng-animate="'animate'">
-                    <li ng-click="changeSource(src.id)" ng-repeat="src in currentCatSrc"
-                        ng-class="{hoverSrc: hoverSrc}"
-                        ng-mouseenter="hoverSrc = true"
-                        ng-mouseleave="hoverSrc = false">
-                        <span>{{src.name}}</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+
+        <md-list-item class="md-2-line" ng-repeat="category in categories" ng-click="changeCategory(category);">
+            <div class="md-list-item-text">
+                <span>{{category.name}}</span>
+            </div>
+        </md-list-item>
     </div>
 
     <div id="partSource" layout="column" flex="60">
 
-        <div flex ng-show="currentSource.id!=0">
+        <div ng-show="currentPart=='sources'">
+            <ng-include src="'/templates/admin/brick/sources.html'" ></ng-include>
+        </div>
+
+        <div flex ng-show="currentPart=='source'">
             <ng-include src="'/templates/admin/brick/source.html'" ></ng-include>
         </div>
-        <div flex ng-show="currentFunction.id!=0">
+
+        <div flex ng-show="currentPart=='functions'">
             <ng-include src="'/templates/admin/brick/function/functionForm.html'" ></ng-include>
         </div>
 
     </div>
 
-    <div id="functionsListContainer" flex="20">
+    <div id="functionsListContainer" ng-controller="FunctionsCtrl" flex="20">
         <ng-include src="'/templates/admin/brick/functionsList.html'" ></ng-include>
     </div>
 

@@ -31,8 +31,7 @@ module.exports = {
       source: {model: 'source'},
 
     parameters: {
-      type: "json",
-      required: true
+      type: "json"
     },
 
     widgets: {

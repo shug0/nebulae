@@ -1,0 +1,12 @@
+<md-content ng-controller="SourcesCtrl">
+    <md-list-item class="md-2-line" ng-click="changeSource({})">
+        <div class="md-list-item-text">
+            <span>Add</span>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-repeat="source in sources" ng-click="changeSource(source)">
+        <div class="md-list-item-text">
+            <span>{{source.name}}</span>
+        </div>
+    </md-list-item>
+</md-content>

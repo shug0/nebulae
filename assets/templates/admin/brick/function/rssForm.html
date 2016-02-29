@@ -1,5 +1,6 @@
 <md-content>
-
+    <md-button class="md-raised md-primary" ng-click="addRssParameter()">Ajouter une page</md-button>
+    <md-button ng-click="deleteRssPage()" class="md-raised md-warn" aria-label="Insert Drive">Supprimer une page</md-button>
     <md-input-container class="md-block">
         <label>Url Principale</label>
         <input type="text" ng-model="currentFunction.parameters.main">
@@ -12,6 +13,5 @@
             <input type="text" ng-model="p.url">
         </md-input-container>
     </div>
-    <md-button class="md-raised md-primary" ng-click="addRssParameter()">Ajouter une page</md-button>
-    <md-button ng-click="deleteRssPage()" class="md-raised bg_red" aria-label="Insert Drive">Supprimer une page</md-button>
+
 </md-content>

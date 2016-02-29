@@ -42,10 +42,10 @@ md-content[ng-controller="BrickCtrl"] {
     }
   }
 
-  > div{
+  /*> div{
     border: red 1px solid;
     max-height: 1500px;
-  }
+  }*/
 
   .subheader_container{
     md-subheader{
@@ -60,8 +60,22 @@ md-content[ng-controller="BrickCtrl"] {
   }
 
   #categories,
-  #partSource{
+  #partSource {
     height: 100%;
+  }
+  #partSource{
+    md-list-item{
+     display: inline-block;
+      width: 25%;
+      float: left;
+      height: 100px;
+      margin: 10px;
+
+      span{
+        text-align: center;
+        width:100%;
+      }
+    }
   }
   #categories{
 
@@ -82,9 +96,9 @@ md-content[ng-controller="BrickCtrl"] {
 
   #partSource{
 
-    > div{
+    /*> div{
       border:green solid 1px;
-    }
+    }*/
 
     h4{
       text-align: center;

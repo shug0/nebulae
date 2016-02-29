@@ -1,4 +1,4 @@
-<div id="functionContainer">
+<div id="functionContainer" ng-controller="FunctionCtrl">
 
 <div layout="row">
     <md-input-container class="md-block" flex="70">
@@ -20,7 +20,20 @@
         <input ng-model="currentFunction.description">
     </md-input-container>
 
+    <md-input-container>
+        <label>Template</label>
+        <md-select ng-model="patternID">
+            <md-option ng-repeat="layout in allTemplates" value="{{layout.id}}">
+                {{layout.name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+
     <div ng-include src="optionType.url"></div>
 
-    <md-button class="md-raised md-primary" ng-click="saveFunction()">Valider</md-button>
+    <div>
+        <md-button ng-click="" class="md-raised md-warn">Supprimer</md-button>
+        <md-button class="md-raised md-primary" ng-click="saveFunction()">{{action}}</md-button>
+    </div>
+
 </div>

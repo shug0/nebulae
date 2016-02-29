@@ -1,31 +1,41 @@
-<div id="srcContainer">
+<div id="srcContainer" ng-controller="SourceCtrl">
 
-    <h4>{{currentSource.name}}</h4>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom</label>
+        <input ng-model="currentSource.name">
+    </md-input-container>
     <br>
-    <span>{{currentSource.description}}</span>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Description</label>
+        <input ng-model="currentSource.description">
+    </md-input-container>
     <br>
     <div id="enableSwitchSrc">
         <label>Actif </label>
         <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="currentSource.enabled"></md-switch>
     </div>
     <br>
-
     <div>
         <label>Paramètres</label>
+        <md-button ng-click="addSrcParam()" class="md-raised md-primary">Ajouter</md-button>
         <br>
         <div layout-gt-sm="row" ng-repeat="opt in currentSource.optionslist" >
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-block" flex="20">
                 <label>Nom</label>
                 <input ng-model="opt.name">
             </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-block" flex="80">
                 <label>Valeur</label>
                 <input ng-model="opt.value">
             </md-input-container>
+            <md-button style="display: none;width:50px;height:50px;-webkit-border-radius: 50px;-moz-border-radius: 50px;border-radius: 50px;" flex="20" ng-click="" class="little_btn bg_blue md-raised md-primary">+</md-button>
         </div>
 
-        <md-button ng-click="addSrcParam()" class="md-raised md-primary">Ajouter</md-button>
-        <md-button ng-click="saveSource()" class="md-raised md-primary">Valider</md-button>
-
     </div>
+    <div>
+        <md-button ng-click="" class="md-raised md-warn">Supprimer</md-button>
+        <md-button ng-click="addFunction()" class="md-raised md-accent">Ajouter fonction</md-button>
+        <md-button ng-click="saveSource()" class="md-raised md-primary">{{action}}</md-button>
+    </div>
+
 </div>

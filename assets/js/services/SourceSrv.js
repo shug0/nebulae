@@ -22,7 +22,7 @@ NebulaeApp.service('SourceSrv', function(Restangular) {
                 var sourceWithId = _.find(sources, function(theSrc) {
                     return theSrc.id === src.id;
                 });
-                console.log(src.optionslist)
+
                 if(src.name!=""){ sourceWithId.name = src.name };
                 if(src.description!=""){ sourceWithId.description = src.description };
                 if(src.enabled!=""){ sourceWithId.enabled = src.enabled };

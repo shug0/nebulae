@@ -1,6 +1,6 @@
 NebulaeApp.service('CategorySrv', function(Restangular) {
     var category    =   Restangular.all('category'),
-        currentCategory = {} ;
+        currentCategory = {id:-1} ;
 
     return {
 

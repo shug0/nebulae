@@ -1,9 +1,9 @@
 <div class="subheader_container">
     <md-subheader class="md-primary">Fonctionalités</md-subheader>
-    <md-button ng-click="addFunction()" class="little_btn bg_blue md-raised md-primary">+</md-button>
+    <md-button ng-click="changeFunction({})" class="little_btn bg_blue md-raised md-primary">+</md-button>
 </div>
 
-<md-list-item class="md-2-line" ng-repeat="function in currentFunctions" ng-click="changeFunction(function.id)">
+<md-list-item class="md-2-line" ng-repeat="function in functions" ng-click="changeFunction(function)">
     <div class="md-list-item-text">
         <span>{{function.name}}</span>
     </div>
